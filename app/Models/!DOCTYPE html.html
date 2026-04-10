@@ -1,0 +1,2455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Monjurul Islam Polash — Digital Marketer, Web Developer, SEO Expert \& Virtual Assistant. Available 24/7.">
+<meta property="og:title" content="Monjurul Islam Polash — Digital Expert \& Freelancer">
+<meta property="og:image" content="https://uploads.onecompiler.io/44a4h29nq/44a4gxy6p/round%20main%20without%20background.png">
+<meta name="theme-color" content="#764ba2">
+<title>Monjurul Islam Polash | Digital Expert & Freelancer</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800\&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;background:#111827;color:#fff;overflow-x:hidden;-webkit-tap-highlight-color:transparent;}
+
+/* ── TOKENS ── */
+:root{
+  --purple:#764ba2;--violet:#667eea;--pink:#f093fb;
+  --yellow:#facc15;--green:#22c55e;
+  --dark:#111827;--dark2:#1f2937;
+  --grad:linear-gradient(135deg,#667eea 0%,#764ba2 50%,#f093fb 100%);
+  --r:9999px;--cr:24px;
+  --card-shadow:0 25px 50px -12px rgba(102,126,234,.4);
+  --t:all .3s ease;
+}
+
+/* ── HELPERS ── */
+.gradient-text{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.sec-label{font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;}
+.sec-title{font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1.1;margin-bottom:14px;}
+.sec-sub{color:rgba(255,255,255,.75);font-size:1rem;line-height:1.7;max-width:560px;margin:0 auto;}
+.sec-header{text-align:center;margin-bottom:60px;}
+.sec-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 22px;border-radius:var(--r);font-size:.75rem;font-weight:800;letter-spacing:.14em;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);color:#fff;margin-bottom:16px;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(10,5,30,.92);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.12);
+  padding:0 20px;
+  display:flex;align-items:center;gap:8px;
+  height:64px;overflow:visible;
+}
+
+/* Logo — never shrinks */
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
+.nav-logo-badge{width:38px;height:38px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1rem;color:#fff;letter-spacing:-.5px;}
+.nav-logo-text{font-size:1rem;font-weight:800;color:#fff;line-height:1.1;}
+.nav-logo-text span{display:block;font-size:.6rem;font-weight:500;color:rgba(255,255,255,.5);letter-spacing:.06em;text-transform:uppercase;}
+
+/* Link strip — shrinks to fit, never wraps */
+.nav-links{
+  display:flex;align-items:center;gap:2px;
+  flex:1;min-width:0;overflow:visible;
+  position:static;
+}
+.nav-links a,
+.nav-links .nav-dropdown{
+  color:rgba(255,255,255,.7);text-decoration:none;font-size:.8rem;font-weight:500;
+  padding:6px 10px;border-radius:8px;display:flex;align-items:center;gap:5px;
+  transition:all .2s;white-space:nowrap;flex-shrink:0;
+}
+.nav-links a i{font-size:.72rem;opacity:.7;}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1);}
+.nav-links a.active{color:#fff;background:rgba(255,255,255,.12);}
+
+/* Right side: always visible controls */
+.nav-right{display:flex;align-items:center;gap:6px;flex-shrink:0;margin-left:auto;}
+
+/* ── OVERFLOW "More ▾" button ── */
+#nav-more-btn{
+  display:none; /* shown by JS when items overflow */
+  align-items:center;gap:5px;
+  padding:6px 10px;border-radius:8px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.8);font-size:.8rem;font-weight:600;
+  cursor:pointer;white-space:nowrap;flex-shrink:0;
+  font-family:'Poppins',sans-serif;transition:all .2s;
+}
+#nav-more-btn:hover{background:rgba(255,255,255,.15);color:#fff;}
+#nav-more-btn i{font-size:.65rem;transition:transform .2s;}
+#nav-more-btn.open i{transform:rotate(180deg);}
+
+/* Overflow menu panel — anchored to right */
+#nav-overflow-menu{
+  display:none;opacity:0;
+  position:fixed;top:68px;right:16px;
+  background:rgba(10,4,32,.97);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:16px;padding:10px;
+  min-width:230px;max-width:300px;
+  max-height:calc(100vh - 80px);overflow-y:auto;
+  z-index:4000;
+  box-shadow:0 20px 50px rgba(0,0,0,.7);
+  transform:translateY(-6px) scale(.97);
+  transition:opacity .18s,transform .18s;
+  pointer-events:none;
+}
+#nav-overflow-menu.open{
+  display:block;opacity:1;
+  transform:translateY(0) scale(1);
+  pointer-events:all;
+}
+#nav-overflow-menu::-webkit-scrollbar{width:4px;}
+#nav-overflow-menu::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:99px;}
+
+.overflow-section-label{
+  font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.3);padding:4px 10px 6px;margin-top:4px;
+}
+.overflow-item{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 12px;border-radius:9px;
+  text-decoration:none;color:rgba(255,255,255,.78);
+  font-size:.82rem;font-weight:500;cursor:pointer;
+  transition:all .15s;white-space:nowrap;width:100%;
+  background:none;border:none;font-family:'Poppins',sans-serif;
+  text-align:left;
+}
+.overflow-item:hover{background:rgba(255,255,255,.1);color:#fff;}
+.overflow-item i{width:16px;text-align:center;font-size:.82rem;flex-shrink:0;}
+.overflow-divider{height:1px;background:rgba(255,255,255,.09);margin:5px 0;}
+
+/* ── Click-based Dropdown ── */
+.nav-dropdown{position:relative;flex-shrink:0;}
+.nav-dropdown-btn{cursor:pointer;user-select:none;color:rgba(255,255,255,.7);text-decoration:none;font-size:.8rem;font-weight:500;padding:6px 10px;border-radius:8px;display:flex;align-items:center;gap:5px;transition:all .2s;white-space:nowrap;background:none;border:none;font-family:'Poppins',sans-serif;}
+.nav-dropdown-btn:hover{color:#fff;background:rgba(255,255,255,.1);}
+.nav-dropdown-btn.open{color:#fff;background:rgba(255,255,255,.12);}
+
+/* Dropdown menus use fixed so they escape overflow:hidden on any parent */
+.nav-dropdown-menu{
+  display:none;
+  position:fixed;
+  top:64px;
+  background:rgba(10,4,32,.97);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:16px;padding:10px;
+  z-index:4000;
+  box-shadow:0 20px 50px rgba(0,0,0,.7);
+  opacity:0;
+  transform:translateY(-6px) scale(.97);
+  transition:opacity .18s ease, transform .18s ease;
+  pointer-events:none;
+}
+.nav-dropdown-menu.wide{
+  left:50%;
+  transform:translateX(-50%) translateY(-6px) scale(.97);
+  min-width:min(720px,92vw);
+  max-height:78vh;overflow-y:auto;
+  padding:14px 16px 16px;
+}
+.nav-dropdown-menu.slim{
+  min-width:220px;
+  /* left is set dynamically by JS */
+}
+.nav-dropdown-menu.open{
+  display:block;
+  opacity:1;
+  pointer-events:all;
+}
+.nav-dropdown-menu.wide.open{
+  transform:translateX(-50%) translateY(0) scale(1);
+}
+.nav-dropdown-menu.slim.open{
+  transform:translateY(0) scale(1);
+}
+.nav-dropdown-menu::-webkit-scrollbar{width:5px;}
+.nav-dropdown-menu::-webkit-scrollbar-track{background:rgba(255,255,255,.05);border-radius:99px;}
+.nav-dropdown-menu::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:99px;}
+.nav-dropdown-menu a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:9px;color:rgba(255,255,255,.8);text-decoration:none;font-size:.82rem;font-weight:500;transition:all .15s;white-space:nowrap;}
+.nav-dropdown-menu a:hover{background:rgba(255,255,255,.11);color:#fff;}
+.nav-dropdown-menu a i{width:16px;text-align:center;font-size:.82rem;flex-shrink:0;}
+.nav-dropdown-divider{height:1px;background:rgba(255,255,255,.1);margin:5px 0;}
+
+/* ── Mega dropdown layout ── */
+.mega-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:12px;padding-bottom:10px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.mega-header h3{font-size:.9rem;font-weight:800;color:#fff;}
+.mega-header span{font-size:.72rem;color:rgba(255,255,255,.45);}
+.mega-search{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  border-radius:8px;padding:6px 12px;margin-bottom:14px;
+}
+.mega-search i{color:rgba(255,255,255,.4);font-size:.8rem;flex-shrink:0;}
+.mega-search input{
+  background:none;border:none;outline:none;color:#fff;
+  font-size:.8rem;font-family:'Poppins',sans-serif;width:100%;
+}
+.mega-search input::placeholder{color:rgba(255,255,255,.3);}
+.mega-cats{display:flex;flex-direction:column;gap:10px;}
+.mega-cat-title{
+  font-size:.65rem;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.4);
+  padding:0 4px;margin-bottom:4px;display:flex;align-items:center;gap:6px;
+}
+.mega-tools{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;}
+.mega-tool{
+  display:flex;align-items:center;gap:8px;
+  padding:7px 10px;border-radius:9px;
+  text-decoration:none;color:rgba(255,255,255,.8);
+  font-size:.76rem;font-weight:600;
+  transition:all .15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.mega-tool:hover{background:rgba(255,255,255,.1);color:#fff;}
+.mega-tool i{font-size:.8rem;flex-shrink:0;width:14px;text-align:center;}
+.mega-tool.hidden{display:none;}
+.mega-cat.hidden{display:none;}
+.mega-footer{
+  margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);
+  display:flex;gap:8px;
+}
+.mega-footer a{
+  flex:1;text-align:center;padding:9px;border-radius:9px;
+  font-size:.78rem;font-weight:700;text-decoration:none;transition:all .2s;
+}
+.mega-view-all{background:linear-gradient(135deg,var(--violet),var(--purple));color:#fff;}
+.mega-view-all:hover{box-shadow:0 4px 14px rgba(102,126,234,.5);}
+.mega-scroll{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.12);}
+.mega-scroll:hover{background:rgba(255,255,255,.15);color:#fff;}
+
+.nav-chevron{font-size:.6rem !important;transition:transform .2s;}
+.nav-dropdown-btn.open .nav-chevron{transform:rotate(180deg);}
+
+/* Social strip */
+.nav-socials{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.nav-social{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;text-decoration:none;color:rgba(255,255,255,.65);font-size:.8rem;transition:all .2s;}
+.nav-social:hover{background:rgba(255,255,255,.18);color:#fff;transform:translateY(-2px);}
+.nav-social.wa:hover{background:#22c55e;border-color:#22c55e;}
+.nav-social.gh:hover{background:#3b82f6;border-color:#3b82f6;}
+.nav-social.em:hover{background:#ec4899;border-color:#ec4899;}
+
+/* CTA */
+.nav-cta{background:linear-gradient(135deg,var(--violet),var(--purple));color:#fff;padding:8px 18px;border-radius:var(--r);font-weight:700;font-size:.8rem;text-decoration:none;transition:var(--t);white-space:nowrap;flex-shrink:0;margin-left:10px;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(102,126,234,.4);}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(102,126,234,.6);}
+.nav-cta i{font-size:.75rem;}
+
+/* Hamburger */
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;flex-shrink:0;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* Mobile drawer */
+.nav-mobile{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(10,5,30,.98);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.12);padding:16px 24px 24px;z-index:999;flex-direction:column;gap:4px;max-height:calc(100vh - 64px);overflow-y:auto;}
+.nav-mobile.open{display:flex;}
+.nav-mobile a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.9rem;font-weight:500;padding:11px 14px;border-radius:10px;display:flex;align-items:center;gap:10px;transition:all .2s;}
+.nav-mobile a i{width:18px;text-align:center;font-size:.85rem;opacity:.7;}
+.nav-mobile a:hover{background:rgba(255,255,255,.1);color:#fff;}
+.nav-mobile-divider{height:1px;background:rgba(255,255,255,.1);margin:8px 0;}
+.nav-mobile-section{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);padding:4px 14px;margin-top:4px;}
+.nav-mobile-socials{display:flex;gap:10px;padding:8px 14px;}
+.nav-mobile-social{flex:1;padding:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;color:rgba(255,255,255,.7);font-size:.8rem;font-weight:600;transition:all .2s;}
+.nav-mobile-social:hover{background:rgba(255,255,255,.15);color:#fff;}
+.nav-mobile-cta{margin-top:8px;padding:13px;background:linear-gradient(135deg,var(--violet),var(--purple));border-radius:12px;text-align:center;text-decoration:none;color:#fff;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center;gap:8px;}
+
+@media(max-width:1100px){.nav-links{gap:2px;}.nav-links a{font-size:.78rem;padding:6px 9px;}}
+@media(max-width:900px){.nav-links{display:none;}.nav-socials{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:768px){nav{padding:0 20px;}.nav-logo-text span{display:none;}}
+
+/* ── HERO ── */
+.hero{min-height:100vh;background:var(--grad);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:80px;}
+.particles{position:absolute;inset:0;pointer-events:none;}
+.particle{position:absolute;background:rgba(255,255,255,.25);border-radius:50%;animation:particleFloat 15s infinite;}
+@keyframes particleFloat{0%,100%{transform:translateY(100vh) rotate(0deg);opacity:0;}10%,90%{opacity:1;}}
+.hero-inner{max-width:1200px;margin:0 auto;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;position:relative;z-index:10;}
+.hero-greeting{color:var(--yellow);font-weight:600;font-size:1.1rem;margin-bottom:8px;}
+.hero-clock{color:#fb923c;font-size:.85rem;margin-bottom:4px;}
+.hero-time{color:#fb923c;font-weight:700;font-size:.95rem;margin-bottom:16px;}
+.hero-name{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;line-height:1.1;margin-bottom:16px;}
+.hero-name span{color:var(--yellow);}
+.hero-typed{font-size:1.2rem;color:rgba(255,255,255,.9);margin-bottom:20px;min-height:34px;}
+.hero-typed span{border-right:3px solid var(--yellow);animation:blink .75s step-end infinite;}
+@keyframes blink{50%{border-color:transparent;}}
+.hero-desc{color:rgba(255,255,255,.7);font-size:1rem;line-height:1.7;max-width:480px;margin-bottom:32px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-primary{padding:14px 32px;border-radius:var(--r);font-weight:600;font-size:1rem;background:linear-gradient(135deg,var(--violet),var(--purple));color:#fff;text-decoration:none;animation:pulseGlow 2s ease-in-out infinite;}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 20px rgba(102,126,234,.5);}50%{box-shadow:0 0 40px rgba(102,126,234,.8),0 0 60px rgba(118,75,162,.6);}}
+.btn-outline{padding:14px 32px;border-radius:var(--r);font-weight:600;font-size:1rem;border:2px solid rgba(255,255,255,.5);color:#fff;text-decoration:none;transition:var(--t);}
+.btn-outline:hover{background:#fff;color:var(--purple);}
+
+/* ── AVATAR ── */
+.hero-avatar-wrap{display:flex;justify-content:center;position:relative;}
+.blob-wrap{width:320px;height:320px;background:var(--grad);display:flex;align-items:center;justify-content:center;box-shadow:0 20px 60px rgba(102,126,234,.5);animation:blobMorph 8s ease-in-out infinite,floating 3s ease-in-out infinite;}
+@keyframes blobMorph{0%,100%{border-radius:42% 58% 70% 30% / 45% 45% 55% 55%;}25%{border-radius:70% 30% 50% 50% / 30% 70% 30% 70%;}50%{border-radius:30% 70% 30% 70% / 50% 50% 70% 30%;}75%{border-radius:50% 50% 30% 70% / 70% 30% 70% 30%;}}
+@keyframes floating{0%,100%{transform:translateY(0);}50%{transform:translateY(-20px);}}
+.avatar-inner{width:270px;height:270px;border-radius:50%;overflow:hidden;background:linear-gradient(135deg,var(--yellow),#f97316);display:flex;align-items:center;justify-content:center;}
+.avatar-inner img{width:100%;height:100%;object-fit:cover;}
+.float-icon{position:absolute;width:56px;height:56px;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.3);animation:floating 3s ease-in-out infinite;}
+.float-icon i{font-size:1.4rem;color:#fff;}
+.fi-wa{background:var(--green);top:20px;right:20px;border-radius:50%;animation-delay:.5s;}
+.fi-em{background:linear-gradient(135deg,#ef4444,#ec4899);bottom:20px;right:10px;border-radius:50%;animation-delay:.5s;}
+.fi-gh{background:#3b82f6;bottom:30px;left:10px;border-radius:16px;animation-delay:1s;}
+.fi-ph{background:linear-gradient(135deg,#3b82f6,#06b6d4);top:20px;left:20px;border-radius:50%;animation-delay:1.5s;}
+.scroll-indicator{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);animation:bounce 1s ease-in-out infinite;}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
+.scroll-indicator i{color:#fff;font-size:1.5rem;}
+
+/* ── SECTIONS ── */
+section{padding:80px 20px;}
+
+/* ── SERVICES ── */
+#services{background:var(--dark);}
+.services-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+.service-card{background:rgba(31,41,55,.7);border:1px solid rgba(75,85,99,.4);border-radius:var(--cr);padding:32px;backdrop-filter:blur(8px);transition:transform .4s cubic-bezier(.175,.885,.32,1.275),box-shadow .4s;}
+.service-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:var(--card-shadow);}
+.service-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.service-icon i{font-size:1.4rem;color:#fff;}
+.service-card h3{font-size:1.2rem;font-weight:700;margin-bottom:10px;}
+.service-card p{color:#9ca3af;font-size:.9rem;line-height:1.7;}
+.service-card.cta{background:linear-gradient(135deg,#7c3aed,#db2777);border:none;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.service-card.cta p{color:rgba(255,255,255,.8);}
+.card-cta-btn{margin-top:16px;background:#fff;color:#7c3aed;padding:8px 20px;border-radius:var(--r);font-weight:600;text-decoration:none;transition:background .2s,color .2s;}
+.card-cta-btn:hover{background:var(--yellow);color:var(--dark);}
+
+/* ── HIRE ME ── */
+#hire{background:linear-gradient(180deg,var(--dark),var(--dark2),var(--dark));}
+.platforms-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+.platform-card{border-radius:var(--cr);padding:32px;text-align:center;color:#fff;text-decoration:none;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;}
+.platform-card::before{content:'';position:absolute;inset:0;left:-100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transition:left .5s;}
+.platform-card:hover::before{left:100%;}
+.platform-card:hover{transform:translateY(-8px) scale(1.03);}
+.platform-logo{width:72px;height:72px;background:#fff;border-radius:16px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.4rem;}
+.platform-card h3{font-size:1.2rem;font-weight:700;margin-bottom:6px;}
+.platform-card .sub{color:rgba(255,255,255,.8);font-size:.85rem;margin-bottom:16px;}
+.plat-link{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.9rem;}
+
+/* ── CONTACT (cards) ── */
+#contact{background:var(--dark);}
+.contact-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+.contact-card{background:rgba(31,41,55,.7);border:1px solid rgba(75,85,99,.4);border-radius:var(--cr);padding:32px;text-align:center;text-decoration:none;color:#fff;transition:transform .4s cubic-bezier(.175,.885,.32,1.275),box-shadow .4s;}
+.contact-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:var(--card-shadow);}
+.contact-icon{width:72px;height:72px;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;transition:transform .3s;}
+.contact-card:hover .contact-icon{transform:scale(1.1);}
+.contact-icon i{font-size:1.8rem;color:#fff;}
+.contact-card h3{font-size:1.1rem;font-weight:700;margin-bottom:6px;}
+.contact-card p{font-size:.85rem;font-weight:500;}
+.cta-banner{max-width:1100px;margin:48px auto 0;background:linear-gradient(135deg,#7c3aed,#db2777,#7c3aed);border-radius:var(--cr);padding:48px;text-align:center;position:relative;overflow:hidden;}
+.cta-banner::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,.15);}
+.cta-banner>*{position:relative;z-index:1;}
+.cta-banner h3{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;margin-bottom:12px;}
+.cta-banner p{color:rgba(255,255,255,.8);margin-bottom:28px;font-size:1rem;}
+.cta-btns{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+.cta-wa{background:var(--green);color:#fff;padding:14px 28px;border-radius:var(--r);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:background .2s;}
+.cta-wa:hover{background:#16a34a;}
+.cta-em{background:#fff;color:var(--purple);padding:14px 28px;border-radius:var(--r);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:background .2s,color .2s;}
+.cta-em:hover{background:var(--yellow);color:var(--dark);}
+
+/* ── SMART TOOLKIT ── */
+.tk-section{padding:90px 24px;background:rgba(0,0,0,.15);}
+.tk-wrap{max-width:1200px;margin:0 auto;}
+.cat-block{margin-bottom:28px;padding:26px;background:rgba(255,255,255,.07);border:2px solid rgba(255,255,255,.12);border-radius:22px;transition:border-color .3s;}
+.cat-block:hover{border-color:rgba(255,255,255,.22);}
+.cat-head{display:flex;align-items:center;gap:16px;margin-bottom:20px;padding-bottom:16px;border-bottom:1.5px solid rgba(255,255,255,.1);}
+/* cat-ico now defined in toolkit section above */
+.cat-info{flex:1;}
+.cat-name{font-size:1.2rem;font-weight:900;margin-bottom:4px;}
+.cat-count{font-size:.82rem;color:rgba(255,255,255,.6);}
+.cat-pill{padding:3px 12px;border-radius:var(--r);font-size:.72rem;font-weight:800;margin-left:auto;flex-shrink:0;}
+.tgrid{display:grid;grid-template-columns:repeat(2,1fr)!important;gap:12px;}
+
+/* ── Tool Card ── */
+.tc-card{
+  display:flex;align-items:center;gap:14px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:16px;padding:14px 16px;
+  text-decoration:none;color:inherit;
+  transition:all .25s cubic-bezier(.175,.885,.32,1.275);
+  position:relative;overflow:hidden;
+}
+.tc-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.04),transparent);
+  opacity:0;transition:opacity .25s;
+}
+.tc-card:hover{
+  transform:translateY(-4px) scale(1.02);
+  border-color:rgba(255,255,255,.3);
+  box-shadow:0 12px 32px rgba(0,0,0,.3);
+}
+.tc-card:hover::before{opacity:1;}
+
+/* ── Monogram Badge ── */
+.tc-ico{
+  width:48px;height:48px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;position:relative;
+  font-size:.85rem;font-weight:900;letter-spacing:-.5px;
+  color:#fff;font-family:'Poppins',sans-serif;
+  text-shadow:0 1px 3px rgba(0,0,0,.4);
+  box-shadow:0 4px 14px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.25);
+}
+.tc-ico::after{
+  content:'';position:absolute;inset:0;border-radius:14px;
+  background:linear-gradient(135deg,rgba(255,255,255,.2) 0%,transparent 60%);
+  pointer-events:none;
+}
+.tc-ico i{font-size:1.2rem;filter:drop-shadow(0 1px 3px rgba(0,0,0,.4));}
+
+/* Hover: icon scale + glow */
+.tc-card:hover .tc-ico{
+  transform:scale(1.1) rotate(-3deg);
+  box-shadow:0 6px 20px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.3);
+}
+
+.tc-body{flex:1;min-width:0;}
+.tc-name{font-weight:800;font-size:.92rem;margin-bottom:3px;line-height:1.2;}
+.tc-desc{font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.45;}
+.tc-arrow{
+  flex-shrink:0;opacity:0;transition:opacity .2s,transform .2s;
+  color:rgba(255,255,255,.5);font-size:.75rem;
+}
+.tc-card:hover .tc-arrow{opacity:1;transform:translate(3px,-3px);}
+
+/* ── Category head icon ── */
+.cat-ico{
+  width:58px;height:58px;border-radius:18px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  position:relative;
+  box-shadow:0 4px 16px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.2);
+}
+.cat-ico::after{
+  content:'';position:absolute;inset:0;border-radius:18px;
+  background:linear-gradient(135deg,rgba(255,255,255,.18) 0%,transparent 55%);
+  pointer-events:none;
+}
+
+/* ── ENHANCED CONTACT (full cards) ── */
+.cct-section{padding:90px 24px;}
+.cct-wrap{max-width:900px;margin:0 auto;}
+.cc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:16px;margin-bottom:36px;}
+.cc{display:flex;align-items:center;gap:18px;background:rgba(255,255,255,.11);backdrop-filter:blur(16px);border:2px solid rgba(255,255,255,.2);border-radius:18px;padding:22px;text-decoration:none;color:inherit;transition:all .25s;position:relative;overflow:hidden;}
+.cc::after{content:'';position:absolute;inset:0;left:-100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent);transition:left .5s;}
+.cc:hover::after{left:100%;}
+.cc:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.48);box-shadow:0 16px 42px rgba(0,0,0,.3);background:rgba(255,255,255,.17);}
+.cc-ico{width:62px;height:62px;border-radius:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 16px rgba(0,0,0,.2);}
+.cc-info{flex:1;min-width:0;}
+.cc-lab{font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:4px;}
+.cc-val{font-weight:800;font-size:1rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.cc-sub{font-size:.78rem;color:rgba(255,255,255,.55);margin-top:3px;}
+.cc-go{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.cc:hover .cc-go{background:rgba(255,255,255,.25);transform:translateX(3px);}
+.cta-box{background:rgba(255,255,255,.1);backdrop-filter:blur(22px);border:2px solid rgba(255,255,255,.22);border-radius:26px;padding:60px 32px;text-align:center;position:relative;overflow:hidden;}
+.cta-box::before{content:'';position:absolute;top:-80px;right:-80px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(251,191,36,.22),transparent 70%);}
+.cta-box::after{content:'';position:absolute;bottom:-80px;left:-80px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(6,182,212,.22),transparent 70%);}
+.cta-box>*{position:relative;z-index:1;}
+.cta-box h3{font-size:2rem;font-weight:900;margin-bottom:14px;line-height:1.2;}
+.cta-box>p{font-size:1rem;color:rgba(255,255,255,.8);max-width:520px;margin:0 auto 32px;line-height:1.7;}
+.btn-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:var(--r);font-weight:800;font-size:1rem;font-family:'Poppins',sans-serif;text-decoration:none;border:none;cursor:pointer;transition:transform .22s,box-shadow .22s;white-space:nowrap;}
+.btn:hover{transform:translateY(-3px);}
+.btn-white{background:#fff;color:#5b3ec8;}
+.btn-wa{background:#25d366;color:#fff;}
+.btn-msg{background:#0a66c2;color:#fff;}
+
+/* ── FOOTER ── */
+footer{background:#030712;padding:48px 20px;text-align:center;}
+footer h4{font-size:1.5rem;font-weight:700;margin-bottom:8px;}
+footer h4 span{color:var(--yellow);}
+footer>p{color:#6b7280;font-size:.9rem;margin-bottom:24px;}
+.foot-socials{display:flex;justify-content:center;gap:12px;margin-bottom:24px;}
+.foot-social{width:44px;height:44px;background:var(--dark2);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;color:#fff;transition:background .2s;}
+.foot-social:hover{background:#3b82f6;}
+.foot-social.wa:hover{background:var(--green);}
+.foot-copy{border-top:1px solid var(--dark2);padding-top:20px;color:#4b5563;font-size:.8rem;}
+
+/* ── MUSIC PLAYER ── */
+#mplayer{position:fixed;bottom:22px;right:22px;z-index:9999;display:flex;align-items:center;gap:9px;background:rgba(10,3,40,.93);backdrop-filter:blur(20px);border:1.5px solid rgba(255,255,255,.22);border-radius:var(--r);padding:7px 14px 7px 7px;box-shadow:0 6px 30px rgba(0,0,0,.55);animation:mpIn .8s cubic-bezier(.175,.885,.32,1.275) forwards;}
+@keyframes mpIn{from{opacity:0;transform:translateY(40px) scale(.8);}to{opacity:1;transform:none;}}
+.mp-orb{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#06b6d4);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.mp-orb.on{animation:mpGlow 1.8s ease-in-out infinite;}
+@keyframes mpGlow{0%,100%{box-shadow:0 0 0 0 rgba(124,58,237,.7);}50%{box-shadow:0 0 0 9px rgba(124,58,237,0);}}
+.mp-lbl{font-size:.72rem;font-weight:800;color:#fff;white-space:nowrap;max-width:115px;overflow:hidden;text-overflow:ellipsis;}
+.mp-bar{width:72px;height:2.5px;background:rgba(255,255,255,.15);border-radius:var(--r);overflow:hidden;margin-top:3px;}
+.mp-prog{height:100%;width:0;background:linear-gradient(90deg,#7c3aed,#06b6d4);border-radius:var(--r);transition:width .25s linear;}
+.mpb{width:28px;height:28px;border-radius:50%;border:none;cursor:pointer;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;}
+.mpb:hover{background:rgba(255,255,255,.3);transform:scale(1.1);}
+#mp-close{width:18px;height:18px;border-radius:50%;border:none;cursor:pointer;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s;}
+#mp-close:hover{background:rgba(220,50,50,.6);}
+
+/* ── AI HUB ── */
+#ai-fab{position:fixed;bottom:92px;right:22px;z-index:9998;width:52px;height:52px;border-radius:50%;border:none;cursor:pointer;background:linear-gradient(135deg,#6a11cb,#2575fc);color:#fff;font-size:22px;box-shadow:0 6px 20px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;transition:transform .2s;}
+#ai-fab:hover{transform:scale(1.1);}
+#ai-modal{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);overflow-y:auto;padding:20px 0;justify-content:center;align-items:flex-start;}
+#ai-modal.open{display:flex;}
+.modal-box{background:#0f0a2e;width:94%;max-width:780px;margin:auto;padding:28px 24px 32px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.5);border:1.5px solid rgba(255,255,255,.12);position:relative;}
+.modal-close{position:absolute;top:14px;right:18px;font-size:24px;font-weight:700;cursor:pointer;background:rgba(255,255,255,.1);border:none;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);transition:background .2s;}
+.modal-close:hover{background:rgba(220,50,50,.5);color:#fff;}
+.modal-box h2{text-align:center;font-size:1.4rem;font-weight:900;margin-bottom:6px;}
+.modal-sub{text-align:center;color:rgba(255,255,255,.5);font-size:.8rem;margin-bottom:22px;}
+.ai-cat{margin-bottom:22px;}
+.ai-cat-title{font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.ai-cat-title span{font-size:.9rem;}
+.ai-tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;}
+.ai-card{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 6px;border-radius:12px;text-decoration:none;color:#fff;font-weight:700;font-size:.72rem;text-align:center;min-height:72px;border:1px solid rgba(255,255,255,.08);transition:transform .22s,box-shadow .22s;}
+.ai-card:hover{transform:translateY(-4px);box-shadow:0 8px 22px rgba(0,0,0,.35);border-color:rgba(255,255,255,.25);}
+.ai-card i{font-size:1.4rem;margin-bottom:5px;}
+/* ── AI Hub Modal scroll & search ── */
+.modal-box{max-height:90vh;overflow-y:auto;}
+.modal-search{width:100%;padding:10px 16px;border-radius:var(--r);border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;font-size:.9rem;font-family:'Poppins',sans-serif;margin-bottom:20px;outline:none;transition:border-color .2s;}
+.modal-search::placeholder{color:rgba(255,255,255,.45);}
+.modal-search:focus{border-color:rgba(255,255,255,.5);}
+.ai-cat.hidden{display:none;}
+.ai-card.hidden{display:none;}
+.ac-chatgpt{background:linear-gradient(135deg,#0d8f6f,#10a37f);}
+.ac-gemini{background:linear-gradient(135deg,#1a56db,#4285f4);}
+.ac-claude{background:linear-gradient(135deg,#b04a14,#d4622a);}
+.ac-deepseek{background:linear-gradient(135deg,#0f4c9a,#1a6bc7);}
+.ac-perplexity{background:linear-gradient(135deg,#1a2f6e,#2d4fa8);}
+.ac-grok{background:linear-gradient(135deg,#1a1a1a,#333);}
+.ac-meta{background:linear-gradient(135deg,#0050b3,#0064e0);}
+.ac-copilot{background:linear-gradient(135deg,#0e5fa8,#1b7fd4);}
+.ac-dark{background:linear-gradient(135deg,#1f2937,#374151);}
+.ac-yupp{background:linear-gradient(135deg,#6d28d9,#7c3aed);}
+.ac-mid{background:linear-gradient(135deg,#111,#222);}
+.ac-dalle{background:linear-gradient(135deg,#111,#2a2a2a);}
+.ac-runway{background:linear-gradient(135deg,#111,#1a1a2e);}
+.ac-sora{background:linear-gradient(135deg,#111,#0a0a1a);}
+.ac-pika{background:linear-gradient(135deg,#1a0533,#3b0764);}
+.ac-invideo{background:linear-gradient(135deg,#b91c1c,#dc2626);}
+.ac-heygen{background:linear-gradient(135deg,#4c1d95,#6d28d9);}
+.ac-vidnoz{background:linear-gradient(135deg,#0369a1,#0891b2);}
+.ac-pictory{background:linear-gradient(135deg,#0f766e,#14b8a6);}
+.ac-canva{background:linear-gradient(135deg,#00c4cc,#0098a6);}
+.ac-surfer{background:linear-gradient(135deg,#0e4f7a,#0d7fc4);}
+.ac-ahrefs{background:linear-gradient(135deg,#e67e00,#f59e0b);}
+.ac-semrush{background:linear-gradient(135deg,#e04a00,#f97316);}
+.ac-hubspot{background:linear-gradient(135deg,#b45309,#d97706);}
+.ac-mailchimp{background:linear-gradient(135deg,#ffe01b,#c8a800);color:#111;}
+.ac-buffer{background:linear-gradient(135deg,#1b4f72,#2471a3);}
+.ac-hootsuite{background:linear-gradient(135deg,#d40000,#e53935);}
+.ac-notion{background:linear-gradient(135deg,#111,#1a1a1a);}
+.ac-zapier{background:linear-gradient(135deg,#c24c00,#ff6f00);}
+.ac-otter{background:linear-gradient(135deg,#0079c1,#0096dd);}
+.ac-grammarly{background:linear-gradient(135deg,#15844a,#1db954);}
+.ac-cursor{background:linear-gradient(135deg,#111,#0f172a);}
+.ac-bolt{background:linear-gradient(135deg,#5b3ec8,#7c3aed);}
+
+/* ── LANGUAGE SWITCHER ── */
+.lang-switcher{position:relative;flex-shrink:0;}
+.lang-btn{
+  display:flex;align-items:center;gap:6px;
+  padding:6px 12px;border-radius:8px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  color:rgba(255,255,255,.85);font-size:.8rem;font-weight:600;
+  cursor:pointer;transition:all .2s;white-space:nowrap;
+  font-family:'Poppins',sans-serif;
+}
+.lang-btn:hover{background:rgba(255,255,255,.15);color:#fff;}
+.lang-btn .lang-flag{font-size:1rem;line-height:1;}
+.lang-btn .lang-chevron{font-size:.55rem;opacity:.6;transition:transform .2s;}
+.lang-btn.open .lang-chevron{transform:rotate(180deg);}
+
+.lang-menu{
+  display:none;opacity:0;transform:translateY(-6px) scale(.97);
+  position:absolute;top:calc(100% + 8px);right:0;
+  background:rgba(12,6,38,.97);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:14px;padding:8px;
+  min-width:200px;z-index:3000;
+  box-shadow:0 16px 40px rgba(0,0,0,.6);
+  transition:opacity .18s,transform .18s;
+  pointer-events:none;
+}
+.lang-menu.open{
+  display:block;opacity:1;
+  transform:translateY(0) scale(1);
+  pointer-events:all;
+}
+.lang-menu-header{
+  font-size:.65rem;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.35);
+  padding:4px 10px 8px;
+}
+.lang-option{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 12px;border-radius:9px;
+  cursor:pointer;transition:all .15s;
+  color:rgba(255,255,255,.75);font-size:.82rem;font-weight:500;
+}
+.lang-option:hover{background:rgba(255,255,255,.1);color:#fff;}
+.lang-option.active{background:rgba(102,126,234,.2);color:#a78bfa;}
+.lang-option .lo-flag{font-size:1.1rem;flex-shrink:0;}
+.lang-option .lo-name{flex:1;}
+.lang-option .lo-native{font-size:.72rem;color:rgba(255,255,255,.4);margin-left:auto;}
+.lang-divider{height:1px;background:rgba(255,255,255,.08);margin:4px 0;}
+
+/* Translation overlay */
+#lang-toast{
+  position:fixed;bottom:160px;right:22px;z-index:9997;
+  background:rgba(12,6,38,.95);border:1px solid rgba(255,255,255,.15);
+  border-radius:12px;padding:10px 16px;
+  font-size:.8rem;font-weight:600;color:#fff;
+  display:none;align-items:center;gap:8px;
+  box-shadow:0 8px 24px rgba(0,0,0,.4);
+  animation:toastIn .3s ease;
+}
+#lang-toast.show{display:flex;}
+@keyframes toastIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+#lang-toast i{color:#a78bfa;}
+
+/* RTL support */
+[dir="rtl"] .nav-links{flex-direction:row-reverse;}
+[dir="rtl"] .lang-menu{right:auto;left:0;}
+  .hero-inner{grid-template-columns:1fr;text-align:center;}
+  .hero-btns{justify-content:center;}
+  .blob-wrap{width:250px;height:250px;}
+  .avatar-inner{width:210px;height:210px;}
+  .btn-row{flex-direction:column;align-items:stretch;}
+  .btn{justify-content:center;}
+  .cta-box{padding:40px 20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <!-- Logo -->
+  <a href="javascript:void(0)" class="nav-logo" onclick="navTo('hero')">
+    <div class="nav-logo-badge">MIP</div>
+    <div class="nav-logo-text">
+      Monjurul Islam Polash
+      <span>Digital Expert & Freelancer</span>
+    </div>
+  </a>
+
+  <!-- Desktop Links -->
+  <div class="nav-links">
+    <a href="javascript:void(0)" onclick="navTo('hero')"><i class="fas fa-home"> Home</a>
+    <a href="javascript:void(0)" onclick="navTo('services')"><i class="fas fa-briefcase"> Services</a>
+    <a href="javascript:void(0)" onclick="navTo('hire')"><i class="fas fa-handshake"> Hire Me</a>
+
+    <!-- AI Tools Mega Dropdown -->
+    <div class="nav-dropdown" id="dd-ai">
+      <a href="javascript:void(0)" class="nav-dropdown-btn" id="dd-ai-btn" onclick="toggleDropdown('dd-ai')">
+        <i class="fas fa-robot"> AI Tools <i class="fas fa-chevron-down nav-chevron">
+      </a>
+      <div class="nav-dropdown-menu wide" id="dd-ai-menu">
+        <div class="mega-header">
+          <h3>🤖 All 112 AI Tools</h3>
+          <span>Click any tool to open — click anywhere else to close</span>
+        </div>
+        <div class="mega-search">
+          <i class="fas fa-search">
+          <input type="text" id="mega-search-input" placeholder="Search tools..." oninput="megaSearch(this.value)">
+        </div>
+        <div class="mega-cats" id="mega-cats-wrap">
+          <!-- Populated by JS from toolData -->
+        </div>
+        <div class="mega-footer">
+          <a href="javascript:void(0)" class="mega-view-all" onclick="closeAllDropdowns();document.getElementById('ai-modal').classList.add('open')">
+            <i class="fas fa-th"> Open Full Hub
+          </a>
+          <a href="javascript:void(0)" class="mega-scroll" onclick="closeAllDropdowns();navTo('toolkit')">
+            <i class="fas fa-list"> Scroll to Toolkit
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Platforms Dropdown -->
+    <div class="nav-dropdown" id="dd-plat">
+      <a href="javascript:void(0)" class="nav-dropdown-btn" id="dd-plat-btn" onclick="toggleDropdown('dd-plat')">
+        <i class="fas fa-globe"> Platforms <i class="fas fa-chevron-down nav-chevron">
+      </a>
+      <div class="nav-dropdown-menu slim" id="dd-plat-menu">
+        <a href="https://www.fiverr.com" target="\_blank" onclick="closeAllDropdowns()"><i class="fas fa-star" style="color:#1dbf73"> Fiverr</a>
+        <a href="https://www.upwork.com" target="\_blank" onclick="closeAllDropdowns()"><i class="fas fa-trophy" style="color:#14a800"> Upwork</a>
+        <a href="https://www.peopleperhour.com" target="\_blank" onclick="closeAllDropdowns()"><i class="fas fa-clock" style="color:#f97316"> PeoplePerHour</a>
+        <a href="https://www.freelancer.com" target="\_blank" onclick="closeAllDropdowns()"><i class="fas fa-laptop" style="color:#2563eb"> Freelancer.com</a>
+        <a href="https://www.guru.com" target="\_blank" onclick="closeAllDropdowns()"><i class="fas fa-user-check" style="color:#8b5cf6"> Guru.com</a>
+        <div class="nav-dropdown-divider"></div>
+        <a href="javascript:void(0)" onclick="closeAllDropdowns();navTo('hire')" style="color:#facc15"><i class="fas fa-handshake" style="color:#facc15"> View All Platforms</a>
+      </div>
+    </div>
+
+    <a href="javascript:void(0)" onclick="navTo('contact')"><i class="fas fa-envelope"> Contact</a>
+  </div>
+
+  <!-- ── More ▾ overflow button (shown by JS when links overflow) ── -->
+  <button id="nav-more-btn" onclick="toggleOverflow()" title="More options">
+    More <i class="fas fa-chevron-down">
+  </button>
+
+  <!-- Right controls: always visible -->
+  <div class="nav-right">
+    <!-- Desktop Social Quick Links -->
+    <div class="nav-socials">
+      <a href="https://wa.me/8801723328481" target="\_blank" class="nav-social wa" title="WhatsApp"><i class="fab fa-whatsapp"></a>
+      <a href="https://github.com/MIPolash-Prog" target="\_blank" class="nav-social gh" title="GitHub"><i class="fab fa-github"></a>
+      <a href="/cdn-cgi/l/email-protection#1b4b74777a68735b6b69747c697a76767e6935757e6f" class="nav-social em" title="Email"><i class="fas fa-envelope"></a>
+    </div>
+
+    <!-- Language Switcher -->
+    <div class="lang-switcher" id="lang-switcher">
+      <button class="lang-btn" id="lang-btn" onclick="toggleLangMenu()">
+        <span class="lang-flag" id="lang-flag">🇺🇸</span>
+        <span id="lang-current">EN</span>
+        <i class="fas fa-chevron-down lang-chevron">
+      </button>
+      <div class="lang-menu" id="lang-menu">
+        <div class="lang-menu-header">🌐 Select Language</div>
+        <div class="lang-option active" data-lang="en" data-flag="🇺🇸" data-label="EN" data-dir="ltr" onclick="switchLang(this)">
+          <span class="lo-flag">🇺🇸</span><span class="lo-name">English</span><span class="lo-native">English</span>
+        </div>
+        <div class="lang-option" data-lang="bn" data-flag="🇧🇩" data-label="বাং" data-dir="ltr" onclick="switchLang(this)">
+          <span class="lo-flag">🇧🇩</span><span class="lo-name">Bengali</span><span class="lo-native">বাংলা</span>
+        </div>
+        <div class="lang-option" data-lang="ar" data-flag="🇸🇦" data-label="عر" data-dir="rtl" onclick="switchLang(this)">
+          <span class="lo-flag">🇸🇦</span><span class="lo-name">Arabic</span><span class="lo-native">العربية</span>
+        </div>
+        <div class="lang-divider"></div>
+        <div class="lang-option" data-lang="zh" data-flag="🇨🇳" data-label="中文" data-dir="ltr" onclick="switchLang(this)">
+          <span class="lo-flag">🇨🇳</span><span class="lo-name">Chinese</span><span class="lo-native">中文</span>
+        </div>
+        <div class="lang-option" data-lang="hi" data-flag="🇮🇳" data-label="हिं" data-dir="ltr" onclick="switchLang(this)">
+          <span class="lo-flag">🇮🇳</span><span class="lo-name">Hindi</span><span class="lo-native">हिंदी</span>
+        </div>
+        <div class="lang-option" data-lang="fr" data-flag="🇫🇷" data-label="FR" data-dir="ltr" onclick="switchLang(this)">
+          <span class="lo-flag">🇫🇷</span><span class="lo-name">French</span><span class="lo-native">Français</span>
+        </div>
+        <div class="lang-option" data-lang="es" data-flag="🇪🇸" data-label="ES" data-dir="ltr" onclick="switchLang(this)">
+          <span class="lo-flag">🇪🇸</span><span class="lo-name">Spanish</span><span class="lo-native">Español</span>
+        </div>
+        <div class="lang-option" data-lang="de" data-flag="🇩🇪" data-label="DE" data-dir="ltr" onclick="switchLang(this)">
+          <span class="lo-flag">🇩🇪</span><span class="lo-name">German</span><span class="lo-native">Deutsch</span>
+        </div>
+        <div class="lang-option" data-lang="tr" data-flag="🇹🇷" data-label="TR" data-dir="ltr" onclick="switchLang(this)">
+          <span class="lo-flag">🇹🇷</span><span class="lo-name">Turkish</span><span class="lo-native">Türkçe</span>
+        </div>
+        <div class="lang-option" data-lang="ur" data-flag="🇵🇰" data-label="اردو" data-dir="rtl" onclick="switchLang(this)">
+          <span class="lo-flag">🇵🇰</span><span class="lo-name">Urdu</span><span class="lo-native">اردو</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Button -->
+    <a href="javascript:void(0)" class="nav-cta" onclick="navTo('contact')">
+      <i class="fas fa-rocket"> Let's Talk
+    </a>
+
+    <!-- Hamburger (mobile only) -->
+    <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── Overflow dropdown menu (right side, auto-populated) ── -->
+<div id="nav-overflow-menu">
+  <p class="overflow-section-label">Navigation</p>
+  <!-- Items injected by JS -->
+</div>
+
+<!-- Mobile Drawer -->
+<div class="nav-mobile" id="nav-mobile">
+  <p class="nav-mobile-section">Navigation</p>
+  <a href="javascript:void(0)" onclick="navTo('hero');closeMobileNav()"><i class="fas fa-home"> Home</a>
+  <a href="javascript:void(0)" onclick="navTo('services');closeMobileNav()"><i class="fas fa-briefcase"> Services</a>
+  <a href="javascript:void(0)" onclick="navTo('hire');closeMobileNav()"><i class="fas fa-handshake"> Hire Me</a>
+  <a href="javascript:void(0)" onclick="navTo('toolkit');closeMobileNav()"><i class="fas fa-robot"> AI Tools (112)</a>
+  <a href="javascript:void(0)" onclick="navTo('contact');closeMobileNav()"><i class="fas fa-envelope"> Contact</a>
+
+  <div class="nav-mobile-divider"></div>
+  <p class="nav-mobile-section">Freelance Platforms</p>
+  <a href="https://www.fiverr.com" target="\_blank" onclick="closeMobileNav()"><i class="fas fa-star"> Fiverr — Top Rated Seller</a>
+  <a href="https://www.upwork.com" target="\_blank" onclick="closeMobileNav()"><i class="fas fa-trophy"> Upwork — Top Freelancer</a>
+  <a href="https://www.peopleperhour.com" target="\_blank" onclick="closeMobileNav()"><i class="fas fa-clock"> PeoplePerHour</a>
+  <a href="https://www.freelancer.com" target="\_blank" onclick="closeMobileNav()"><i class="fas fa-laptop"> Freelancer.com</a>
+  <a href="https://www.guru.com" target="\_blank" onclick="closeMobileNav()"><i class="fas fa-user-check"> Guru.com</a>
+
+  <div class="nav-mobile-divider"></div>
+  <p class="nav-mobile-section">Quick AI Tools</p>
+  <a href="https://chat.openai.com" target="\_blank" onclick="closeMobileNav()"><i class="fas fa-robot"> ChatGPT</a>
+  <a href="https://gemini.google.com" target="\_blank" onclick="closeMobileNav()"><i class="fab fa-google"> Gemini</a>
+  <a href="https://claude.ai" target="\_blank" onclick="closeMobileNav()"><i class="fas fa-brain"> Claude</a>
+  <a href="javascript:void(0)" onclick="closeMobileNav();document.getElementById('ai-modal').classList.add('open')"><i class="fas fa-th"> View All 112 AI Tools →</a>
+
+  <div class="nav-mobile-divider"></div>
+  <p class="nav-mobile-section">Contact</p>
+  <div class="nav-mobile-socials">
+    <a href="https://wa.me/8801723328481" target="\_blank" class="nav-mobile-social"><i class="fab fa-whatsapp"> WhatsApp</a>
+    <a href="/cdn-cgi/l/email-protection#45152a2924362d0535372a223724282820376b2b2031" class="nav-mobile-social"><i class="fas fa-envelope"> Email</a>
+    <a href="tel:+8801730746563" class="nav-mobile-social"><i class="fas fa-phone"> Call</a>
+  </div>
+  <div class="nav-mobile-divider"></div>
+  <p class="nav-mobile-section">🌐 Language</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;padding:4px 0 8px">
+    <div class="lang-option" data-lang="en"  data-flag="🇺🇸" data-label="EN"   data-dir="ltr" onclick="switchLang(this);closeMobileNav()" style="background:rgba(255,255,255,.07);border-radius:8px;padding:8px 6px;cursor:pointer;"><span class="lo-flag">🇺🇸</span><span class="lo-name" style="font-size:.75rem;margin-left:4px">EN</span></div>
+    <div class="lang-option" data-lang="bn"  data-flag="🇧🇩" data-label="বাং"  data-dir="ltr" onclick="switchLang(this);closeMobileNav()" style="background:rgba(255,255,255,.07);border-radius:8px;padding:8px 6px;cursor:pointer;"><span class="lo-flag">🇧🇩</span><span class="lo-name" style="font-size:.75rem;margin-left:4px">বাং</span></div>
+    <div class="lang-option" data-lang="ar"  data-flag="🇸🇦" data-label="عر"   data-dir="rtl" onclick="switchLang(this);closeMobileNav()" style="background:rgba(255,255,255,.07);border-radius:8px;padding:8px 6px;cursor:pointer;"><span class="lo-flag">🇸🇦</span><span class="lo-name" style="font-size:.75rem;margin-left:4px">عر</span></div>
+    <div class="lang-option" data-lang="zh"  data-flag="🇨🇳" data-label="中文" data-dir="ltr" onclick="switchLang(this);closeMobileNav()" style="background:rgba(255,255,255,.07);border-radius:8px;padding:8px 6px;cursor:pointer;"><span class="lo-flag">🇨🇳</span><span class="lo-name" style="font-size:.75rem;margin-left:4px">中文</span></div>
+    <div class="lang-option" data-lang="hi"  data-flag="🇮🇳" data-label="हिं"  data-dir="ltr" onclick="switchLang(this);closeMobileNav()" style="background:rgba(255,255,255,.07);border-radius:8px;padding:8px 6px;cursor:pointer;"><span class="lo-flag">🇮🇳</span><span class="lo-name" style="font-size:.75rem;margin-left:4px">हिं</span></div>
+    <div class="lang-option" data-lang="fr"  data-flag="🇫🇷" data-label="FR"   data-dir="ltr" onclick="switchLang(this);closeMobileNav()" style="background:rgba(255,255,255,.07);border-radius:8px;padding:8px 6px;cursor:pointer;"><span class="lo-flag">🇫🇷</span><span class="lo-name" style="font-size:.75rem;margin-left:4px">FR</span></div>
+    <div class="lang-option" data-lang="es"  data-flag="🇪🇸" data-label="ES"   data-dir="ltr" onclick="switchLang(this);closeMobileNav()" style="background:rgba(255,255,255,.07);border-radius:8px;padding:8px 6px;cursor:pointer;"><span class="lo-flag">🇪🇸</span><span class="lo-name" style="font-size:.75rem;margin-left:4px">ES</span></div>
+    <div class="lang-option" data-lang="de"  data-flag="🇩🇪" data-label="DE"   data-dir="ltr" onclick="switchLang(this);closeMobileNav()" style="background:rgba(255,255,255,.07);border-radius:8px;padding:8px 6px;cursor:pointer;"><span class="lo-flag">🇩🇪</span><span class="lo-name" style="font-size:.75rem;margin-left:4px">DE</span></div>
+    <div class="lang-option" data-lang="tr"  data-flag="🇹🇷" data-label="TR"   data-dir="ltr" onclick="switchLang(this);closeMobileNav()" style="background:rgba(255,255,255,.07);border-radius:8px;padding:8px 6px;cursor:pointer;"><span class="lo-flag">🇹🇷</span><span class="lo-name" style="font-size:.75rem;margin-left:4px">TR</span></div>
+  </div>
+
+  <a href="javascript:void(0)" class="nav-mobile-cta" onclick="navTo('contact');closeMobileNav()">
+    <i class="fas fa-rocket"> Let's Work Together
+  </a>
+</div>
+
+<!-- Language toast notification -->
+<div id="lang-toast"><i class="fas fa-language"><span id="lang-toast-msg">Translating…</span></div>
+
+<!-- Google Translate (hidden) -->
+<div id="google\_translate\_element" style="display:none"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="particles" id="particles"></div>
+  <div class="hero-inner">
+    <div>
+      <p class="hero-greeting">👋 Hello, I'm</p>
+      <div class="hero-clock">🇧🇩 BD Time &amp; Date:</div>
+      <div class="hero-time" id="bdtDateTime"></div>
+      <h1 class="hero-name">Monjurul Islam<br><span>Polash</span></h1>
+      <div class="hero-typed"><span id="typed-text"></span>|</div>
+      <p class="hero-desc">Transforming ideas into digital success stories. Your trusted partner for digital marketing, web development, and online growth.</p>
+      <div class="hero-btns">
+        <a href="javascript:void(0)" onclick="navTo('hire')" class="btn-primary"><i class="fas fa-rocket"> Hire Me Now</a>
+        <a href="javascript:void(0)" onclick="navTo('contact')" class="btn-outline"><i class="fas fa-envelope"> Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-avatar-wrap">
+      <div class="blob-wrap">
+        <div class="avatar-inner">
+          <img src="https://uploads.onecompiler.io/44a4h29nq/44a4gxy6p/round%20main%20without%20background.png" alt="Monjurul Islam Polash" onerror="this.style.display='none';this.parentNode.textContent='MIP'">
+        </div>
+      </div>
+      <a href="https://wa.me/8801723328481" target="\_blank" class="float-icon fi-wa"><i class="fab fa-whatsapp"></a>
+      <a href="/cdn-cgi/l/email-protection#e9b98685889a81a9999b868e9b8884848c9bc7878c9d" class="float-icon fi-em"><i class="fas fa-envelope"></a>
+      <a href="https://github.com/MIPolash-Prog" target="\_blank" class="float-icon fi-gh"><i class="fas fa-code"></a>
+      <a href="tel:+8801730746563" class="float-icon fi-ph"><i class="fas fa-phone"></a>
+    </div>
+  </div>
+  <div class="scroll-indicator"><i class="fas fa-chevron-down"></div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="sec-header">
+    <p class="sec-label" style="color:#a78bfa;">WHAT I DO</p>
+    <h2 class="sec-title">My <span class="gradient-text">Services</span></h2>
+    <p class="sec-sub">Delivering exceptional digital solutions tailored to your business needs.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)"><i class="fas fa-bullhorn"></div>
+      <h3>Digital Marketing</h3>
+      <p>Strategic campaigns that drive traffic, engagement, and conversions for your business.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:linear-gradient(135deg,#3b82f6,#06b6d4)"><i class="fas fa-code"></div>
+      <h3>Web Development</h3>
+      <p>Custom, responsive websites and web apps built with modern technologies.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:linear-gradient(135deg,#22c55e,#14b8a6)"><i class="fas fa-search"></div>
+      <h3>SEO Expert</h3>
+      <p>Boost your search rankings and organic traffic with proven SEO strategies.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:linear-gradient(135deg,#ec4899,#f43f5e)"><i class="fas fa-share-alt"></div>
+      <h3>Social Media Marketing</h3>
+      <p>Build your brand presence and engage your audience across all major platforms.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:linear-gradient(135deg,#eab308,#f97316)"><i class="fas fa-headset"></div>
+      <h3>Virtual Assistance</h3>
+      <p>Professional VA services to help manage your daily business operations.</p>
+    </div>
+    <div class="service-card cta">
+      <i class="fas fa-plus" style="font-size:2.5rem;margin-bottom:12px;">
+      <h3>Need Something Else?</h3>
+      <p>Let's discuss your custom requirements.</p>
+      <a href="javascript:void(0)" onclick="navTo('contact')" class="card-cta-btn">Contact Me</a>
+    </div>
+  </div>
+</section>
+
+<!-- HIRE ME -->
+<section id="hire">
+  <div class="sec-header">
+    <p class="sec-label" style="color:var(--yellow);">WORK WITH ME</p>
+    <h2 class="sec-title">Hire Me On <span class="gradient-text">Top Platforms</span></h2>
+    <p class="sec-sub">Available on all major freelancing platforms. Choose your preferred platform to get started.</p>
+  </div>
+  <div class="platforms-grid">
+    <a href="https://www.fiverr.com" target="\_blank" class="platform-card" style="background:linear-gradient(135deg,#059669,#0d9488)">
+      <div class="platform-logo"><span style="color:#059669">F.</span></div>
+      <h3>Fiverr</h3><p class="sub">Top Rated Seller</p>
+      <span class="plat-link">Hire Me <i class="fas fa-arrow-right"></span>
+    </a>
+    <a href="https://www.upwork.com" target="\_blank" class="platform-card" style="background:linear-gradient(135deg,#14a800,#27ae60)">
+      <div class="platform-logo"><span style="color:#14a800">Up</span></div>
+      <h3>Upwork</h3><p class="sub">Top Freelancer</p>
+      <span class="plat-link">Hire Me <i class="fas fa-arrow-right"></span>
+    </a>
+    <a href="https://www.peopleperhour.com" target="\_blank" class="platform-card" style="background:linear-gradient(135deg,#f97316,#ea580c)">
+      <div class="platform-logo"><span style="color:#3b82f6;font-size:1rem">PPH</span></div>
+      <h3>PeoplePerHour</h3><p class="sub">Verified Expert</p>
+      <span class="plat-link">Hire Me <i class="fas fa-arrow-right"></span>
+    </a>
+    <a href="https://www.freelancer.com" target="\_blank" class="platform-card" style="background:linear-gradient(135deg,#2563eb,#4f46e5)">
+      <div class="platform-logo"><span style="color:#2563eb">Fr</span></div>
+      <h3>Freelancer.com</h3><p class="sub">Professional Freelancer</p>
+      <span class="plat-link">Hire Me <i class="fas fa-arrow-right"></span>
+    </a>
+    <a href="https://www.guru.com" target="\_blank" class="platform-card" style="background:linear-gradient(135deg,#7c3aed,#8b5cf6)">
+      <div class="platform-logo"><span style="color:#7c3aed">G</span></div>
+      <h3>Guru.com</h3><p class="sub">Trusted Expert</p>
+      <span class="plat-link">Hire Me <i class="fas fa-arrow-right"></span>
+    </a>
+    <a href="javascript:void(0)" onclick="navTo('contact')" class="platform-card" style="background:linear-gradient(135deg,#eab308,#f97316)">
+      <div class="platform-logo"><i class="fas fa-handshake" style="color:#f97316;font-size:1.8rem"></div>
+      <h3>Direct Hire</h3><p class="sub">No Platform Fees!</p>
+      <span class="plat-link">Contact Now <i class="fas fa-arrow-right"></span>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT (compact) -->
+<section id="contact">
+  <div class="sec-header">
+    <p class="sec-label" style="color:#a78bfa;">GET IN TOUCH</p>
+    <h2 class="sec-title">Let's <span class="gradient-text">Connect</span></h2>
+    <p class="sec-sub">Ready to start your project? Reach out through any of these channels!</p>
+  </div>
+  <div class="contact-grid">
+    <a href="tel:+8801730746563" class="contact-card">
+      <div class="contact-icon" style="background:linear-gradient(135deg,#3b82f6,#06b6d4)"><i class="fas fa-phone"></div>
+      <h3>Call Me</h3><p style="color:#818cf8">+880 1730-746563</p>
+    </a>
+    <a href="https://wa.me/8801723328481" target="\_blank" class="contact-card">
+      <div class="contact-icon" style="background:linear-gradient(135deg,#22c55e,#16a34a)"><i class="fab fa-whatsapp"></div>
+      <h3>WhatsApp</h3><p style="color:#4ade80">+880 1723-328481</p>
+    </a>
+    <a href="/cdn-cgi/l/email-protection#e1b18e8d809289a191938e8693808c8c8493cf8f8495" class="contact-card">
+      <div class="contact-icon" style="background:linear-gradient(135deg,#ef4444,#ec4899)"><i class="fas fa-envelope"></div>
+      <h3>Email Me</h3><p style="color:#f472b6;font-size:.78rem"><span class="\_\_cf\_email\_\_" data-cfemail="edbd82818c9e85ad9d9f828a9f8c8080889fc3838899">[email&#160;protected]</span></p>
+    </a>
+    <a href="https://www.messenger.com/t/1319856144" target="\_blank" class="contact-card" style="background:linear-gradient(135deg,#7c3aed,#db2777)">
+      <div class="contact-icon" style="background:rgba(255,255,255,.2)"><i class="fas fa-paper-plane"></div>
+      <h3>Quick Response</h3><p style="color:rgba(255,255,255,.8);font-size:.82rem">Usually replies within 1 hour!</p>
+    </a>
+  </div>
+  <div class="cta-banner">
+    <h3>Ready to Start Your Project?</h3>
+    <p>Let's work together to bring your vision to life. Get in touch today!</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/8801723328481" target="\_blank" class="cta-wa"><i class="fab fa-whatsapp"> WhatsApp Now</a>
+      <a href="/cdn-cgi/l/email-protection#75251a1914061d3505071a120714181810075b1b1001" class="cta-em"><i class="fas fa-envelope"> Send Email</a>
+    </div>
+  </div>
+</section>
+
+<!-- SMART TOOLKIT -->
+<section id="toolkit" class="tk-section">
+  <div class="tk-wrap">
+    <div class="sec-header">
+      <div class="sec-badge"><i class="fas fa-robot"> SMART TOOLKIT</div>
+      <h2 class="sec-title">AI Tools I <span class="gradient-text">Use Daily</span></h2>
+      <p class="sec-sub">110+ curated AI tools across Web Dev, Marketing, SEO, Social Media, Video, Medical VA and more — every tool I personally use for client work.</p>
+    </div>
+    <div id="tools-wrap"></div>
+  </div>
+</section>
+
+<!-- ENHANCED CONTACT -->
+<section class="cct-section">
+  <div class="cct-wrap">
+    <div class="sec-header">
+      <div class="sec-badge"><i class="fas fa-paper-plane"> WORK WITH ME</div>
+      <h2 class="sec-title">Let's Work <span class="gradient-text">Together</span></h2>
+      <p class="sec-sub">I'm available 24/7. Pick the channel that works best for you!</p>
+    </div>
+    <div class="cc-grid">
+      <a href="/cdn-cgi/l/email-protection#92c2fdfef3e1fad2e2e0fdf5e0f3fffff7e0bcfcf7e6" class="cc">
+        <div class="cc-ico" style="background:linear-gradient(135deg,#ef4444,#ec4899)"><i class="fas fa-envelope" style="font-size:1.7rem;color:#fff"></div>
+        <div class="cc-info"><div class="cc-lab">Email</div><div class="cc-val"><span class="\_\_cf\_email\_\_" data-cfemail="20704f4c4153486050524f4752414d4d45520e4e4554">[email&#160;protected]</span></div><div class="cc-sub">⚡ Reply within 1 hour</div></div>
+        <div class="cc-go"><i class="fas fa-arrow-right" style="font-size:.8rem;color:#fff"></div>
+      </a>
+      <a href="https://wa.me/8801723328481" target="\_blank" class="cc">
+        <div class="cc-ico" style="background:linear-gradient(135deg,#16a34a,#22c55e)"><i class="fab fa-whatsapp" style="font-size:1.9rem;color:#fff"></div>
+        <div class="cc-info"><div class="cc-lab">WhatsApp</div><div class="cc-val">+880 1723-328481</div><div class="cc-sub">📲 Message me anytime</div></div>
+        <div class="cc-go"><i class="fas fa-arrow-right" style="font-size:.8rem;color:#fff"></div>
+      </a>
+      <a href="tel:+8801730746563" class="cc">
+        <div class="cc-ico" style="background:linear-gradient(135deg,#2563eb,#06b6d4)"><i class="fas fa-phone" style="font-size:1.6rem;color:#fff"></div>
+        <div class="cc-info"><div class="cc-lab">Phone</div><div class="cc-val">+880 1730-746563</div><div class="cc-sub">📞 Available 24/7</div></div>
+        <div class="cc-go"><i class="fas fa-arrow-right" style="font-size:.8rem;color:#fff"></div>
+      </a>
+      <a href="https://www.messenger.com/t/1319856144" target="\_blank" class="cc">
+        <div class="cc-ico" style="background:linear-gradient(135deg,#0a66c2,#2563eb)"><i class="fab fa-facebook-messenger" style="font-size:1.7rem;color:#fff"></div>
+        <div class="cc-info"><div class="cc-lab">Messenger</div><div class="cc-val">Facebook Messenger</div><div class="cc-sub">💬 Quick chat anytime</div></div>
+        <div class="cc-go"><i class="fas fa-arrow-right" style="font-size:.8rem;color:#fff"></div>
+      </a>
+      <a href="https://www.fiverr.com" target="\_blank" class="cc">
+        <div class="cc-ico" style="background:linear-gradient(135deg,#1dbf73,#17a865)"><i class="fas fa-briefcase" style="font-size:1.6rem;color:#fff"></div>
+        <div class="cc-info"><div class="cc-lab">Fiverr</div><div class="cc-val">Hire on Fiverr</div><div class="cc-sub">⭐ Top Rated Seller</div></div>
+        <div class="cc-go"><i class="fas fa-arrow-right" style="font-size:.8rem;color:#fff"></div>
+      </a>
+      <a href="https://www.upwork.com" target="\_blank" class="cc">
+        <div class="cc-ico" style="background:linear-gradient(135deg,#14a800,#0f8a00)"><i class="fas fa-laptop-code" style="font-size:1.6rem;color:#fff"></div>
+        <div class="cc-info"><div class="cc-lab">Upwork</div><div class="cc-val">Hire on Upwork</div><div class="cc-sub">🏆 Top Freelancer</div></div>
+        <div class="cc-go"><i class="fas fa-arrow-right" style="font-size:.8rem;color:#fff"></div>
+      </a>
+    </div>
+    <div class="cta-box">
+      <h3>🚀 Ready to Start Your Project?</h3>
+      <p>Drop a message on WhatsApp or email for a <strong style="color:#fbbf24;">free consultation</strong>. I respond within 1 hour, 24/7!</p>
+      <div class="btn-row">
+        <a href="/cdn-cgi/l/email-protection#ffaf90939e8c97bf8f8d90988d9e92929a8dd1919a8b" class="btn btn-white"><i class="fas fa-paper-plane"> Send Email</a>
+        <a href="https://wa.me/8801723328481" target="\_blank" class="btn btn-wa"><i class="fab fa-whatsapp"> WhatsApp Now</a>
+        <a href="https://www.messenger.com/t/1319856144" target="\_blank" class="btn btn-msg"><i class="fab fa-facebook-messenger"> Messenger</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <h4>Monjurul Islam <span>Polash</span></h4>
+  <p>Digital Marketing Expert · Web Developer · SEO Specialist</p>
+  <div class="foot-socials">
+    <a href="https://wa.me/8801723328481" target="\_blank" class="foot-social wa"><i class="fab fa-whatsapp"></a>
+    <a href="/cdn-cgi/l/email-protection#aafac5c6cbd9c2eadad8c5cdd8cbc7c7cfd884c4cfde" class="foot-social"><i class="fas fa-envelope"></a>
+    <a href="tel:+8801730746563" class="foot-social"><i class="fas fa-phone"></a>
+  </div>
+  <div class="foot-copy">© 2024 Monjurul Islam Polash. All rights reserved.</div>
+</footer>
+
+<!-- MUSIC PLAYER -->
+<div id="mplayer">
+  <div class="mp-orb" id="mp-orb">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+  </div>
+  <div style="min-width:0">
+    <div class="mp-lbl" id="mp-lbl">🎵 Click ▶ to play</div>
+    <div class="mp-bar"><div class="mp-prog" id="mp-prog"></div></div>
+  </div>
+  <button class="mpb" onclick="mpToggle()" title="Play/Pause">
+    <svg id="mp-ico" width="12" height="12" viewBox="0 0 24 24" fill="#fff"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+  </button>
+  <button class="mpb" onclick="mpGender()" id="mp-gender" title="Toggle voice" style="font-size:13px;font-weight:800;">♀</button>
+  <button class="mpb" onclick="mpMute()" title="Mute/Unmute">
+    <svg id="mp-vol" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+  </button>
+  <button id="mp-close" onclick="mpClose()" title="Close">
+    <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="3.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+</div>
+
+<!-- AI FAB -->
+<button id="ai-fab" onclick="document.getElementById('ai-modal').classList.add('open')" title="AI Tools Hub">🤖</button>
+
+<!-- AI MODAL -->
+<div id="ai-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('ai-modal').classList.remove('open')">&times;</button>
+    <h2>🤖 AI Tools Hub</h2>
+    <p class="modal-sub">All 110+ AI tools by category — same as the Smart Toolkit below. Click any to open.</p>
+    <input type="text" class="modal-search" id="modal-search" placeholder="🔍  Search any AI tool..." oninput="filterModal(this.value)">
+    <div id="modal-tools-wrap"></div>
+    <p style="text-align:center;margin-top:8px;font-size:.7rem;color:rgba(255,255,255,.3)">🌐 Click any tool to open in a new tab</p>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+'use strict';
+
+/* ── Smooth scroll ── */
+function navTo(id) {
+  var el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ══════════════════════════════════════
+   OVERFLOW "More ▾" MENU SYSTEM
+   Detects which nav items don't fit and
+   collects them into a right-side dropdown
+══════════════════════════════════════ */
+
+/* All nav items with their labels, icons, and actions */
+var NAV_ITEMS = [
+  { label:'Home',       icon:'fa-home',        action:function(){ navTo('hero'); } },
+  { label:'Services',   icon:'fa-briefcase',   action:function(){ navTo('services'); } },
+  { label:'Hire Me',    icon:'fa-handshake',   action:function(){ navTo('hire'); } },
+  { label:'AI Tools',   icon:'fa-robot',       action:function(){ toggleDropdown('dd-ai'); }, hasSub:true },
+  { label:'Platforms',  icon:'fa-globe',       action:function(){ toggleDropdown('dd-plat'); }, hasSub:true },
+  { label:'Contact',    icon:'fa-envelope',    action:function(){ navTo('contact'); } },
+  { label:'Toolkit',    icon:'fa-th-list',     action:function(){ navTo('toolkit'); } },
+  { label:'WhatsApp',   icon:'fa-whatsapp fab',action:function(){ window.open('https://wa.me/8801723328481','_blank'); } },
+  { label:'Email',      icon:'fa-envelope',    action:function(){ window.location.href='mailto:Polash@programmer.net'; } },
+  { label:'GitHub',     icon:'fa-github fab',  action:function(){ window.open('https://github.com/MIPolash-Prog','_blank'); } },
+];
+
+function toggleOverflow() {
+  var m = document.getElementById('nav-overflow-menu');
+  var b = document.getElementById('nav-more-btn');
+  var isOpen = m.classList.contains('open');
+  closeAllDropdowns();
+  if (!isOpen) {
+    m.classList.add('open');
+    if (b) b.classList.add('open');
+  } else {
+    m.classList.remove('open');
+    if (b) b.classList.remove('open');
+  }
+}
+
+function closeOverflow() {
+  var m = document.getElementById('nav-overflow-menu');
+  var b = document.getElementById('nav-more-btn');
+  if (m) m.classList.remove('open');
+  if (b) b.classList.remove('open');
+}
+
+/* Check which .nav-links children are hidden (overflowing) */
+function checkNavOverflow() {
+  var strip = document.querySelector('.nav-links');
+  var btn   = document.getElementById('nav-more-btn');
+  var menu  = document.getElementById('nav-overflow-menu');
+  if (!strip || !btn || !menu) return;
+
+  var stripRight = strip.getBoundingClientRect().right;
+  var overflowed = [];
+  var children   = Array.from(strip.children);
+
+  children.forEach(function(child) {
+    var rect = child.getBoundingClientRect();
+    /* Item is overflowing if its right edge exceeds the strip */
+    if (rect.right > stripRight + 4) {
+      overflowed.push(child);
+    }
+  });
+
+  if (overflowed.length === 0) {
+    btn.style.display = 'none';
+    menu.innerHTML    = '<p class="overflow-section-label">Navigation</p>';
+    return;
+  }
+
+  /* Show More button */
+  btn.style.display = 'flex';
+
+  /* Build overflow menu items from overflowed children */
+  var html = '<p class="overflow-section-label">Overflow Menu</p>';
+
+  overflowed.forEach(function(child) {
+    /* Get label from text content (strip icon text) */
+    var label = '';
+    var icon  = 'fa-circle';
+    /* Try to read the data we stored */
+    if (child.getAttribute) {
+      label = child.getAttribute('data-overflow-label') || child.textContent.trim().replace(/\s+/g,' ');
+      icon  = child.getAttribute('data-overflow-icon')  || 'fa-circle';
+    }
+    /* For dropdowns, get the trigger button text */
+    if (child.classList && child.classList.contains('nav-dropdown')) {
+      var trigger = child.querySelector('.nav-dropdown-btn');
+      if (trigger) {
+        label = trigger.getAttribute('data-overflow-label') || trigger.textContent.trim();
+        icon  = trigger.getAttribute('data-overflow-icon')  || 'fa-circle';
+      }
+    }
+    /* Clean label: remove chevron text */
+    label = label.replace(/\s*▾\s*/g,'').trim();
+
+    /* Action based on href or onclick */
+    var href   = child.getAttribute && child.getAttribute('href');
+    var action = '';
+    if (child.classList && child.classList.contains('nav-dropdown')) {
+      var ddId = child.getAttribute('id');
+      if (ddId) action = 'onclick="closeOverflow();toggleDropdown(\'' + ddId + '\')"';
+    } else if (href && href !== 'javascript:void(0)') {
+      action = 'href="' + href + '" target="_blank"';
+    } else {
+      /* Copy inline onclick */
+      var oc = child.getAttribute && child.getAttribute('onclick');
+      if (oc) action = 'onclick="closeOverflow();' + oc + '"';
+    }
+
+    html += '<a class="overflow-item" ' + action + '>'
+          + '<i class="fas ' + icon.replace('fab ','') + (icon.startsWith('fab') ? ' fab-icon' : '') + '">'
+          + label + '</a>';
+  });
+
+  /* Add fixed quick-access section */
+  html += '<div class="overflow-divider"></div>'
+        + '<p class="overflow-section-label">Quick Access</p>'
+        + '<a class="overflow-item" href="https://wa.me/8801723328481" target="\_blank" onclick="closeOverflow()"><i class="fab fa-whatsapp" style="color:#22c55e"> WhatsApp</a>'
+        + '<a class="overflow-item" href="https://www.fiverr.com" target="\_blank" onclick="closeOverflow()"><i class="fas fa-star" style="color:#1dbf73"> Fiverr</a>'
+        + '<a class="overflow-item" href="https://www.upwork.com" target="\_blank" onclick="closeOverflow()"><i class="fas fa-trophy" style="color:#14a800"> Upwork</a>'
+        + '<div class="overflow-divider"></div>'
+        + '<a class="overflow-item" onclick="closeOverflow();document.getElementById(\\'ai-modal\\').classList.add(\\'open\\')"><i class="fas fa-robot" style="color:#a78bfa"> All 112 AI Tools</a>'
+        + '<a class="overflow-item" onclick="closeOverflow();navTo(\\'toolkit\\')"><i class="fas fa-list" style="color:#60a5fa"> Smart Toolkit</a>';
+
+  menu.innerHTML = html;
+}
+
+/* Annotate nav items with overflow labels/icons on load */
+function annotateNavItems() {
+  var map = [
+    { sel:'a[onclick*="navTo(\'hero\'"]',     label:'Home',      icon:'fa-home' },
+    { sel:'a[onclick*="navTo(\'services\'"]', label:'Services',  icon:'fa-briefcase' },
+    { sel:'a[onclick*="navTo(\'hire\'"]',     label:'Hire Me',   icon:'fa-handshake' },
+    { sel:'a[onclick*="navTo(\'contact\'"]',  label:'Contact',   icon:'fa-envelope' },
+    { sel:'#dd-ai',                           label:'AI Tools',  icon:'fa-robot',  isDd:true },
+    { sel:'#dd-plat',                         label:'Platforms', icon:'fa-globe',  isDd:true },
+  ];
+  map.forEach(function(m) {
+    var el = document.querySelector('.nav-links ' + m.sel);
+    if (!el) return;
+    if (m.isDd) {
+      el.setAttribute('data-overflow-label', m.label);
+      el.setAttribute('data-overflow-icon',  m.icon);
+      var btn = el.querySelector('.nav-dropdown-btn');
+      if (btn) {
+        btn.setAttribute('data-overflow-label', m.label);
+        btn.setAttribute('data-overflow-icon',  m.icon);
+      }
+    } else {
+      el.setAttribute('data-overflow-label', m.label);
+      el.setAttribute('data-overflow-icon',  m.icon);
+    }
+  });
+}
+
+/* Close overflow on outside click */
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#nav-overflow-menu') && !e.target.closest('#nav-more-btn')) {
+    closeOverflow();
+  }
+});
+
+/* ══════════════════════════════════════
+   CLICK-BASED DROPDOWN SYSTEM
+══════════════════════════════════════ */
+function toggleDropdown(ddId) {
+  var menu = document.getElementById(ddId + '-menu');
+  var btn  = document.getElementById(ddId + '-btn');
+  if (!menu) return;
+  var isOpen = menu.classList.contains('open');
+
+  /* Close all first */
+  closeAllDropdowns();
+  if (isOpen) return; /* was already open — just close */
+
+  /* Position the menu using fixed coords from button rect */
+  if (btn) {
+    var rect = btn.getBoundingClientRect();
+    if (menu.classList.contains('wide')) {
+      /* Wide mega menu — center on viewport */
+      menu.style.left = '50%';
+    } else {
+      /* Slim menu — align left edge to button left */
+      menu.style.left = rect.left + 'px';
+      /* But clamp so it doesn't go off-screen right */
+      var menuW = 230;
+      if (rect.left + menuW > window.innerWidth - 16) {
+        menu.style.left = (window.innerWidth - menuW - 16) + 'px';
+      }
+    }
+  }
+
+  menu.classList.add('open');
+  if (btn) btn.classList.add('open');
+}
+
+function closeAllDropdowns() {
+  document.querySelectorAll('.nav-dropdown-menu').forEach(function(m){ m.classList.remove('open'); });
+  document.querySelectorAll('.nav-dropdown-btn').forEach(function(b){ b.classList.remove('open'); });
+  var si = document.getElementById('mega-search-input');
+  if (si) { si.value = ''; megaSearch(''); }
+}
+
+/* Use mousedown so it fires BEFORE click, avoiding open/close race */
+document.addEventListener('mousedown', function(e) {
+  if (!e.target.closest('.nav-dropdown') &&
+      !e.target.closest('#dd-ai-menu') &&
+      !e.target.closest('#dd-plat-menu')) {
+    closeAllDropdowns();
+  }
+});
+
+/* Mega dropdown search filter */
+function megaSearch(q) {
+  q = q.toLowerCase().trim();
+  document.querySelectorAll('.mega-tool').forEach(function(t) {
+    var name = t.getAttribute('data-name') || t.textContent.toLowerCase();
+    t.classList.toggle('hidden', q !== '' && !name.includes(q));
+  });
+  document.querySelectorAll('.mega-cat').forEach(function(cat) {
+    var visible = cat.querySelectorAll('.mega-tool:not(.hidden)').length > 0;
+    cat.classList.toggle('hidden', !visible);
+  });
+}
+
+/* Populate mega dropdown from toolData */
+function populateMegaDropdown() {
+  if (typeof toolData === 'undefined') return;
+  var wrap = document.getElementById('mega-cats-wrap');
+  if (!wrap) return;
+  var catEmojis = {
+    'Web Dev':'💻','Marketing':'📣','SEO':'🔍','Social Media':'📱',
+    'Video AI':'🎬','Medical VA':'🏥','VA Tools':'🗂️','Digital Marketing':'📧'
+  };
+  var toolIconsLocal = {
+    'ChatGPT':'fa-robot','GitHub Copilot':'fa-github','Cursor':'fa-terminal',
+    'V0 by Vercel':'fa-layer-group','Bolt.new':'fa-bolt','Replit AI':'fa-code',
+    'Codeium':'fa-keyboard','Tabnine':'fa-magic','Framer AI':'fa-vector-square',
+    'Lovable':'fa-heart','Windsurf':'fa-wind','Galileo AI':'fa-drafting-compass',
+    'Locofy':'fa-object-group','Wix AI':'fa-globe',
+    'Copy.ai':'fa-pen-nib','Jasper':'fa-feather-alt','Writesonic':'fa-pencil-alt',
+    'Anyword':'fa-chart-bar','AdCreative.ai':'fa-ad','Canva AI':'fa-paint-brush',
+    'HubSpot AI':'fa-funnel-dollar','Pencil':'fa-film','Rytr':'fa-r',
+    'Hypotenuse AI':'fa-tag','Wordtune':'fa-sliders-h','Persado':'fa-smile',
+    'Smartly.io':'fa-bullseye','Albert AI':'fa-brain',
+    'Surfer SEO':'fa-water','SEMrush':'fa-search','Ahrefs':'fa-link',
+    'Frase.io':'fa-file-alt','NeuronWriter':'fa-brain','Clearscope':'fa-crosshairs',
+    'MarketMuse':'fa-chart-line','RankIQ':'fa-trophy','SEO.ai':'fa-robot',
+    'AlsoAsked':'fa-question-circle','AnswerThePublic':'fa-users','Moz Pro':'fa-shield-alt',
+    'Screaming Frog':'fa-frog','Diib':'fa-heartbeat',
+    'Buffer AI':'fa-calendar-check','Hootsuite':'fa-share-alt','Predis.ai':'fa-images',
+    'Flick AI':'fa-hashtag','Ocoya':'fa-clock','ContentStudio':'fa-th-large',
+    'Vista Social':'fa-eye','Loomly':'fa-calendar-alt','Sprout Social':'fa-seedling',
+    'ManyChat':'fa-comments','Lately.ai':'fa-recycle','Typefully':'fa-feather',
+    'Emplifi':'fa-star',
+    'Pictory AI':'fa-photo-video','Runway ML':'fa-film','Pika Labs':'fa-play-circle',
+    'CapCut AI':'fa-cut','Synthesia':'fa-user-circle','InVideo AI':'fa-video',
+    'Lumen5':'fa-sun','Descript':'fa-microphone','HeyGen':'fa-user-tie',
+    'Vidnoz AI':'fa-camera','Sora':'fa-magic','Adobe Firefly':'fa-fire',
+    'Clipchamp':'fa-film','Topaz Video AI':'fa-sliders-h',
+    'Nuance DAX':'fa-stethoscope','Suki AI':'fa-microphone-alt','Nabla Copilot':'fa-notes-medical',
+    'DeepScribe':'fa-file-medical','Abridge':'fa-compress-alt','Doximity GPT':'fa-user-md',
+    'Glass Health':'fa-heartbeat','Freed AI':'fa-unlock','ChatGPT (Med)':'fa-robot',
+    'Consensus':'fa-graduation-cap','Mendel AI':'fa-dna','Regard':'fa-clipboard-check',
+    'Notable Health':'fa-hospital','Ambience':'fa-wave-square',
+    'Notion AI':'fa-book-open','Motion':'fa-tachometer-alt','Otter.ai':'fa-microphone',
+    'Fireflies.ai':'fa-headset','Reclaim.ai':'fa-clock','Grammarly':'fa-spell-check',
+    'Zapier AI':'fa-random','Taskade AI':'fa-tasks','Tome':'fa-file-powerpoint',
+    'Beautiful.ai':'fa-magic','Mem.ai':'fa-memory','Tally':'fa-poll','Calendly AI':'fa-calendar-check',
+    'Mailchimp AI':'fa-envelope','ActiveCampaign':'fa-paper-plane','GetResponse AI':'fa-reply',
+    'Google Ads AI':'fa-google','Meta Ads AI':'fa-facebook','Klaviyo AI':'fa-envelope-open',
+    'Phrasee':'fa-comment-dots','Drift AI':'fa-comments','Brevo':'fa-paper-plane',
+    'Omnisend':'fa-broadcast-tower','Optimove':'fa-chart-line','Seventh Sense':'fa-clock',
+    'SEMrush Trends':'fa-search','Marketo AI':'fa-bullseye'
+  };
+  var html = '';
+  toolData.forEach(function(cat) {
+    var emoji = catEmojis[cat.cat] || '🤖';
+    var toolsHtml = cat.tools.map(function(t) {
+      var icon = toolIconsLocal[t[0]] || 'fa-robot';
+      return '<a href="'+t[1]+'" target="_blank" rel="noopener" class="mega-tool"'
+        +' data-name="'+t[0].toLowerCase()+'"'
+        +' onclick="closeAllDropdowns()">'
+        +'<i class="fas '+icon+'" style="color:'+cat.color+'">'
+        + t[0] + '</a>';
+    }).join('');
+    html += '<div class="mega-cat">'
+      + '<div class="mega-cat-title"><span>'+emoji+'</span> '+cat.cat+'</div>'
+      + '<div class="mega-tools">'+toolsHtml+'</div>'
+      + '</div>';
+  });
+  wrap.innerHTML = html;
+}
+
+/* ── Mobile nav ── */
+function toggleMobileNav() {
+  var m = document.getElementById('nav-mobile');
+  var h = document.getElementById('nav-hamburger');
+  m.classList.toggle('open');
+  h.classList.toggle('open');
+}
+function closeMobileNav() {
+  document.getElementById('nav-mobile').classList.remove('open');
+  document.getElementById('nav-hamburger').classList.remove('open');
+}
+
+/* ── Language Switcher ── */
+function toggleLangMenu() {
+  var menu = document.getElementById('lang-menu');
+  var btn  = document.getElementById('lang-btn');
+  var isOpen = menu.classList.contains('open');
+  closeAllDropdowns(); /* close other dropdowns */
+  if (!isOpen) {
+    menu.classList.add('open');
+    btn.classList.add('open');
+  } else {
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+  }
+}
+
+/* Close lang menu when clicking outside */
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#lang-switcher')) {
+    var m = document.getElementById('lang-menu');
+    var b = document.getElementById('lang-btn');
+    if (m) m.classList.remove('open');
+    if (b) b.classList.remove('open');
+  }
+});
+
+function switchLang(el) {
+  var lang  = el.getAttribute('data-lang');
+  var flag  = el.getAttribute('data-flag');
+  var label = el.getAttribute('data-label');
+  var dir   = el.getAttribute('data-dir') || 'ltr';
+
+  /* Update button */
+  document.getElementById('lang-flag').textContent    = flag;
+  document.getElementById('lang-current').textContent = label;
+
+  /* Mark active in all lang-option elements */
+  document.querySelectorAll('.lang-option').forEach(function(o) {
+    o.classList.toggle('active', o.getAttribute('data-lang') === lang);
+  });
+
+  /* Close menu */
+  document.getElementById('lang-menu').classList.remove('open');
+  document.getElementById('lang-btn').classList.remove('open');
+
+  /* Set page direction (for Arabic/Urdu RTL) */
+  document.documentElement.setAttribute('dir', dir);
+  document.documentElement.setAttribute('lang', lang);
+
+  /* Show toast */
+  showLangToast(flag + ' ' + getLangName(lang));
+
+  /* Apply Google Translate if available, else use native approach */
+  applyTranslation(lang);
+}
+
+function getLangName(code) {
+  var names = {
+    en:'English', bn:'বাংলা', ar:'العربية', zh:'中文',
+    hi:'हिंदी', fr:'Français', es:'Español', de:'Deutsch',
+    tr:'Türkçe', ur:'اردو'
+  };
+  return names[code] || code.toUpperCase();
+}
+
+function showLangToast(msg) {
+  var t = document.getElementById('lang-toast');
+  var m = document.getElementById('lang-toast-msg');
+  if (!t || !m) return;
+  m.textContent = 'Language: ' + msg;
+  t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 2500);
+}
+
+/* ── Translation Engine ── */
+
+function applyTranslation(lang) {
+  translatePageFree(lang);
+}
+
+/* Store originals once */
+var _originals = null;
+/* ══════════════════════════════════════════════════
+   SELF-CONTAINED TRANSLATION ENGINE
+   No external API. Full Bengali + 9 other languages.
+   Covers: hero, services, platforms, AI tools,
+   contact, footer, nav, categories — everything.
+══════════════════════════════════════════════════ */
+
+var _origNodes = null;
+var _origTexts = null;
+var _activeLang = 'en';
+
+/* ── Collect every visible text node ── */
+function _collectNodes() {
+  var SKIP = {SCRIPT:1,STYLE:1,NOSCRIPT:1,IFRAME:1};
+  var SKIP_CLS = ['lang-switcher','lang-btn','mp-lbl','mp-orb'];
+  var list = [];
+  function walk(nd) {
+    if (nd.nodeType===3) {
+      if (nd.textContent.trim()) list.push(nd);
+      return;
+    }
+    if (SKIP[nd.nodeName]) return;
+    if (nd.id && (nd.id==='mplayer'||nd.id==='ai-fab'||nd.id==='google_translate_element')) return;
+    for (var k=0;k<nd.childNodes.length;k++) walk(nd.childNodes[k]);
+  }
+  walk(document.body);
+  return list;
+}
+
+function storeOriginals(){
+  if(_origNodes)return;
+  _origNodes=_collectNodes();
+  _origTexts=_origNodes.map(function(n){return n.textContent;});
+}
+
+function restoreOriginal(){
+  if(!_origNodes)return;
+  _origNodes.forEach(function(n,i){n.textContent=_origTexts[i];});
+  document.documentElement.setAttribute('dir','ltr');
+  _activeLang='en';
+}
+
+/* ════════════════════════════════════════
+   FULL TRANSLATION DICTIONARY
+   bn=Bengali  ar=Arabic  zh=Chinese
+   hi=Hindi    fr=French  es=Spanish
+   de=German   tr=Turkish ur=Urdu
+════════════════════════════════════════ */
+var _DICT = {
+
+/* ─────────── NAVIGATION ─────────── */
+'Home':              {bn:'হোম',ar:'الرئيسية',zh:'主页',hi:'होम',fr:'Accueil',es:'Inicio',de:'Startseite',tr:'Ana Sayfa',ur:'ہوم'},
+'Services':          {bn:'সেবাসমূহ',ar:'الخدمات',zh:'服务',hi:'सेवाएं',fr:'Services',es:'Servicios',de:'Dienste',tr:'Hizmetler',ur:'خدمات'},
+'Hire Me':           {bn:'আমাকে নিয়োগ করুন',ar:'وظفني',zh:'雇用我',hi:'मुझे काम पर रखें',fr:'Engagez-moi',es:'Contrátame',de:'Beauftragen',tr:'İşe Al',ur:'مجھے ہائر کریں'},
+'Platforms':         {bn:'প্ল্যাটফর্ম',ar:'المنصات',zh:'平台',hi:'प्लेटफॉर्म',fr:'Plateformes',es:'Plataformas',de:'Plattformen',tr:'Platformlar',ur:'پلیٹ فارم'},
+'Contact':           {bn:'যোগাযোগ',ar:'تواصل',zh:'联系',hi:'संपर्क',fr:'Contact',es:'Contacto',de:'Kontakt',tr:'İletişim',ur:'رابطہ'},
+"Let's Talk":        {bn:'কথা বলুন',ar:'لنتحدث',zh:'联系我',hi:'बात करें',fr:'Parlons',es:'Hablemos',de:'Sprechen',tr:'Konuşalım',ur:'بات کریں'},
+
+/* ─────────── HERO ─────────── */
+"👋 Hello, I'm":     {bn:'👋 হ্যালো, আমি',ar:'👋 مرحباً، أنا',zh:'👋 你好，我是',hi:'👋 नमस्ते, मैं हूं',fr:"👋 Bonjour, je suis",es:'👋 Hola, soy',de:'👋 Hallo, ich bin',tr:'👋 Merhaba, ben',ur:'👋 ہیلو، میں ہوں'},
+'Digital Marketing Expert': {bn:'ডিজিটাল মার্কেটিং বিশেষজ্ঞ',ar:'خبير التسويق الرقمي',zh:'数字营销专家',hi:'डिजिटल मार्केटिंग विशेषज्ञ',fr:'Expert Marketing Digital',es:'Experto en Marketing Digital',de:'Digital-Marketing-Experte',tr:'Dijital Pazarlama Uzmanı',ur:'ڈیجیٹل مارکیٹنگ ماہر'},
+'Web Developer':     {bn:'ওয়েব ডেভেলপার',ar:'مطور ويب',zh:'网页开发者',hi:'वेब डेवलपर',fr:'Développeur Web',es:'Desarrollador Web',de:'Webentwickler',tr:'Web Geliştirici',ur:'ویب ڈویلپر'},
+'SEO Specialist':    {bn:'এসইও বিশেষজ্ঞ',ar:'متخصص السيو',zh:'SEO专家',hi:'SEO विशेषज्ञ',fr:'Spécialiste SEO',es:'Especialista SEO',de:'SEO-Spezialist',tr:'SEO Uzmanı',ur:'SEO ماہر'},
+'Social Media Marketer': {bn:'সোশ্যাল মিডিয়া মার্কেটার',ar:'مسوق وسائل التواصل',zh:'社交媒体营销',hi:'सोशल मीडिया मार्केटर',fr:'Expert Réseaux Sociaux',es:'Experto en Redes Sociales',de:'Social-Media-Experte',tr:'Sosyal Medya Uzmanı',ur:'سوشل میڈیا مارکیٹر'},
+'Virtual Assistant': {bn:'ভার্চুয়াল অ্যাসিস্ট্যান্ট',ar:'مساعد افتراضي',zh:'虚拟助理',hi:'वर्चुअल असिस्टेंट',fr:'Assistant Virtuel',es:'Asistente Virtual',de:'Virtueller Assistent',tr:'Sanal Asistan',ur:'ورچوئل اسسٹنٹ'},
+'Transforming ideas into digital success stories. Your trusted partner for digital marketing, web development, and online growth.':{bn:'ধারণাকে ডিজিটাল সাফল্যে রূপান্তর করি। ডিজিটাল মার্কেটিং, ওয়েব ডেভেলপমেন্ট ও অনলাইন প্রবৃদ্ধিতে আপনার বিশ্বস্ত অংশীদার।',ar:'تحويل الأفكار إلى قصص نجاح رقمية. شريكك الموثوق في التسويق الرقمي.',zh:'将想法转化为数字成功故事。您在数字营销方面值得信赖的合作伙伴。',hi:'विचारों को डिजिटल सफलता में बदलें। डिजिटल मार्केटिंग में आपका विश्वसनीय भागीदार।',fr:"Transformer les idées en succès digital. Votre partenaire de confiance.",es:'Transformando ideas en éxito digital. Su socio de confianza.',de:'Ideen in digitale Erfolge verwandeln. Ihr vertrauensvoller Partner.',tr:'Fikirleri dijital başarıya dönüştürüyorum. Güvenilir ortağınız.',ur:'خیالات کو ڈیجیٹل کامیابی میں بدلتا ہوں۔'},
+'Hire Me Now':       {bn:'এখনই নিয়োগ করুন',ar:'وظفني الآن',zh:'立即雇用',hi:'अभी काम पर रखें',fr:'Engagez-moi maintenant',es:'Contrátame ahora',de:'Jetzt beauftragen',tr:'Şimdi İşe Al',ur:'ابھی ہائر کریں'},
+'Get In Touch':      {bn:'যোগাযোগ করুন',ar:'تواصل معي',zh:'联系我',hi:'संपर्क करें',fr:'Contactez-moi',es:'Contáctame',de:'Kontakt aufnehmen',tr:'İletişime Geç',ur:'رابطہ کریں'},
+
+/* ─────────── SERVICES ─────────── */
+'Digital Marketing': {bn:'ডিজিটাল মার্কেটিং',ar:'التسويق الرقمي',zh:'数字营销',hi:'डिजिटल मार्केटिंग',fr:'Marketing Digital',es:'Marketing Digital',de:'Digitales Marketing',tr:'Dijital Pazarlama',ur:'ڈیجیٹل مارکیٹنگ'},
+'Web Development':   {bn:'ওয়েব ডেভেলপমেন্ট',ar:'تطوير الويب',zh:'网站开发',hi:'वेब विकास',fr:'Développement Web',es:'Desarrollo Web',de:'Webentwicklung',tr:'Web Geliştirme',ur:'ویب ڈویلپمنٹ'},
+'SEO Expert':        {bn:'এসইও বিশেষজ্ঞ',ar:'خبير السيو',zh:'SEO专家',hi:'SEO विशेषज्ञ',fr:'Expert SEO',es:'Experto SEO',de:'SEO-Experte',tr:'SEO Uzmanı',ur:'SEO ماہر'},
+'Social Media Marketing': {bn:'সোশ্যাল মিডিয়া মার্কেটিং',ar:'تسويق التواصل الاجتماعي',zh:'社交媒体营销',hi:'सोशल मीडिया मार्केटिंग',fr:'Marketing Réseaux Sociaux',es:'Marketing en Redes Sociales',de:'Social-Media-Marketing',tr:'Sosyal Medya Pazarlama',ur:'سوشل میڈیا مارکیٹنگ'},
+'Virtual Assistance': {bn:'ভার্চুয়াল সহায়তা',ar:'المساعدة الافتراضية',zh:'虚拟助理服务',hi:'वर्चुअल सहायता',fr:'Assistance Virtuelle',es:'Asistencia Virtual',de:'Virtueller Assistenz',tr:'Sanal Yardım',ur:'ورچوئل اسسٹنس'},
+'Need Something Else?':{bn:'অন্য কিছু দরকার?',ar:'تحتاج شيئاً آخر؟',zh:'需要其他服务？',hi:'कुछ और चाहिए?',fr:'Besoin d\'autre chose?',es:'¿Necesitas algo más?',de:'Etwas anderes nötig?',tr:'Başka bir şey mi?',ur:'کچھ اور چاہیے؟'},
+"Strategic campaigns that drive traffic, engagement, and conversions for your business.":{bn:'আপনার ব্যবসার জন্য ট্র্যাফিক, এনগেজমেন্ট ও কনভার্সন বাড়ানোর কৌশলগত ক্যাম্পেইন।',ar:'حملات استراتيجية تزيد الزيارات والمبيعات لعملك.',zh:'推动流量、互动和转化的战略营销活动。',hi:'ट्रैफिक, एंगेजमेंट और कन्वर्जन बढ़ाने वाले अभियान।',fr:'Campagnes stratégiques pour booster le trafic et les conversions.',es:'Campañas estratégicas que impulsan tráfico y conversiones.',de:'Strategische Kampagnen für mehr Traffic und Conversions.',tr:'Trafik ve dönüşüm artıran stratejik kampanyalar.',ur:'ٹریفک اور تبادلہ بڑھانے کی مہمات۔'},
+'Custom, responsive websites and web apps built with modern technologies.':{bn:'আধুনিক প্রযুক্তি দিয়ে তৈরি কাস্টম, রেসপনসিভ ওয়েবসাইট ও ওয়েব অ্যাপ।',ar:'مواقع ويب مخصصة ومتجاوبة مبنية بتقنيات حديثة.',zh:'使用现代技术构建的自定义响应式网站和应用。',hi:'आधुनिक तकनीकों से बने कस्टम रेस्पॉन्सिव वेबसाइट।',fr:'Sites web responsives construits avec des technologies modernes.',es:'Sitios web personalizados con tecnologías modernas.',de:'Individuelle, responsive Websites mit modernen Technologien.',tr:'Modern teknolojilerle yapılan özel, duyarlı web siteleri.',ur:'جدید ٹیکنالوجی سے بنی ویب سائٹس۔'},
+'Boost your search rankings and organic traffic with proven SEO strategies.':{bn:'প্রমাণিত এসইও কৌশল দিয়ে সার্চ র‍্যাংকিং ও অর্গানিক ট্র্যাফিক বাড়ান।',ar:'عزز تصنيفاتك في البحث وزيادة الزيارات.',zh:'通过经过验证的SEO策略提升搜索排名。',hi:'सिद्ध SEO रणनीतियों से खोज रैंकिंग बढ़ाएं।',fr:'Améliorez vos classements avec des stratégies SEO éprouvées.',es:'Mejora tu posicionamiento con estrategias SEO probadas.',de:'Verbessern Sie Ihre Rankings mit bewährten SEO-Strategien.',tr:'Kanıtlanmış SEO stratejileriyle arama sıralamalarınızı yükseltin.',ur:'SEO حکمت عملیوں سے سرچ رینکنگ بہتر کریں۔'},
+'Build your brand presence and engage your audience across all major platforms.':{bn:'সকল প্রধান প্ল্যাটফর্মে ব্র্যান্ড উপস্থিতি তৈরি করুন ও অডিয়েন্স এনগেজ করুন।',ar:'ابنِ حضور علامتك التجارية وتفاعل مع جمهورك.',zh:'在所有主要平台建立品牌形象，吸引受众。',hi:'सभी प्रमुख प्लेटफॉर्म पर ब्रांड उपस्थिति बनाएं।',fr:'Construisez votre présence et engagez votre audience.',es:'Construye tu presencia de marca en todas las plataformas.',de:'Bauen Sie Ihre Markenpräsenz auf allen Plattformen aus.',tr:'Tüm büyük platformlarda marka varlığı oluşturun.',ur:'تمام پلیٹ فارمز پر برانڈ موجودگی بنائیں۔'},
+'Professional VA services to help manage your daily business operations.':{bn:'আপনার দৈনন্দিন ব্যবসায়িক কার্যক্রম পরিচালনায় প্রফেশনাল ভার্চুয়াল অ্যাসিস্ট্যান্ট সেবা।',ar:'خدمات مساعد افتراضي احترافي لإدارة أعمالك.',zh:'专业的VA服务，帮助管理您的日常业务运营。',hi:'आपके दैनिक व्यवसाय प्रबंधन के लिए पेशेवर VA सेवाएं।',fr:'Services VA professionnels pour gérer vos opérations quotidiennes.',es:'Servicios VA profesionales para gestionar tus operaciones diarias.',de:'Professionelle VA-Dienste für Ihr tägliches Geschäft.',tr:'Günlük iş operasyonlarınızı yönetmek için profesyonel VA.',ur:'یومیہ کاروبار کے لیے پیشہ ور ورچوئل اسسٹنٹ۔'},
+"Let's discuss your custom requirements.":{bn:'আপনার কাস্টম চাহিদা নিয়ে কথা বলুন।',ar:'دعنا نناقش متطلباتك المخصصة.',zh:'让我们讨论您的定制需求。',hi:'अपनी कस्टम जरूरतों पर चर्चा करें।',fr:'Discutons de vos besoins personnalisés.',es:'Hablemos de tus requisitos personalizados.',de:'Sprechen wir über Ihre individuellen Anforderungen.',tr:'Özel gereksinimlerinizi konuşalım.',ur:'اپنی ضروریات پر بات کریں۔'},
+
+/* ─────────── PLATFORMS ─────────── */
+'Top Rated Seller':  {bn:'শীর্ষ রেটেড বিক্রেতা',ar:'بائع من الدرجة الأولى',zh:'顶级卖家',hi:'टॉप रेटेड विक्रेता',fr:'Vendeur Top Noté',es:'Vendedor Mejor Valorado',de:'Top-bewerteter Verkäufer',tr:'En İyi Satıcı',ur:'سب سے اعلی درجہ بند بیچنے والا'},
+'Top Freelancer':    {bn:'শীর্ষ ফ্রিল্যান্সার',ar:'مستقل من الدرجة الأولى',zh:'顶级自由职业者',hi:'टॉप फ्रीलांसर',fr:'Top Freelancer',es:'Top Freelancer',de:'Top-Freelancer',tr:'En İyi Freelancer',ur:'بہترین فری لانسر'},
+'Verified Expert':   {bn:'যাচাইকৃত বিশেষজ্ঞ',ar:'خبير موثق',zh:'认证专家',hi:'सत्यापित विशेषज्ञ',fr:'Expert Vérifié',es:'Experto Verificado',de:'Geprüfter Experte',tr:'Doğrulanmış Uzman',ur:'تصدیق شدہ ماہر'},
+'Professional Freelancer':{bn:'পেশাদার ফ্রিল্যান্সার',ar:'مستقل محترف',zh:'专业自由职业者',hi:'पेशेवर फ्रीलांसर',fr:'Freelancer Professionnel',es:'Freelancer Profesional',de:'Professioneller Freelancer',tr:'Profesyonel Freelancer',ur:'پیشہ ور فری لانسر'},
+'Trusted Expert':    {bn:'বিশ্বস্ত বিশেষজ্ঞ',ar:'خبير موثوق',zh:'可信专家',hi:'विश्वसनीय विशेषज्ञ',fr:'Expert de Confiance',es:'Experto de Confianza',de:'Vertrauenswürdiger Experte',tr:'Güvenilir Uzman',ur:'قابل اعتماد ماہر'},
+'No Platform Fees!': {bn:'কোনো প্ল্যাটফর্ম ফি নেই!',ar:'بدون رسوم المنصة!',zh:'无平台费用！',hi:'कोई प्लेटफॉर्म शुल्क नहीं!',fr:'Pas de frais de plateforme!',es:'¡Sin tarifas de plataforma!',de:'Keine Plattformgebühren!',tr:'Platform ücreti yok!',ur:'کوئی پلیٹ فارم فیس نہیں!'},
+
+
+/* ─────────── AI TOOLKIT ─────────── */
+'Web Dev':           {bn:'ওয়েব ডেভ',ar:'تطوير الويب',zh:'网页开发',hi:'वेब डेव',fr:'Dév Web',es:'Desarrollo Web',de:'Web-Entwicklung',tr:'Web Geliştirme',ur:'ویب ڈیو'},
+'Marketing':         {bn:'মার্কেটিং',ar:'التسويق',zh:'营销',hi:'मार्केटिंग',fr:'Marketing',es:'Marketing',de:'Marketing',tr:'Pazarlama',ur:'مارکیٹنگ'},
+'SEO':               {bn:'এসইও',ar:'السيو',zh:'SEO优化',hi:'SEO',fr:'SEO',es:'SEO',de:'SEO',tr:'SEO',ur:'SEO'},
+'Social Media':      {bn:'সোশ্যাল মিডিয়া',ar:'وسائل التواصل',zh:'社交媒体',hi:'सोशल मीडिया',fr:'Réseaux Sociaux',es:'Redes Sociales',de:'Soziale Medien',tr:'Sosyal Medya',ur:'سوشل میڈیا'},
+'Video AI':          {bn:'ভিডিও এআই',ar:'فيديو بالذكاء الاصطناعي',zh:'视频AI',hi:'वीडियो AI',fr:'Vidéo IA',es:'Vídeo IA',de:'Video-KI',tr:'Video AI',ur:'ویڈیو AI'},
+'Medical VA':        {bn:'মেডিকেল ভিএ',ar:'مساعد طبي',zh:'医疗助理',hi:'मेडिकल VA',fr:'Assistant Médical',es:'Asistente Médico',de:'Medizinischer Assistent',tr:'Tıbbi VA',ur:'طبی VA'},
+'VA Tools':          {bn:'ভিএ টুলস',ar:'أدوات المساعد',zh:'助理工具',hi:'VA टूल्स',fr:'Outils VA',es:'Herramientas VA',de:'VA-Tools',tr:'VA Araçları',ur:'VA ٹولز'},
+'AI tools':          {bn:'এআই টুলস',ar:'أدوات الذكاء الاصطناعي',zh:'AI工具',hi:'AI टूल्स',fr:'Outils IA',es:'Herramientas IA',de:'KI-Tools',tr:'AI Araçları',ur:'AI ٹولز'},
+'AI tools I use daily': {bn:'আমার দৈনন্দিন এআই টুলস',ar:'أدوات الذكاء الاصطناعي اليومية',zh:'我每天使用的AI工具',hi:'मेरे दैनिक AI टूल्स',fr:'Mes outils IA quotidiens',es:'Mis herramientas IA diarias',de:'Meine täglichen KI-Tools',tr:'Günlük AI araçlarım',ur:'میرے روزانہ AI ٹولز'},
+'Smart AI Toolkit':  {bn:'স্মার্ট এআই টুলকিট',ar:'مجموعة أدوات الذكاء الاصطناعي',zh:'智能AI工具包',hi:'स्मार्ट AI टूलकिट',fr:'Boîte à outils IA',es:'Kit de herramientas IA',de:'Intelligentes KI-Toolkit',tr:'Akıllı AI Araç Seti',ur:'سمارٹ AI ٹول کٹ'},
+'AI tools for every digital task': {bn:'প্রতিটি ডিজিটাল কাজের জন্য এআই টুলস',ar:'أدوات ذكاء اصطناعي لكل مهمة رقمية',zh:'每个数字任务的AI工具',hi:'हर डिजिटल काम के लिए AI',fr:'Outils IA pour chaque tâche digitale',es:'Herramientas IA para cada tarea digital',de:'KI-Tools für jede digitale Aufgabe',tr:'Her dijital görev için AI araçları',ur:'ہر ڈیجیٹل کام کے لیے AI ٹولز'},
+'tools':             {bn:'টুলস',ar:'أدوات',zh:'工具',hi:'टूल्स',fr:'outils',es:'herramientas',de:'Tools',tr:'araç',ur:'ٹولز'},
+
+/* ─────────── CONTACT ─────────── */
+
+'Call Me':           {bn:'ফোন করুন',ar:'اتصل بي',zh:'致电我',hi:'मुझे कॉल करें',fr:'Appelez-moi',es:'Llámame',de:'Ruf mich an',tr:'Beni Ara',ur:'مجھے کال کریں'},
+'WhatsApp Me':       {bn:'হোয়াটসঅ্যাপ করুন',ar:'واتساب',zh:'发WhatsApp',hi:'WhatsApp करें',fr:'WhatsApp',es:'WhatsApp',de:'WhatsApp',tr:'WhatsApp\'la',ur:'واٹس ایپ کریں'},
+'Email Me':          {bn:'ইমেইল করুন',ar:'راسلني',zh:'发邮件',hi:'ईमेल करें',fr:'Envoyez-moi un email',es:'Envíame un email',de:'E-Mail senden',tr:'E-posta Gönder',ur:'ای میل کریں'},
+'Start a Project':   {bn:'প্রজেক্ট শুরু করুন',ar:'ابدأ مشروعاً',zh:'开始项目',hi:'प्रोजेक्ट शुरू करें',fr:'Démarrer un Projet',es:'Iniciar un Proyecto',de:'Projekt starten',tr:'Proje Başlat',ur:'پروجیکٹ شروع کریں'},
+"Let's work together to bring your vision to life. Get in touch and let's create something amazing.":{bn:'আপনার স্বপ্নকে বাস্তবে রূপ দিতে একসাথে কাজ করুন। যোগাযোগ করুন এবং অসাধারণ কিছু তৈরি করুন।',ar:'لنعمل معاً لتحقيق رؤيتك.',zh:'让我们合作将您的愿景变为现实。',hi:'अपने विजन को साकार करने के लिए मिलकर काम करें।',fr:'Travaillons ensemble pour concrétiser votre vision.',es:'Trabajemos juntos para hacer realidad tu visión.',de:'Gemeinsam Ihre Vision verwirklichen.',tr:'Vizyonunuzu hayata geçirelim.',ur:'مل کر آپ کا وژن حقیقت بنائیں۔'},
+'Ready to Start Your Project?':{bn:'আপনার প্রজেক্ট শুরু করতে প্রস্তুত?',ar:'هل أنت مستعد لبدء مشروعك؟',zh:'准备开始您的项目了吗？',hi:'अपना प्रोजेक्ट शुरू करने के लिए तैयार?',fr:'Prêt à démarrer votre projet?',es:'¿Listo para comenzar tu proyecto?',de:'Bereit, Ihr Projekt zu starten?',tr:'Projenize başlamaya hazır mısınız?',ur:'اپنا پروجیکٹ شروع کرنے کے لیے تیار؟'},
+'Delivering exceptional digital solutions tailored to your business needs.':{bn:'আপনার ব্যবসার চাহিদা অনুযায়ী অসাধারণ ডিজিটাল সমাধান।',ar:'حلول رقمية استثنائية مصممة لاحتياجات عملك.',zh:'为您的业务需求提供卓越的数字解决方案。',hi:'आपकी व्यावसायिक जरूरतों के अनुसार असाधारण डिजिटल समाधान।',fr:'Solutions digitales exceptionnelles adaptées à vos besoins.',es:'Soluciones digitales excepcionales a medida.',de:'Außergewöhnliche digitale Lösungen für Ihre Bedürfnisse.',tr:'İşletme ihtiyaçlarınıza göre dijital çözümler.',ur:'آپ کی کاروباری ضروریات کے مطابق ڈیجیٹل حل۔'},
+
+/* ─────────── FOOTER ─────────── */
+'Digital Marketing Expert · Web Developer · SEO Specialist':{bn:'ডিজিটাল মার্কেটিং বিশেষজ্ঞ · ওয়েব ডেভেলপার · এসইও বিশেষজ্ঞ',ar:'خبير تسويق رقمي · مطور ويب · متخصص سيو',zh:'数字营销专家 · 网页开发者 · SEO专家',hi:'डिजिटल मार्केटिंग विशेषज्ञ · वेब डेवलपर · SEO विशेषज्ञ',fr:'Expert Marketing Digital · Développeur Web · Spécialiste SEO',es:'Experto Marketing Digital · Desarrollador Web · Especialista SEO',de:'Digital-Marketing-Experte · Webentwickler · SEO-Spezialist',tr:'Dijital Pazarlama Uzmanı · Web Geliştirici · SEO Uzmanı',ur:'ڈیجیٹل مارکیٹنگ ماہر · ویب ڈویلپر · SEO ماہر'},
+'All rights reserved.': {bn:'সর্বস্বত্ব সংরক্ষিত।',ar:'جميع الحقوق محفوظة.',zh:'版权所有。',hi:'सर्वाधिकार सुरक्षित।',fr:'Tous droits réservés.',es:'Todos los derechos reservados.',de:'Alle Rechte vorbehalten.',tr:'Tüm hakları saklıdır.',ur:'جملہ حقوق محفوظ ہیں۔'},
+
+/* ─────────── AI TOOL DESCRIPTIONS ─────────── */
+'AI coding assistant & debugging helper':{bn:'এআই কোডিং সহকারী ও ডিবাগিং হেল্পার',ar:'مساعد برمجة وتصحيح أخطاء ذكي',zh:'AI编程助手和调试工具',hi:'AI कोडिंग सहायक और डिबगिंग',fr:"Assistant de codage IA et débogage",es:'Asistente de codificación IA',de:'KI-Codierungsassistent',tr:'AI kodlama ve hata ayıklama',ur:'AI کوڈنگ اور ڈیبگنگ مددگار'},
+'AI pair programmer inside your editor':{bn:'আপনার এডিটরে এআই পেয়ার প্রোগ্রামার',ar:'مبرمج ثنائي ذكاء اصطناعي في محررك',zh:'编辑器内的AI配对程序员',hi:'आपके एडिटर में AI पेयर प्रोग्रामर',fr:'Programmeur IA dans votre éditeur',es:'Programador IA en tu editor',de:'KI-Pair-Programmer im Editor',tr:'Editörünüzde AI çift programcı',ur:'آپ کے ایڈیٹر میں AI پیئر پروگرامر'},
+'AI-first code editor with inline chat':{bn:'ইনলাইন চ্যাট সহ এআই-ফার্স্ট কোড এডিটর',ar:'محرر كود ذكاء اصطناعي مع دردشة مضمنة',zh:'带内联聊天的AI优先代码编辑器',hi:'इनलाइन चैट वाला AI-फर्स्ट कोड एडिटर',fr:'Éditeur de code IA avec chat intégré',es:'Editor de código IA con chat',de:'KI-Code-Editor mit Chat',tr:'Satır içi sohbetli AI kod editörü',ur:'AI-فرسٹ کوڈ ایڈیٹر'},
+'AI UI component & layout generator':{bn:'এআই ইউআই কম্পোনেন্ট ও লেআউট জেনারেটর',ar:'مولد مكونات واجهة مستخدم بالذكاء الاصطناعي',zh:'AI UI组件和布局生成器',hi:'AI UI कम्पोनेंट जनरेटर',fr:'Générateur de composants UI IA',es:'Generador de componentes UI IA',de:'KI-UI-Komponenten-Generator',tr:'AI UI bileşen oluşturucu',ur:'AI UI کمپوننٹ جنریٹر'},
+'AI full-stack app builder in browser':{bn:'ব্রাউজারে এআই ফুল-স্ট্যাক অ্যাপ বিল্ডার',ar:'منشئ تطبيقات كامل بالذكاء الاصطناعي',zh:'浏览器中的AI全栈应用构建器',hi:'ब्राउज़र में AI फुल-स्टैक ऐप बिल्डर',fr:'Constructeur d\'applications full-stack IA',es:'Constructor de apps full-stack IA',de:'KI-Full-Stack-App-Builder',tr:'Tarayıcıda AI tam yığın uygulama',ur:'براؤزر میں AI فل اسٹیک ایپ بلڈر'},
+'AI-powered cloud code editor & host':{bn:'এআই-চালিত ক্লাউড কোড এডিটর ও হোস্ট',ar:'محرر كود سحابي مدعوم بالذكاء الاصطناعي',zh:'AI云代码编辑器',hi:'AI-पावर्ड क्लाउड कोड एडिटर',fr:'Éditeur de code cloud IA',es:'Editor de código cloud IA',de:'KI-Cloud-Code-Editor',tr:'AI destekli bulut kod editörü',ur:'AI کلاؤڈ کوڈ ایڈیٹر'},
+'Free AI autocomplete for any IDE':{bn:'যেকোনো আইডিইর জন্য বিনামূল্যে এআই অটোকম্পলিট',ar:'إكمال تلقائي مجاني بالذكاء الاصطناعي',zh:'任何IDE的免费AI自动补全',hi:'किसी भी IDE के लिए मुफ्त AI ऑटोकम्प्लीट',fr:'Autocomplétion IA gratuite',es:'Autocompletado IA gratuito',de:'Kostenloses KI-Autocomplete',tr:'Herhangi bir IDE için ücretsiz AI tamamlama',ur:'کسی بھی IDE کے لیے مفت AI'},
+'AI code completion built for teams':{bn:'টিমের জন্য এআই কোড কম্পলিশন',ar:'إكمال كود ذكاء اصطناعي للفرق',zh:'为团队打造的AI代码补全',hi:'टीम के लिए AI कोड कम्पलीशन',fr:'Complétion de code IA pour équipes',es:'Completado de código IA para equipos',de:'KI-Code-Vervollständigung für Teams',tr:'Takımlar için AI kod tamamlama',ur:'ٹیموں کے لیے AI کوڈ'},
+'AI marketing copy & blog writer':{bn:'এআই মার্কেটিং কপি ও ব্লগ রাইটার',ar:'كاتب تسويق ومدونات بالذكاء الاصطناعي',zh:'AI营销文案和博客写手',hi:'AI मार्केटिंग कॉपी और ब्लॉग',fr:'Rédacteur marketing et blog IA',es:'Redactor de marketing IA',de:'KI-Marketing-Texter',tr:'AI pazarlama metni yazarı',ur:'AI مارکیٹنگ کاپی رائٹر'},
+'AI long-form marketing content writer':{bn:'দীর্ঘ-ফর্ম মার্কেটিং কনটেন্ট এআই রাইটার',ar:'كاتب محتوى تسويقي طويل بالذكاء الاصطناعي',zh:'AI长篇营销内容作者',hi:'AI लॉन्ग-फॉर्म मार्केटिंग',fr:'Rédacteur de contenu marketing long',es:'Redactor de contenido largo IA',de:'KI-Langform-Content-Autor',tr:'AI uzun biçim pazarlama içerik yazarı',ur:'AI لانگ فارم مارکیٹنگ رائٹر'},
+'AI blog posts & ad copy at scale':{bn:'স্কেলে এআই ব্লগ পোস্ট ও বিজ্ঞাপন কপি',ar:'منشورات مدونة وإعلانات بالذكاء الاصطناعي',zh:'AI博客文章和广告文案',hi:'AI ब्लॉग पोस्ट और विज्ञापन',fr:'Articles de blog et publicités IA',es:'Artículos de blog y anuncios IA',de:'KI-Blogbeiträge und Werbetexte',tr:'AI blog yazıları ve reklam metinleri',ur:'AI بلاگ اور اشتہاری کاپی'},
+'AI copy with performance score prediction':{bn:'পারফরম্যান্স স্কোর প্রেডিকশন সহ এআই কপি',ar:'نصوص ذكاء اصطناعي مع توقع الأداء',zh:'带性能分数预测的AI文案',hi:'प्रदर्शन स्कोर पूर्वानुमान के साथ AI',fr:'Copie IA avec prédiction de performance',es:'Copia IA con predicción de rendimiento',de:'KI-Kopie mit Leistungsvorhersage',tr:'Performans tahmini ile AI metin',ur:'کارکردگی پیشن گوئی کے ساتھ AI'},
+'AI ad banner & creative generator':{bn:'এআই বিজ্ঞাপন ব্যানার ও ক্রিয়েটিভ জেনারেটর',ar:'مولد لافتات إعلانية بالذكاء الاصطناعي',zh:'AI广告横幅和创意生成器',hi:'AI विज्ञापन बैनर जनरेटर',fr:'Générateur de bannières publicitaires IA',es:'Generador de banners IA',de:'KI-Werbebanner-Generator',tr:'AI reklam banner oluşturucu',ur:'AI اشتہاری بینر جنریٹر'},
+'AI-powered design & Magic Write tool':{bn:'এআই-চালিত ডিজাইন ও ম্যাজিক রাইট টুল',ar:'أداة تصميم وكتابة سحرية بالذكاء الاصطناعي',zh:'AI设计和魔法写作工具',hi:'AI-पावर्ड डिजाइन टूल',fr:'Outil de conception IA',es:'Herramienta de diseño IA',de:'KI-Design-Tool',tr:'AI tasarım aracı',ur:'AI ڈیزائن ٹول'},
+'AI-driven CRM & marketing automation':{bn:'এআই-চালিত সিআরএম ও মার্কেটিং অটোমেশন',ar:'إدارة علاقات عملاء وتسويق آلي بالذكاء الاصطناعي',zh:'AI驱动的CRM和营销自动化',hi:'AI-संचालित CRM',fr:'CRM et automatisation marketing IA',es:'CRM y automatización IA',de:'KI-CRM und Marketing-Automatisierung',tr:'AI CRM ve pazarlama otomasyonu',ur:'AI CRM اور مارکیٹنگ آٹومیشن'},
+'AI content optimisation & NLP scoring':{bn:'এআই কনটেন্ট অপটিমাইজেশন ও এনএলপি স্কোরিং',ar:'تحسين المحتوى وتسجيل اللغة الطبيعية',zh:'AI内容优化和NLP评分',hi:'AI सामग्री अनुकूलन',fr:'Optimisation de contenu IA et NLP',es:'Optimización de contenido IA',de:'KI-Content-Optimierung',tr:'AI içerik optimizasyonu',ur:'AI مواد کی اصلاح'},
+'All-in-one AI SEO & competitor suite':{bn:'অল-ইন-ওয়ান এআই এসইও ও কম্পিটিটর স্যুট',ar:'مجموعة سيو شاملة بالذكاء الاصطناعي',zh:'一站式AI SEO和竞争对手分析',hi:'ऑल-इन-वन AI SEO सूट',fr:'Suite SEO et concurrence IA',es:'Suite SEO y competidores IA',de:'All-in-One KI-SEO-Suite',tr:'Hepsi bir arada AI SEO',ur:'ہمہ جہت AI SEO سوٹ'},
+'Backlink analysis & keyword explorer':{bn:'ব্যাকলিংক বিশ্লেষণ ও কীওয়ার্ড এক্সপ্লোরার',ar:'تحليل الروابط الخلفية واستكشاف الكلمات',zh:'反向链接分析和关键词探索',hi:'बैकलिंक विश्लेषण',fr:'Analyse de backlinks',es:'Análisis de backlinks',de:'Backlink-Analyse',tr:'Backlink analizi',ur:'بیک لنک تجزیہ'},
+'AI social post & carousel generator':{bn:'এআই সোশ্যাল পোস্ট ও ক্যারাউসেল জেনারেটর',ar:'مولد منشورات كاروسيل بالذكاء الاصطناعي',zh:'AI社交帖子和轮播生成器',hi:'AI सोशल पोस्ट जनरेटर',fr:'Générateur de posts sociaux IA',es:'Generador de posts IA',de:'KI-Social-Post-Generator',tr:'AI sosyal gönderi oluşturucu',ur:'AI سوشل پوسٹ جنریٹر'},
+'AI post scheduler & content ideas':{bn:'এআই পোস্ট শিডিউলার ও কনটেন্ট আইডিয়া',ar:'جدولة منشورات وأفكار محتوى بالذكاء الاصطناعي',zh:'AI帖子调度和内容创意',hi:'AI पोस्ट शेड्यूलर',fr:'Planificateur de posts IA',es:'Programador de posts IA',de:'KI-Post-Scheduler',tr:'AI gönderi zamanlayıcı',ur:'AI پوسٹ شیڈیولر'},
+'AI-powered social media management':{bn:'এআই-চালিত সোশ্যাল মিডিয়া ম্যানেজমেন্ট',ar:'إدارة وسائل التواصل الاجتماعي بالذكاء الاصطناعي',zh:'AI社交媒体管理',hi:'AI-संचालित सोशल मीडिया',fr:'Gestion des réseaux sociaux IA',es:'Gestión de redes sociales IA',de:'KI-Social-Media-Management',tr:'AI sosyal medya yönetimi',ur:'AI سوشل میڈیا مینجمنٹ'},
+'Turn scripts & blogs into videos':{bn:'স্ক্রিপ্ট ও ব্লগ থেকে ভিডিও তৈরি করুন',ar:'حول النصوص والمدونات إلى مقاطع فيديو',zh:'将脚本和博客转化为视频',hi:'स्क्रिप्ट को वीडियो में बदलें',fr:'Transformez scripts en vidéos',es:'Convierte guiones en vídeos',de:'Skripte in Videos umwandeln',tr:'Metinleri videolara dönüştür',ur:'اسکرپٹ کو ویڈیو میں تبدیل کریں'},
+'AI video generation & editing (Gen-3)':{bn:'এআই ভিডিও জেনারেশন ও এডিটিং',ar:'توليد وتحرير فيديو بالذكاء الاصطناعي',zh:'AI视频生成和编辑',hi:'AI वीडियो जनरेशन और एडिटिंग',fr:'Génération et édition vidéo IA',es:'Generación y edición de vídeo IA',de:'KI-Videogenerierung',tr:'AI video oluşturma ve düzenleme',ur:'AI ویڈیو جنریشن'},
+'Free AI video editor with auto-captions':{bn:'অটো-ক্যাপশন সহ বিনামূল্যে এআই ভিডিও এডিটর',ar:'محرر فيديو مجاني بالذكاء الاصطناعي',zh:'带自动字幕的免费AI视频编辑器',hi:'ऑटो कैप्शन के साथ मुफ्त AI वीडियो',fr:'Éditeur vidéo IA gratuit',es:'Editor de vídeo IA gratuito',de:'Kostenloser KI-Video-Editor',tr:'Otomatik altyazılı AI video editörü',ur:'مفت AI ویڈیو ایڈیٹر'},
+'AI avatar video creator from text':{bn:'টেক্সট থেকে এআই অবতার ভিডিও ক্রিয়েটর',ar:'منشئ مقاطع فيديو بالأفاتار من النص',zh:'从文本创建AI头像视频',hi:'टेक्स्ट से AI अवतार वीडियो',fr:'Créateur de vidéo avatar IA',es:'Creador de vídeo avatar IA',de:'KI-Avatar-Video-Creator',tr:'Metinden AI avatar video',ur:'ٹیکسٹ سے AI اوتار ویڈیو'},
+'AI ambient clinical documentation':{bn:'এআই অ্যাম্বিয়েন্ট ক্লিনিকাল ডকুমেন্টেশন',ar:'توثيق سريري محيطي بالذكاء الاصطناعي',zh:'AI临床文档记录',hi:'AI क्लिनिकल दस्तावेज़',fr:'Documentation clinique IA ambiante',es:'Documentación clínica IA',de:'KI-klinische Dokumentation',tr:'AI klinik dokümantasyon',ur:'AI کلینیکل ڈاکومنٹیشن'},
+'AI voice assistant for clinical notes & EHR':{bn:'ক্লিনিকাল নোট ও ইএইচআরের জন্য এআই ভয়েস অ্যাসিস্ট্যান্ট',ar:'مساعد صوتي للملاحظات السريرية',zh:'用于临床笔记的AI语音助手',hi:'क्लिनिकल नोट्स के लिए AI',fr:'Assistant vocal IA pour notes cliniques',es:'Asistente de voz IA clínico',de:'KI-Sprachassistent für Klinik',tr:'Klinik notlar için AI sesli asistan',ur:'AI طبی آواز مددگار'},
+'AI research, writing & task assistant':{bn:'এআই গবেষণা, লেখা ও টাস্ক অ্যাসিস্ট্যান্ট',ar:'مساعد بحث وكتابة ومهام بالذكاء الاصطناعي',zh:'AI研究、写作和任务助手',hi:'AI अनुसंधान और कार्य सहायक',fr:'Assistant IA recherche et écriture',es:'Asistente IA de investigación',de:'KI-Forschungs- und Schreibassistent',tr:'AI araştırma ve görev asistanı',ur:'AI تحقیق اور تحریر مددگار'},
+'AI workspace, notes & project manager':{bn:'এআই ওয়ার্কস্পেস, নোটস ও প্রজেক্ট ম্যানেজার',ar:'مساحة عمل وملاحظات وإدارة مشاريع بالذكاء الاصطناعي',zh:'AI工作区、笔记和项目管理',hi:'AI वर्कस्पेस और प्रोजेक्ट',fr:'Espace de travail et notes IA',es:'Espacio de trabajo IA',de:'KI-Arbeitsbereich und Notizen',tr:'AI çalışma alanı ve notlar',ur:'AI ورک اسپیس اور پروجیکٹ'},
+'AI real-time meeting transcription':{bn:'এআই রিয়েল-টাইম মিটিং ট্রান্সক্রিপশন',ar:'نسخ اجتماعات في الوقت الفعلي بالذكاء الاصطناعي',zh:'AI实时会议转录',hi:'AI रियल-टाइम मीटिंग ट्रांसक्रिप्शन',fr:'Transcription de réunions en temps réel',es:'Transcripción IA de reuniones',de:'KI-Echtzeit-Meeting-Transkription',tr:'AI gerçek zamanlı toplantı transkripsiyon',ur:'AI ریئل ٹائم میٹنگ ٹرانسکرپشن'},
+'AI grammar, clarity & tone checker':{bn:'এআই গ্রামার, ক্লারিটি ও টোন চেকার',ar:'مدقق نحو ووضوح ونبرة بالذكاء الاصطناعي',zh:'AI语法、清晰度和语气检查',hi:'AI व्याकरण और टोन चेकर',fr:'Vérificateur de grammaire IA',es:'Verificador de gramática IA',de:'KI-Grammatikprüfer',tr:'AI dilbilgisi ve ton denetleyici',ur:'AI گرامر چیکر'},
+'AI email campaigns & audience insights':{bn:'এআই ইমেইল ক্যাম্পেইন ও অডিয়েন্স ইনসাইটস',ar:'حملات بريد إلكتروني ورؤى جمهور بالذكاء الاصطناعي',zh:'AI邮件营销和受众洞察',hi:'AI ईमेल अभियान',fr:'Campagnes email IA',es:'Campañas de email IA',de:'KI-E-Mail-Kampagnen',tr:'AI e-posta kampanyaları',ur:'AI ای میل مہمات'},
+
+/* ─────────── SECTION LABELS ─────────── */
+'My Services':       {bn:'আমার সেবাসমূহ',ar:'خدماتي',zh:'我的服务',hi:'मेरी सेवाएं',fr:'Mes Services',es:'Mis Servicios',de:'Meine Dienste',tr:'Hizmetlerim',ur:'میری خدمات'},
+'What I Do':         {bn:'আমি কী করি',ar:'ماذا أفعل',zh:'我做什么',hi:'मैं क्या करता हूं',fr:'Ce que je fais',es:'Lo que hago',de:'Was ich tue',tr:'Ne yapıyorum',ur:'میں کیا کرتا ہوں'},
+'Hire Me On':        {bn:'আমাকে নিয়োগ করুন',ar:'وظفني على',zh:'雇用我',hi:'मुझे काम पर रखें',fr:'Engagez-moi sur',es:'Contrátame en',de:'Beauftragen auf',tr:'İşe Al',ur:'مجھے ہائر کریں'},
+'Top Platforms':     {bn:'শীর্ষ প্ল্যাটফর্ম',ar:'أفضل المنصات',zh:'顶级平台',hi:'शीर्ष प्लेटफॉर्म',fr:'Meilleures Plateformes',es:'Principales Plataformas',de:'Top-Plattformen',tr:'En İyi Platformlar',ur:'بہترین پلیٹ فارمز'},
+'Freelance Platforms': {bn:'ফ্রিল্যান্স প্ল্যাটফর্ম',ar:'منصات العمل الحر',zh:'自由职业平台',hi:'फ्रीलांस प्लेटफॉर्म',fr:'Plateformes Freelance',es:'Plataformas Freelance',de:'Freelance-Plattformen',tr:'Serbest Çalışma Platformları',ur:'فری لانس پلیٹ فارمز'},
+'Available 24/7':    {bn:'২৪/৭ উপলব্ধ',ar:'متاح 24/7',zh:'全天候可用',hi:'24/7 उपलब्ध',fr:'Disponible 24/7',es:'Disponible 24/7',de:'Verfügbar rund um die Uhr',tr:'7/24 Mevcut',ur:'24/7 دستیاب'},
+'Get a Quote':       {bn:'কোটেশন নিন',ar:'احصل على عرض',zh:'获取报价',hi:'कोटेशन लें',fr:'Obtenir un Devis',es:'Obtener Presupuesto',de:'Angebot einholen',tr:'Fiyat Al',ur:'کوٹیشن لیں'},
+'View Portfolio':    {bn:'পোর্টফোলিও দেখুন',ar:'عرض المحفظة',zh:'查看作品集',hi:'पोर्टफोलियो देखें',fr:'Voir le Portfolio',es:'Ver Portfolio',de:'Portfolio ansehen',tr:'Portföyü Gör',ur:'پورٹ فولیو دیکھیں'},
+
+
+/* ─────────── ALL 112 AI TOOL DESCRIPTIONS ─────────── */
+'AI-powered site & animation builder':{bn:'এআই-চালিত সাইট ও অ্যানিমেশন বিল্ডার',ar:'منشئ مواقع ورسوم متحركة بالذكاء الاصطناعي',zh:'AI网站和动画构建器',hi:'AI-पावर्ड साइट बिल्डर',fr:'Créateur de site et animations IA',es:'Constructor de sitios IA',de:'KI-Site-Builder',tr:'AI site ve animasyon oluşturucu',ur:'AI سائٹ بلڈر'},
+'Generate UI designs from text prompts':{bn:'টেক্সট প্রম্পট থেকে ইউআই ডিজাইন তৈরি করুন',ar:'توليد تصميمات واجهة من النصوص',zh:'从文本生成UI设计',hi:'टेक्स्ट से UI डिजाइन बनाएं',fr:'Générez des interfaces depuis du texte',es:'Genera diseños UI desde texto',de:'UI-Designs aus Text generieren',tr:'Metinden UI tasarımları oluştur',ur:'ٹیکسٹ سے UI ڈیزائن بنائیں'},
+'Convert Figma designs to code with AI':{bn:'এআই দিয়ে ফিগমা ডিজাইন কোডে রূপান্তর করুন',ar:'تحويل تصميمات فيغما إلى كود بالذكاء الاصطناعي',zh:'AI将Figma设计转换为代码',hi:'AI से Figma को कोड में बदलें',fr:'Convertir Figma en code avec IA',es:'Convierte Figma en código con IA',de:'Figma-Designs in Code umwandeln',tr:'Figma tasarımlarını koda dönüştür',ur:'فگما ڈیزائن کو کوڈ میں تبدیل کریں'},
+'AI website builder & content designer':{bn:'এআই ওয়েবসাইট বিল্ডার ও কনটেন্ট ডিজাইনার',ar:'منشئ مواقع ومصمم محتوى بالذكاء الاصطناعي',zh:'AI网站构建器和内容设计师',hi:'AI वेबसाइट बिल्डर',fr:'Constructeur de sites web IA',es:'Constructor de sitios web IA',de:'KI-Website-Builder',tr:'AI web sitesi oluşturucu',ur:'AI ویب سائٹ بلڈر'},
+'AI app builder from plain text prompts':{bn:'সাধারণ টেক্সট প্রম্পট থেকে এআই অ্যাপ বিল্ডার',ar:'منشئ تطبيقات من نصوص بسيطة',zh:'从文本构建AI应用',hi:'साधारण टेक्स्ट से AI ऐप बनाएं',fr:'Créateur d\'apps depuis du texte',es:'Constructor de apps desde texto',de:'App-Builder aus Textprompts',tr:'Metin istemlerinden uygulama oluştur',ur:'ٹیکسٹ سے ایپ بنائیں'},
+'AI-first IDE with deep code understanding':{bn:'গভীর কোড বোঝার সাথে এআই-ফার্স্ট আইডিই',ar:'بيئة تطوير بالذكاء الاصطناعي مع فهم عميق',zh:'深度代码理解的AI优先IDE',hi:'गहरी कोड समझ वाला AI IDE',fr:'IDE IA avec compréhension profonde',es:'IDE de IA con comprensión profunda',de:'KI-IDE mit tiefer Code-Analyse',tr:'Derin kod anlayışlı AI IDE',ur:'گہری کوڈ سمجھ والا AI IDE'},
+'AI ad video & creative generator':{bn:'এআই বিজ্ঞাপন ভিডিও ও ক্রিয়েটিভ জেনারেটর',ar:'مولد إعلانات وإبداعات فيديو بالذكاء الاصطناعي',zh:'AI广告视频和创意生成器',hi:'AI विज्ञापन वीडियो जनरेटर',fr:'Générateur de vidéos pub IA',es:'Generador de vídeos publicitarios IA',de:'KI-Werbe-Video-Generator',tr:'AI reklam videosu oluşturucu',ur:'AI اشتہاری ویڈیو جنریٹر'},
+'AI writing assistant for marketing':{bn:'মার্কেটিংয়ের জন্য এআই লেখার সহকারী',ar:'مساعد كتابة تسويقي بالذكاء الاصطناعي',zh:'营销AI写作助手',hi:'मार्केटिंग के लिए AI लेखन',fr:'Assistant d\'écriture marketing IA',es:'Asistente de escritura IA',de:'KI-Schreibassistent für Marketing',tr:'Pazarlama için AI yazma asistanı',ur:'مارکیٹنگ کے لیے AI تحریر'},
+'AI product descriptions & ecommerce copy':{bn:'এআই প্রোডাক্ট বিবরণ ও ই-কমার্স কপি',ar:'أوصاف منتجات وتجارة إلكترونية بالذكاء الاصطناعي',zh:'AI产品描述和电商文案',hi:'AI उत्पाद विवरण और ईकॉमर्स',fr:'Descriptions de produits et e-commerce IA',es:'Descripciones de productos IA',de:'KI-Produktbeschreibungen',tr:'AI ürün açıklamaları ve e-ticaret',ur:'AI پروڈکٹ تفصیل اور ای کامرس'},
+'AI writing rewriter & tone enhancer':{bn:'এআই রাইটিং রিরাইটার ও টোন এনহ্যান্সার',ar:'أداة إعادة كتابة وتحسين نبرة بالذكاء الاصطناعي',zh:'AI写作重写和语气提升',hi:'AI रीराइटर और टोन एन्हांसर',fr:'Réécriture et amélioration du ton IA',es:'Reescritor y mejora de tono IA',de:'KI-Text-Rewriter',tr:'AI yeniden yazma ve ton geliştirme',ur:'AI دوبارہ لکھنے والا'},
+'AI emotional language for marketing':{bn:'মার্কেটিংয়ের জন্য এআই আবেগপ্রবণ ভাষা',ar:'لغة عاطفية للتسويق بالذكاء الاصطناعي',zh:'AI情感营销语言',hi:'मार्केटिंग के लिए AI भावनात्मक भाषा',fr:'Langage émotionnel pour le marketing IA',es:'Lenguaje emocional IA para marketing',de:'KI-emotionale Sprache für Marketing',tr:'Pazarlama için AI duygusal dil',ur:'مارکیٹنگ کے لیے AI جذباتی زبان'},
+'AI social ad automation & optimisation':{bn:'এআই সোশ্যাল বিজ্ঞাপন অটোমেশন ও অপটিমাইজেশন',ar:'أتمتة وتحسين إعلانات اجتماعية بالذكاء الاصطناعي',zh:'AI社交广告自动化和优化',hi:'AI सोशल विज्ञापन स्वचालन',fr:'Automatisation des publicités sociales IA',es:'Automatización de anuncios sociales IA',de:'KI-Social-Ad-Automatisierung',tr:'AI sosyal reklam otomasyonu',ur:'AI سوشل اشتہار آٹومیشن'},
+'Autonomous AI digital marketing platform':{bn:'স্বায়ত্তশাসিত এআই ডিজিটাল মার্কেটিং প্ল্যাটফর্ম',ar:'منصة تسويق رقمي ذاتية بالذكاء الاصطناعي',zh:'自主AI数字营销平台',hi:'स्वायत्त AI डिजिटल मार्केटिंग',fr:'Plateforme de marketing digital IA autonome',es:'Plataforma de marketing digital IA autónoma',de:'Autonome KI-Marketing-Plattform',tr:'Otonom AI dijital pazarlama platformu',ur:'خودمختار AI ڈیجیٹل مارکیٹنگ'},
+'AI content briefs & SERP-based outlines':{bn:'এআই কনটেন্ট ব্রিফ ও এসইআরপি-ভিত্তিক আউটলাইন',ar:'ملخصات محتوى ومخططات قائمة على نتائج البحث',zh:'AI内容简报和SERP大纲',hi:'AI कंटेंट ब्रीफ और SERP',fr:'Briefs de contenu et plans basés sur SERP',es:'Briefings de contenido basados en SERP',de:'KI-Content-Briefs auf SERP-Basis',tr:'AI içerik özetleri ve SERP tabanlı',ur:'AI مواد خلاصے اور SERP'},
+'AI SEO editor with semantic NLP data':{bn:'সেমান্টিক এনএলপি ডেটা সহ এআই এসইও এডিটর',ar:'محرر سيو بالبيانات اللغوية الدلالية',zh:'带语义NLP数据的AI SEO编辑器',hi:'सिमेंटिक NLP के साथ AI SEO',fr:'Éditeur SEO IA avec données NLP',es:'Editor SEO IA con datos NLP',de:'KI-SEO-Editor mit NLP-Daten',tr:'Semantik NLP verileriyle AI SEO editörü',ur:'سیمنٹک NLP ڈیٹا کے ساتھ AI SEO'},
+'AI keyword relevance & content grader':{bn:'এআই কীওয়ার্ড রেলিভেন্স ও কনটেন্ট গ্রেডার',ar:'تقييم كلمات مفتاحية ومحتوى بالذكاء الاصطناعي',zh:'AI关键词相关性和内容评分',hi:'AI कीवर्ड प्रासंगिकता और ग्रेडर',fr:'Pertinence des mots-clés et évaluation IA',es:'Relevancia de palabras clave IA',de:'KI-Keyword-Relevanz und Content-Bewerter',tr:'AI anahtar kelime ilgisi ve içerik',ur:'AI کلیدی الفاظ اور مواد گریڈر'},
+'AI content strategy & topic authority':{bn:'এআই কনটেন্ট স্ট্র্যাটেজি ও টপিক অথরিটি',ar:'استراتيجية محتوى وسلطة موضوع بالذكاء الاصطناعي',zh:'AI内容策略和话题权威',hi:'AI कंटेंट रणनीति',fr:'Stratégie de contenu et autorité IA',es:'Estrategia de contenido IA',de:'KI-Content-Strategie',tr:'AI içerik stratejisi ve konu otoritesi',ur:'AI مواد حکمت عملی'},
+'AI SEO toolset focused on bloggers':{bn:'ব্লগারদের জন্য এআই এসইও টুলসেট',ar:'مجموعة أدوات سيو للمدونين بالذكاء الاصطناعي',zh:'面向博主的AI SEO工具集',hi:'ब्लॉगर्स के लिए AI SEO',fr:'Outils SEO IA pour blogueurs',es:'Herramientas SEO IA para bloggers',de:'KI-SEO-Werkzeugset für Blogger',tr:'Blogcular için AI SEO araçları',ur:'بلاگرز کے لیے AI SEO'},
+'AI-powered SEO writing platform':{bn:'এআই-চালিত এসইও রাইটিং প্ল্যাটফর্ম',ar:'منصة كتابة سيو مدعومة بالذكاء الاصطناعي',zh:'AI驱动的SEO写作平台',hi:'AI-संचालित SEO लेखन',fr:'Plateforme d\'écriture SEO IA',es:'Plataforma de escritura SEO IA',de:'KI-SEO-Schreibplattform',tr:'AI destekli SEO yazma platformu',ur:'AI SEO تحریری پلیٹ فارم'},
+'People Also Ask visual question maps':{bn:'পিপল অলসো আস্ক ভিজ্যুয়াল প্রশ্ন মানচিত্র',ar:'خريطة أسئلة مرئية من اقتراحات البحث',zh:'人们也问可视化问题地图',hi:'लोग भी पूछते हैं विजुअल मैप',fr:'Cartes de questions visuelles',es:'Mapas visuales de preguntas',de:'Visuelle Fragenkarten',tr:'Görsel soru haritaları',ur:'بصری سوال نقشے'},
+'Keyword question & preposition research':{bn:'কীওয়ার্ড প্রশ্ন ও প্রিপোজিশন রিসার্চ',ar:'بحث أسئلة الكلمات المفتاحية والحروف',zh:'关键词问题和介词研究',hi:'कीवर्ड प्रश्न और प्रीपोजिशन',fr:'Recherche de questions et prépositions',es:'Investigación de preguntas y preposiciones',de:'Keyword-Fragen und Präpositionen',tr:'Anahtar kelime soru araştırması',ur:'کلیدی الفاظ سوال تحقیق'},
+'AI-powered SEO & link building suite':{bn:'এআই-চালিত এসইও ও লিংক বিল্ডিং স্যুট',ar:'مجموعة سيو وبناء روابط بالذكاء الاصطناعي',zh:'AI SEO和链接建设套件',hi:'AI SEO और लिंक बिल्डिंग',fr:'Suite SEO et création de liens IA',es:'Suite SEO y construcción de enlaces IA',de:'KI-SEO- und Linkbuilding-Suite',tr:'AI SEO ve bağlantı kurma paketi',ur:'AI SEO اور لنک بلڈنگ'},
+'Technical SEO crawler & site auditor':{bn:'টেকনিক্যাল এসইও ক্রলার ও সাইট অডিটর',ar:'زاحف سيو تقني ومدقق موقع',zh:'技术SEO爬虫和网站审计',hi:'तकनीकी SEO क्रॉलर',fr:'Crawler SEO technique et auditeur',es:'Rastreador SEO técnico',de:'Technischer SEO-Crawler',tr:'Teknik SEO tarayıcı ve site denetçisi',ur:'ٹیکنیکل SEO کرالر'},
+'AI growth analytics & SEO health checks':{bn:'এআই গ্রোথ অ্যানালিটিক্স ও এসইও হেলথ চেক',ar:'تحليلات نمو وفحوصات سيو بالذكاء الاصطناعي',zh:'AI增长分析和SEO健康检查',hi:'AI विकास विश्लेषण',fr:'Analytics de croissance et santé SEO',es:'Analytics de crecimiento y salud SEO',de:'KI-Wachstumsanalyse und SEO-Health',tr:'AI büyüme analitiği ve SEO sağlık',ur:'AI نمو تجزیہ'},
+'AI hashtag & caption tool for Instagram':{bn:'ইনস্টাগ্রামের জন্য এআই হ্যাশট্যাগ ও ক্যাপশন টুল',ar:'أداة هاشتاق وتعليق إنستغرام بالذكاء الاصطناعي',zh:'Instagram AI标签和标题工具',hi:'Instagram के लिए AI हैशटैग',fr:'Hashtags et légendes Instagram IA',es:'Hashtags y pies de foto para Instagram',de:'KI-Hashtag und Caption für Instagram',tr:'Instagram için AI hashtag aracı',ur:'Instagram کے لیے AI ہیش ٹیگ'},
+'AI content creation & auto-scheduling':{bn:'এআই কনটেন্ট ক্রিয়েশন ও অটো-শিডিউলিং',ar:'إنشاء محتوى وجدولة تلقائية بالذكاء الاصطناعي',zh:'AI内容创作和自动调度',hi:'AI सामग्री निर्माण और शेड्यूलिंग',fr:'Création de contenu et planification IA',es:'Creación de contenido y programación IA',de:'KI-Content-Erstellung und Scheduling',tr:'AI içerik oluşturma ve otomatik zamanlama',ur:'AI مواد تخلیق اور شیڈولنگ'},
+'AI content discovery & multi-channel publish':{bn:'এআই কনটেন্ট ডিসকভারি ও মাল্টি-চ্যানেল পাবলিশ',ar:'اكتشاف محتوى ونشر متعدد القنوات',zh:'AI内容发现和多渠道发布',hi:'AI कंटेंट खोज और मल्टी-चैनल',fr:'Découverte et publication multi-canaux IA',es:'Descubrimiento y publicación multicanal IA',de:'KI-Content-Entdeckung und Multichannel',tr:'AI içerik keşfi ve çok kanallı yayın',ur:'AI مواد دریافت اور ملٹی چینل'},
+'AI social media graphics & video creator':{bn:'এআই সোশ্যাল মিডিয়া গ্রাফিক্স ও ভিডিও ক্রিয়েটর',ar:'منشئ رسومات ومقاطع فيديو اجتماعية',zh:'AI社交媒体图形和视频创作',hi:'AI सोशल मीडिया ग्राफिक्स',fr:'Créateur de graphiques et vidéos IA',es:'Creador de gráficos y vídeos IA',de:'KI-Social-Media-Grafik und Video',tr:'AI sosyal medya grafik ve video',ur:'AI سوشل میڈیا گرافکس'},
+'AI social management with deep analytics':{bn:'গভীর অ্যানালিটিক্স সহ এআই সোশ্যাল ম্যানেজমেন্ট',ar:'إدارة اجتماعية عميقة بالذكاء الاصطناعي',zh:'深度分析AI社交管理',hi:'गहरे विश्लेषण के साथ AI सोशल',fr:'Gestion sociale IA avec analyses profondes',es:'Gestión social IA con análisis profundo',de:'KI-Social-Management mit Analytik',tr:'Derin analizli AI sosyal yönetimi',ur:'گہرے تجزیہ کے ساتھ AI سوشل'},
+'AI post ideas & brand content calendar':{bn:'এআই পোস্ট আইডিয়া ও ব্র্যান্ড কনটেন্ট ক্যালেন্ডার',ar:'أفكار منشورات وتقويم محتوى بالذكاء الاصطناعي',zh:'AI帖子创意和品牌内容日历',hi:'AI पोस्ट आइडिया और ब्रांड कैलेंडर',fr:'Idées de posts et calendrier IA',es:'Ideas de posts y calendario de marca IA',de:'KI-Post-Ideen und Marken-Kalender',tr:'AI gönderi fikirleri ve marka takvimi',ur:'AI پوسٹ خیالات اور برانڈ کیلنڈر'},
+'AI social analytics & publishing':{bn:'এআই সোশ্যাল অ্যানালিটিক্স ও পাবলিশিং',ar:'تحليلات اجتماعية ونشر بالذكاء الاصطناعي',zh:'AI社交分析和发布',hi:'AI सोशल एनालिटिक्स और प्रकाशन',fr:'Analytics et publication sociales IA',es:'Analytics y publicación social IA',de:'KI-Social-Analytics und Publishing',tr:'AI sosyal analitik ve yayıncılık',ur:'AI سوشل تجزیہ اور اشاعت'},
+'AI chatbot for Instagram & Facebook DMs':{bn:'ইনস্টাগ্রাম ও ফেসবুক ডিএমের জন্য এআই চ্যাটবট',ar:'روبوت دردشة للرسائل المباشرة بالذكاء الاصطناعي',zh:'Instagram和Facebook DM的AI聊天机器人',hi:'Instagram और Facebook DM के लिए AI',fr:'Chatbot IA pour DM Instagram et Facebook',es:'Chatbot IA para DMs de Instagram y Facebook',de:'KI-Chatbot für Instagram & Facebook DMs',tr:'Instagram ve Facebook DM için AI chatbot',ur:'انسٹاگرام اور فیسبک کے لیے AI چیٹ بوٹ'},
+'AI social content repurposer & publisher':{bn:'এআই সোশ্যাল কনটেন্ট রিপার্পোজার ও পাবলিশার',ar:'أداة إعادة توظيف ونشر محتوى اجتماعي',zh:'AI社交内容再利用和发布',hi:'AI सोशल कंटेंट रीपर्पोजर',fr:'Réutilisateur et éditeur de contenu IA',es:'Reutilizador de contenido social IA',de:'KI-Content-Repurposer',tr:'AI sosyal içerik yeniden kullanımı',ur:'AI سوشل مواد دوبارہ استعمال'},
+'AI Twitter/X growth & thread writing':{bn:'এআই টুইটার/এক্স গ্রোথ ও থ্রেড রাইটিং',ar:'نمو تويتر وكتابة خيوط بالذكاء الاصطناعي',zh:'AI Twitter/X增长和线程写作',hi:'AI Twitter/X ग्रोथ और थ्रेड',fr:'Croissance Twitter/X et écriture IA',es:'Crecimiento Twitter/X y hilos IA',de:'KI-Twitter/X-Wachstum und Threads',tr:'AI Twitter/X büyüme ve iş parçacığı',ur:'AI ٹویٹر/X نمو اور تھریڈ'},
+'AI social customer care & CX platform':{bn:'এআই সোশ্যাল কাস্টমার কেয়ার ও সিএক্স প্ল্যাটফর্ম',ar:'رعاية عملاء اجتماعية بالذكاء الاصطناعي',zh:'AI社交客户服务和CX平台',hi:'AI सोशल कस्टमर केयर प्लेटफॉर्म',fr:'Service client social et CX IA',es:'Atención al cliente social IA',de:'KI-Social-Customer-Care',tr:'AI sosyal müşteri hizmetleri',ur:'AI سوشل کسٹمر کیئر'},
+'AI text-to-video & image-to-video':{bn:'এআই টেক্সট-টু-ভিডিও ও ইমেজ-টু-ভিডিও',ar:'تحويل نص وصور إلى فيديو بالذكاء الاصطناعي',zh:'AI文字转视频和图片转视频',hi:'AI टेक्स्ट-टू-वीडियो',fr:'Texte et image en vidéo IA',es:'Texto a vídeo e imagen a vídeo IA',de:'KI-Text-zu-Video und Bild-zu-Video',tr:'AI metin ve görselden video',ur:'AI ٹیکسٹ سے ویڈیو'},
+'AI video maker from prompts & scripts':{bn:'প্রম্পট ও স্ক্রিপ্ট থেকে এআই ভিডিও মেকার',ar:'صانع فيديو من النصوص والسيناريوهات',zh:'从提示和脚本制作AI视频',hi:'प्रॉम्प्ट और स्क्रिप्ट से AI वीडियो',fr:'Créateur de vidéo depuis scripts IA',es:'Creador de vídeos desde scripts IA',de:'KI-Video-Creator aus Skripten',tr:'Komut istemlerinden AI video yapıcı',ur:'اسکرپٹس سے AI ویڈیو میکر'},
+'Turn blog posts into social videos':{bn:'ব্লগ পোস্ট থেকে সোশ্যাল ভিডিও তৈরি করুন',ar:'تحويل منشورات المدونة إلى مقاطع فيديو',zh:'将博客转化为社交视频',hi:'ब्लॉग पोस्ट को सोशल वीडियो में बदलें',fr:'Transformez des articles en vidéos sociales',es:'Convierte blogs en vídeos sociales',de:'Blog-Posts in Social-Videos umwandeln',tr:'Blog yazılarını sosyal videolara dönüştür',ur:'بلاگ پوسٹ کو سوشل ویڈیو میں بدلیں'},
+'AI video & podcast editor with transcription':{bn:'ট্রান্সক্রিপশন সহ এআই ভিডিও ও পডকাস্ট এডিটর',ar:'محرر فيديو وبودكاست مع نسخ',zh:'带转录的AI视频和播客编辑器',hi:'ट्रांसक्रिप्शन के साथ AI वीडियो',fr:'Éditeur vidéo et podcast IA avec transcription',es:'Editor de vídeo y podcast IA',de:'KI-Video- und Podcast-Editor',tr:'Transkripsiyon ile AI video editörü',ur:'ٹرانسکرپشن کے ساتھ AI ویڈیو ایڈیٹر'},
+'AI video with realistic talking avatars':{bn:'বাস্তবসম্মত কথা বলা অবতার সহ এআই ভিডিও',ar:'مقاطع فيديو بأفاتار واقعية',zh:'逼真说话头像的AI视频',hi:'वास्तविक अवतार के साथ AI वीडियो',fr:'Vidéo IA avec avatars parlants réalistes',es:'Vídeo IA con avatares parlantes',de:'KI-Video mit realistischen Avataren',tr:'Gerçekçi konuşan avatarlı AI video',ur:'حقیقی بولتے اوتار والی AI ویڈیو'},
+'Free AI video generator & avatar maker':{bn:'বিনামূল্যে এআই ভিডিও জেনারেটর ও অবতার মেকার',ar:'مولد فيديو وأفاتار مجاني بالذكاء الاصطناعي',zh:'免费AI视频生成器和头像制作',hi:'मुफ्त AI वीडियो जनरेटर',fr:'Générateur de vidéo et avatar IA gratuit',es:'Generador de vídeo e avatar IA gratuito',de:'Kostenloser KI-Video-Generator',tr:'Ücretsiz AI video oluşturucu',ur:'مفت AI ویڈیو جنریٹر'},
+'OpenAI text-to-video generation model':{bn:'ওপেনএআই টেক্সট-টু-ভিডিও জেনারেশন মডেল',ar:'نموذج توليد فيديو من نص من أوبن إيه آي',zh:'OpenAI文字转视频模型',hi:'OpenAI टेक्स्ट-टू-वीडियो मॉडल',fr:'Modèle de génération vidéo OpenAI',es:'Modelo de texto a vídeo de OpenAI',de:'OpenAI Text-zu-Video-Modell',tr:'OpenAI metin-video üretim modeli',ur:'OpenAI ٹیکسٹ ٹو ویڈیو ماڈل'},
+'AI video & image generation by Adobe':{bn:'অ্যাডোবি কর্তৃক এআই ভিডিও ও ইমেজ জেনারেশন',ar:'توليد فيديو وصور بالذكاء الاصطناعي من أدوبي',zh:'Adobe AI视频和图像生成',hi:'Adobe AI वीडियो और इमेज जनरेशन',fr:'Génération vidéo et image IA Adobe',es:'Generación de vídeo e imagen IA de Adobe',de:'Adobe KI-Video und Bildgenerierung',tr:'Adobe tarafından AI video üretimi',ur:'ایڈوبی کی AI ویڈیو اور تصویر'},
+'Free AI-powered browser video editor':{bn:'বিনামূল্যে এআই-চালিত ব্রাউজার ভিডিও এডিটর',ar:'محرر فيديو مجاني للمتصفح بالذكاء الاصطناعي',zh:'免费AI浏览器视频编辑器',hi:'मुफ्त AI ब्राउज़र वीडियो एडिटर',fr:'Éditeur vidéo navigateur IA gratuit',es:'Editor de vídeo del navegador IA gratuito',de:'Kostenloser KI-Browser-Video-Editor',tr:'Ücretsiz AI tarayıcı video editörü',ur:'مفت AI براؤزر ویڈیو ایڈیٹر'},
+'AI video upscaler & quality enhancer':{bn:'এআই ভিডিও আপস্কেলার ও কোয়ালিটি এনহ্যান্সার',ar:'مُحسِّن جودة الفيديو بالذكاء الاصطناعي',zh:'AI视频放大和质量增强',hi:'AI वीडियो अपस्केलर',fr:'Améliorateur de vidéo IA',es:'Mejorador de calidad de vídeo IA',de:'KI-Video-Upscaler',tr:'AI video iyileştirici',ur:'AI ویڈیو کوالٹی بہتر بنانے والا'},
+'Free AI medical scribe for consultations':{bn:'পরামর্শের জন্য বিনামূল্যে এআই মেডিকেল স্ক্রাইব',ar:'كاتب طبي مجاني للاستشارات',zh:'免费AI医疗助理',hi:'परामर्श के लिए मुफ्त AI मेडिकल',fr:'Scribe médical IA gratuit',es:'Scribe médico IA gratuito',de:'Kostenloser KI-Medizinschreiber',tr:'Danışmalar için ücretsiz AI tıbbi',ur:'مفت AI طبی اسکرائب'},
+'AI medical transcription & note automation':{bn:'এআই মেডিকেল ট্রান্সক্রিপশন ও নোট অটোমেশন',ar:'نسخ طبي وأتمتة ملاحظات بالذكاء الاصطناعي',zh:'AI医疗转录和笔记自动化',hi:'AI मेडिकल ट्रांसक्रिप्शन',fr:'Transcription médicale et notes IA',es:'Transcripción médica y notas IA',de:'KI-Medizintransskription',tr:'AI tıbbi transkripsiyon ve not',ur:'AI طبی ٹرانسکرپشن اور نوٹ'},
+'AI summarises patient-doctor conversations':{bn:'এআই রোগী-ডাক্তার কথোপকথন সারাংশ করে',ar:'الذكاء الاصطناعي يلخص محادثات المريض والطبيب',zh:'AI总结医患对话',hi:'AI रोगी-डॉक्टर बातचीत सारांश',fr:'Résumé conversations patient-médecin',es:'IA resume conversaciones paciente-médico',de:'KI fasst Arzt-Patienten-Gespräche zusammen',tr:'AI hasta-doktor konuşmalarını özetler',ur:'AI مریض ڈاکٹر گفتگو کا خلاصہ'},
+'AI writing tool built for physicians':{bn:'চিকিৎসকদের জন্য তৈরি এআই রাইটিং টুল',ar:'أداة كتابة طبية بالذكاء الاصطناعي للأطباء',zh:'为医生打造的AI写作工具',hi:'चिकित्सकों के लिए AI लेखन',fr:'Outil d\'écriture IA pour médecins',es:'Herramienta de escritura IA para médicos',de:'KI-Schreibtool für Ärzte',tr:'Hekimler için AI yazma aracı',ur:'معالجین کے لیے AI تحریری ٹول'},
+'AI clinical reasoning & care plan generator':{bn:'এআই ক্লিনিক্যাল রিজনিং ও কেয়ার প্ল্যান জেনারেটর',ar:'استدلال سريري وخطة رعاية بالذكاء الاصطناعي',zh:'AI临床推理和护理计划',hi:'AI क्लिनिकल रीजनिंग और केयर प्लान',fr:'Raisonnement clinique IA',es:'Razonamiento clínico y plan de cuidados IA',de:'KI-klinisches Denken und Pflegeplan',tr:'AI klinik akıl yürütme ve bakım planı',ur:'AI کلینیکل استدلال اور نگہداشت'},
+'Free AI medical scribe for any practice':{bn:'যেকোনো প্র্যাকটিসের জন্য বিনামূল্যে এআই মেডিকেল স্ক্রাইব',ar:'كاتب طبي مجاني لأي ممارسة',zh:'任何诊所的免费AI医疗助理',hi:'किसी भी प्रैक्टिस के लिए मुफ्त AI',fr:'Scribe médical IA gratuit universel',es:'Scribe médico IA gratuito',de:'Kostenloser KI-Medizinschreiber',tr:'Her uygulama için ücretsiz AI tıbbi',ur:'کسی بھی پریکٹس کے لیے مفت AI'},
+'AI for medical summaries, FAQs & reports':{bn:'মেডিকেল সারাংশ, এফএকিউ ও রিপোর্টের জন্য এআই',ar:'ذكاء اصطناعي للملخصات والتقارير الطبية',zh:'AI医疗摘要、FAQ和报告',hi:'चिकित्सा सारांश के लिए AI',fr:'IA pour résumés médicaux et rapports',es:'IA para resúmenes médicos',de:'KI für medizinische Zusammenfassungen',tr:'Tıbbi özetler için AI',ur:'طبی خلاصوں کے لیے AI'},
+'AI search engine for medical research':{bn:'মেডিকেল রিসার্চের জন্য এআই সার্চ ইঞ্জিন',ar:'محرك بحث طبي بالذكاء الاصطناعي',zh:'医学研究AI搜索引擎',hi:'चिकित्सा अनुसंधान के लिए AI',fr:'Moteur de recherche médicale IA',es:'Motor de búsqueda médica IA',de:'KI-Suchmaschine für medizinische Forschung',tr:'Tıbbi araştırma için AI arama motoru',ur:'طبی تحقیق کے لیے AI سرچ انجن'},
+'AI clinical data extraction & trial matching':{bn:'এআই ক্লিনিক্যাল ডেটা এক্সট্র্যাকশন ও ট্রায়াল ম্যাচিং',ar:'استخراج بيانات سريرية ومطابقة تجارب',zh:'AI临床数据提取和试验匹配',hi:'AI क्लिनिकल डेटा एक्सट्रैक्शन',fr:'Extraction de données cliniques IA',es:'Extracción de datos clínicos IA',de:'KI-klinische Datenextraktion',tr:'AI klinik veri çıkarma ve deneme',ur:'AI کلینیکل ڈیٹا اور ٹرائل'},
+'AI clinical decision support & diagnosis':{bn:'এআই ক্লিনিক্যাল ডিসিশন সাপোর্ট ও ডায়াগনসিস',ar:'دعم القرار السريري والتشخيص بالذكاء الاصطناعي',zh:'AI临床决策支持和诊断',hi:'AI क्लिनिकल निर्णय और निदान',fr:'Aide à la décision IA',es:'Soporte clínico y diagnóstico IA',de:'KI-klinische Entscheidungsunterstützung',tr:'AI klinik karar desteği ve teşhis',ur:'AI کلینیکل فیصلہ اور تشخیص'},
+'AI patient intake & clinical workflow':{bn:'এআই রোগী গ্রহণ ও ক্লিনিক্যাল ওয়ার্কফ্লো',ar:'استقبال مريض وسير عمل سريري بالذكاء الاصطناعي',zh:'AI患者接诊和临床工作流程',hi:'AI रोगी स्वागत और कार्यप्रवाह',fr:'Accueil patient et workflow clinique IA',es:'Recepción de pacientes y workflow IA',de:'KI-Patientenaufnahme und Workflow',tr:'AI hasta kabulü ve klinik iş akışı',ur:'AI مریض قبولیت اور طبی ورک فلو'},
+'AI ambient scribe for specialty care':{bn:'স্পেশালটি কেয়ারের জন্য এআই অ্যাম্বিয়েন্ট স্ক্রাইব',ar:'كاتب محيطي للرعاية التخصصية',zh:'专科护理AI助理',hi:'विशेषता देखभाल के लिए AI',fr:'Scribe ambiant IA pour soins spécialisés',es:'Scribe ambiental IA para atención especializada',de:'KI-Ambient-Schreiber für Fachversorgung',tr:'Uzmanlık bakımı için AI ortam yazmacı',ur:'خصوصی نگہداشت کے لیے AI اسکرائب'},
+'AI calendar & project scheduling tool':{bn:'এআই ক্যালেন্ডার ও প্রজেক্ট শিডিউলিং টুল',ar:'أداة تقويم وجدولة مشاريع بالذكاء الاصطناعي',zh:'AI日历和项目调度工具',hi:'AI कैलेंडर और प्रोजेक्ट शेड्यूलिंग',fr:'Outil de calendrier et planification IA',es:'Herramienta de calendario y programación IA',de:'KI-Kalender und Projektplanung',tr:'AI takvim ve proje zamanlama aracı',ur:'AI کیلنڈر اور پروجیکٹ شیڈولنگ'},
+'AI meeting notes, search & action items':{bn:'এআই মিটিং নোটস, সার্চ ও অ্যাকশন আইটেম',ar:'ملاحظات اجتماعات وبحث وعناصر إجراء',zh:'AI会议笔记、搜索和行动项目',hi:'AI मीटिंग नोट्स और एक्शन आइटम',fr:'Notes de réunion IA',es:'Notas de reuniones y acciones IA',de:'KI-Meeting-Notizen und Aktionspunkte',tr:'AI toplantı notları ve eylem öğeleri',ur:'AI میٹنگ نوٹس اور ایکشن آئٹمز'},
+'AI smart time-blocking & calendar sync':{bn:'এআই স্মার্ট টাইম-ব্লকিং ও ক্যালেন্ডার সিঙ্ক',ar:'حجب وقت ذكي ومزامنة تقويم',zh:'AI智能时间块和日历同步',hi:'AI स्मार्ट टाइम-ब्लॉकिंग',fr:'Blocage de temps intelligent et synchronisation',es:'Bloqueo de tiempo inteligente IA',de:'KI-Zeitblockierung und Kalender-Sync',tr:'AI akıllı zaman engelleme ve takvim',ur:'AI سمارٹ ٹائم بلاکنگ اور کیلنڈر'},
+'AI workflow & multi-app automation':{bn:'এআই ওয়ার্কফ্লো ও মাল্টি-অ্যাপ অটোমেশন',ar:'سير عمل وأتمتة متعددة التطبيقات',zh:'AI工作流和多应用自动化',hi:'AI वर्कफ्लो और मल्टी-ऐप ऑटोमेशन',fr:'Workflow et automatisation multi-apps IA',es:'Flujo de trabajo y automatización multi-app',de:'KI-Workflow und Multi-App-Automatisierung',tr:'AI iş akışı ve çok uygulamalı otomasyon',ur:'AI ورک فلو اور ملٹی ایپ آٹومیشن'},
+'AI project collaboration & agents':{bn:'এআই প্রজেক্ট কোলাবরেশন ও এজেন্ট',ar:'تعاون مشاريع ووكلاء بالذكاء الاصطناعي',zh:'AI项目协作和代理',hi:'AI प्रोजेक्ट सहयोग और एजेंट',fr:'Collaboration de projet et agents IA',es:'Colaboración de proyecto y agentes IA',de:'KI-Projektkooperation und Agenten',tr:'AI proje işbirliği ve ajanlar',ur:'AI پروجیکٹ تعاون اور ایجنٹس'},
+'AI presentation & visual document builder':{bn:'এআই প্রেজেন্টেশন ও ভিজ্যুয়াল ডকুমেন্ট বিল্ডার',ar:'منشئ عروض ووثائق مرئية بالذكاء الاصطناعي',zh:'AI演示和可视化文档构建器',hi:'AI प्रेजेंटेशन और दस्तावेज',fr:'Constructeur de présentations et docs IA',es:'Constructor de presentaciones IA',de:'KI-Präsentations- und Dokumenten-Builder',tr:'AI sunum ve görsel belge oluşturucu',ur:'AI پریزینٹیشن اور ڈاکومنٹ بلڈر'},
+'AI slide design for polished decks':{bn:'পালিশড ডেকের জন্য এআই স্লাইড ডিজাইন',ar:'تصميم شرائح احترافية بالذكاء الاصطناعي',zh:'AI精美幻灯片设计',hi:'AI स्लाइड डिज़ाइन',fr:'Conception de slides IA pour présentations',es:'Diseño de diapositivas IA',de:'KI-Folienentwurf für professionelle Decks',tr:'Profesyonel sunumlar için AI slayt tasarımı',ur:'AI سلائیڈ ڈیزائن'},
+'AI-powered personal knowledge base':{bn:'এআই-চালিত পার্সোনাল নলেজ বেস',ar:'قاعدة معرفة شخصية بالذكاء الاصطناعي',zh:'AI个人知识库',hi:'AI-संचालित व्यक्तिगत ज्ञानकोश',fr:'Base de connaissances personnelle IA',es:'Base de conocimiento personal IA',de:'KI-persönliche Wissensbasis',tr:'AI destekli kişisel bilgi tabanı',ur:'AI ذاتی علم کی بنیاد'},
+'AI-powered form builder & survey tool':{bn:'এআই-চালিত ফর্ম বিল্ডার ও সার্ভে টুল',ar:'منشئ نماذج واستطلاعات بالذكاء الاصطناعي',zh:'AI表单构建器和调查工具',hi:'AI-संचालित फॉर्म बिल्डर',fr:'Constructeur de formulaires et sondages IA',es:'Constructor de formularios IA',de:'KI-Formular-Builder und Umfrage',tr:'AI form oluşturucu ve anket aracı',ur:'AI فارم بلڈر اور سروے ٹول'},
+'AI scheduling & meeting management':{bn:'এআই শিডিউলিং ও মিটিং ম্যানেজমেন্ট',ar:'جدولة واجتماعات بالذكاء الاصطناعي',zh:'AI调度和会议管理',hi:'AI शेड्यूलिंग और मीटिंग',fr:'Planification et gestion de réunions IA',es:'Programación y gestión de reuniones IA',de:'KI-Planung und Meeting-Management',tr:'AI zamanlama ve toplantı yönetimi',ur:'AI شیڈولنگ اور میٹنگ مینجمنٹ'},
+'AI-powered email & marketing automation':{bn:'এআই-চালিত ইমেইল ও মার্কেটিং অটোমেশন',ar:'أتمتة بريد إلكتروني وتسويق بالذكاء الاصطناعي',zh:'AI驱动的邮件和营销自动化',hi:'AI-संचालित ईमेल और मार्केटिंग',fr:'Automatisation email et marketing IA',es:'Automatización email y marketing IA',de:'KI-E-Mail- und Marketing-Automatisierung',tr:'AI e-posta ve pazarlama otomasyonu',ur:'AI ای میل اور مارکیٹنگ آٹومیشن'},
+'AI email marketing & landing page builder':{bn:'এআই ইমেইল মার্কেটিং ও ল্যান্ডিং পেজ বিল্ডার',ar:'تسويق بريد إلكتروني وصفحات هبوط بالذكاء الاصطناعي',zh:'AI邮件营销和落地页构建器',hi:'AI ईमेल मार्केटिंग और लैंडिंग पेज',fr:'Marketing email et pages de destination IA',es:'Marketing email y landing page IA',de:'KI-E-Mail-Marketing und Landing-Page',tr:'AI e-posta pazarlama ve açılış sayfası',ur:'AI ای میل مارکیٹنگ اور لینڈنگ پیج'},
+'AI smart bidding & performance max campaigns':{bn:'এআই স্মার্ট বিডিং ও পারফরম্যান্স ম্যাক্স ক্যাম্পেইন',ar:'مزايدة ذكية وحملات أداء قصوى',zh:'AI智能出价和最大效果广告系列',hi:'AI स्मार्ट बिडिंग और परफॉर्मेंस',fr:'Enchères intelligentes et Performance Max IA',es:'Pujas inteligentes y Performance Max IA',de:'KI-Smart-Bidding und Performance Max',tr:'AI akıllı teklif ve performans kampanyaları',ur:'AI سمارٹ بڈنگ اور پرفارمنس مہم'},
+'AI-driven Facebook & Instagram targeting':{bn:'এআই-চালিত ফেসবুক ও ইনস্টাগ্রাম টার্গেটিং',ar:'استهداف فيسبوك وإنستغرام بالذكاء الاصطناعي',zh:'AI驱动的Facebook和Instagram定向',hi:'AI Facebook और Instagram टार्गेटिंग',fr:'Ciblage Facebook et Instagram IA',es:'Targeting Facebook e Instagram IA',de:'KI-Facebook und Instagram-Targeting',tr:'AI Facebook ve Instagram hedefleme',ur:'AI فیسبک اور انسٹاگرام ٹارگیٹنگ'},
+'AI email & SMS marketing for e-commerce':{bn:'ই-কমার্সের জন্য এআই ইমেইল ও এসএমএস মার্কেটিং',ar:'تسويق بالبريد والرسائل للتجارة الإلكترونية',zh:'AI电商邮件和短信营销',hi:'ई-कॉमर्स के लिए AI ईमेल और SMS',fr:'Email et SMS marketing e-commerce IA',es:'Email y SMS marketing e-commerce IA',de:'KI-E-Mail und SMS für E-Commerce',tr:'E-ticaret için AI e-posta ve SMS',ur:'ای کامرس کے لیے AI ای میل اور SMS'},
+'AI brand language & subject line optimiser':{bn:'এআই ব্র্যান্ড ল্যাঙ্গুয়েজ ও সাবজেক্ট লাইন অপটিমাইজার',ar:'محسن لغة العلامة التجارية وعنوان البريد',zh:'AI品牌语言和主题行优化',hi:'AI ब्रांड भाषा और सब्जेक्ट लाइन',fr:'Langage de marque et optimiseur d\'objet IA',es:'Lenguaje de marca y optimizador IA',de:'KI-Markensprache und Betreffzeilen',tr:'AI marka dili ve konu satırı optimizörü',ur:'AI برانڈ زبان اور موضوع آپٹیمائزر'},
+'AI conversational marketing & chatbot':{bn:'এআই কনভার্সেশনাল মার্কেটিং ও চ্যাটবট',ar:'تسويق محادثة وروبوت دردشة بالذكاء الاصطناعي',zh:'AI对话营销和聊天机器人',hi:'AI संवादात्मक मार्केटिंग',fr:'Marketing conversationnel et chatbot IA',es:'Marketing conversacional y chatbot IA',de:'KI-Conversational Marketing und Chatbot',tr:'AI konuşma pazarlama ve chatbot',ur:'AI گفتگو مارکیٹنگ اور چیٹ بوٹ'},
+'AI email, SMS & WhatsApp marketing':{bn:'এআই ইমেইল, এসএমএস ও হোয়াটসঅ্যাপ মার্কেটিং',ar:'تسويق بالبريد والرسائل وواتساب',zh:'AI邮件、短信和WhatsApp营销',hi:'AI ईमेल, SMS और WhatsApp मार्केटिंग',fr:'Email, SMS et WhatsApp marketing IA',es:'Email, SMS y WhatsApp marketing IA',de:'KI-E-Mail, SMS und WhatsApp-Marketing',tr:'AI e-posta, SMS ve WhatsApp pazarlama',ur:'AI ای میل، SMS اور واٹس ایپ مارکیٹنگ'},
+'AI omnichannel marketing for ecommerce':{bn:'ই-কমার্সের জন্য এআই অমনিচ্যানেল মার্কেটিং',ar:'تسويق متعدد القنوات للتجارة الإلكترونية',zh:'AI电商全渠道营销',hi:'ई-कॉमर्स के लिए AI ओम्निचैनल',fr:'Marketing omnicanal e-commerce IA',es:'Marketing omnicanal e-commerce IA',de:'KI-Omnichannel-Marketing für E-Commerce',tr:'E-ticaret için AI omnichannel pazarlama',ur:'ای کامرس کے لیے AI ہمہ چینل مارکیٹنگ'},
+'AI customer-led marketing & retention':{bn:'এআই কাস্টমার-লেড মার্কেটিং ও রিটেনশন',ar:'تسويق بقيادة العميل والاحتفاظ به',zh:'AI以客户为主导的营销和留存',hi:'AI ग्राहक-नेतृत्व वाली मार्केटिंग',fr:'Marketing client et rétention IA',es:'Marketing liderado por el cliente IA',de:'KI-Kundengeführtes Marketing',tr:'AI müşteri odaklı pazarlama ve tutma',ur:'AI کسٹمر لیڈ مارکیٹنگ اور برقراری'},
+'AI send-time optimisation for email':{bn:'ইমেইলের জন্য এআই সেন্ড-টাইম অপটিমাইজেশন',ar:'تحسين وقت إرسال البريد الإلكتروني',zh:'AI邮件发送时间优化',hi:'ईमेल के लिए AI भेजने का समय',fr:'Optimisation envoi email IA',es:'Optimización del tiempo de envío de email IA',de:'KI-Versandzeit-Optimierung für E-Mail',tr:'E-posta gönderim zamanı optimizasyonu',ur:'ای میل بھیجنے کے وقت کی AI اصلاح'},
+'AI market & competitor traffic intelligence':{bn:'এআই মার্কেট ও কম্পিটিটর ট্র্যাফিক ইন্টেলিজেন্স',ar:'ذكاء تنافسي وتحليل حركة المرور',zh:'AI市场和竞争对手流量分析',hi:'AI बाजार और प्रतिस्पर्धी ट्रैफिक',fr:'Intelligence de marché et concurrents IA',es:'Inteligencia de mercado y competidores IA',de:'KI-Markt und Wettbewerbs-Intelligence',tr:'AI pazar ve rakip trafik zekası',ur:'AI مارکیٹ اور مدمقابل ٹریفک'},
+'AI-powered B2B marketing suite':{bn:'এআই-চালিত বি-টু-বি মার্কেটিং স্যুট',ar:'مجموعة تسويق B2B بالذكاء الاصطناعي',zh:'AI驱动的B2B营销套件',hi:'AI-संचालित B2B मार्केटिंग',fr:'Suite marketing B2B IA',es:'Suite de marketing B2B IA',de:'KI-B2B-Marketing-Suite',tr:'AI destekli B2B pazarlama paketi',ur:'AI B2B مارکیٹنگ سوٹ'},
+
+};
+
+/* ── Apply translation to a single text node ── */
+function _translateNode(text, lang) {
+  var t = text.trim();
+  if (!t) return text;
+  /* Exact match */
+  if (_DICT[t] && _DICT[t][lang]) return _DICT[t][lang];
+  /* Partial: find longest matching phrase */
+  var result = text;
+  var keys = Object.keys(_DICT).sort(function(a,b){return b.length-a.length;});
+  keys.forEach(function(k){
+    if (result.includes(k) && _DICT[k][lang]) {
+      result = result.split(k).join(_DICT[k][lang]);
+    }
+  });
+  return result;
+}
+
+/* ── Main entry ── */
+function storeOriginals() {
+  if (_origNodes) return;
+  _origNodes = _collectNodes();
+  _origTexts = _origNodes.map(function(n){ return n.textContent; });
+}
+
+function restoreOriginal() {
+  if (!_origNodes) return;
+  _origNodes.forEach(function(n,i){ n.textContent = _origTexts[i]; });
+  document.documentElement.setAttribute('dir','ltr');
+  _activeLang = 'en';
+}
+
+function translatePageFree(lang) {
+  if (lang === 'en') { restoreOriginal(); _activeLang='en'; return; }
+  if (lang === _activeLang) return;
+  _activeLang = lang;
+
+  var rtl = {ar:1,ur:1,he:1,fa:1};
+  document.documentElement.setAttribute('dir', rtl[lang] ? 'rtl' : 'ltr');
+
+  storeOriginals();
+  _origNodes.forEach(function(node, i) {
+    var translated = _translateNode(_origTexts[i], lang);
+    if (translated !== _origTexts[i]) node.textContent = translated;
+  });
+}
+
+
+/* ── Active link highlight + ResizeObserver for overflow ── */
+(function() {
+  /* Annotate items then check overflow */
+  annotateNavItems();
+  setTimeout(checkNavOverflow, 300);
+
+  /* ResizeObserver: re-check whenever nav width changes */
+  if (window.ResizeObserver) {
+    var ro = new ResizeObserver(function() { checkNavOverflow(); });
+    var navEl = document.querySelector('nav');
+    if (navEl) ro.observe(navEl);
+  }
+  window.addEventListener('resize', checkNavOverflow);
+
+  /* Active link on scroll */
+  var sections = ['hero','services','hire','contact','toolkit'];
+  window.addEventListener('scroll', function() {
+    var scrollY = window.scrollY + 80;
+    var current = '';
+    sections.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && el.offsetTop <= scrollY) current = id;
+    });
+    document.querySelectorAll('.nav-links a').forEach(function(a) { a.classList.remove('active'); });
+    var map = { hero:'Home', services:'Services', hire:'Hire Me', contact:'Contact', toolkit:'AI Tools' };
+    document.querySelectorAll('.nav-links a').forEach(function(a) {
+      if (a.textContent.trim().startsWith(map[current] || '__')) a.classList.add('active');
+    });
+    var navBg = document.getElementById('main-nav');
+    if (navBg) navBg.style.background = scrollY > 100 ? 'rgba(10,5,30,.98)' : 'rgba(10,5,30,.92)';
+  });
+}());
+
+/* ── Also handle any remaining anchor clicks ── */
+document.addEventListener('click', function(e) {
+  var a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  var id = a.getAttribute('href').slice(1);
+  if (!id) return;
+  var target = document.getElementById(id);
+  if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+});
+
+/* BD Clock */
+function updateClock(){
+  var el=document.getElementById('bdtDateTime');
+  if(el) el.textContent=new Date().toLocaleString('en-US',{timeZone:'Asia/Dhaka',weekday:'long',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true});
+}
+setInterval(updateClock,1000); updateClock();
+
+/* Particles */
+(function(){
+  var pc=document.getElementById('particles');
+  for(var i=0;i<20;i++){
+    var p=document.createElement('div'); p.className='particle';
+    p.style.cssText='left:'+Math.random()*100+'%;width:'+(Math.random()*10+5)+'px;height:'+(Math.random()*10+5)+'px;animation-duration:'+(Math.random()*10+10)+'s;animation-delay:'+Math.random()*5+'s';
+    pc.appendChild(p);
+  }
+}());
+
+/* Typing */
+(function(){
+  var roles=['Digital Marketing Expert','Web Developer','SEO Specialist','Social Media Marketer','Virtual Assistant','AI Tools Expert'];
+  var ri=0,ci=0,del=false,el=document.getElementById('typed-text');
+  if(!el) return;
+  function tick(){
+    var r=roles[ri];
+    el.textContent=del?r.substring(0,ci-1):r.substring(0,ci+1);
+    del?ci--:ci++;
+    if(!del&&ci===r.length){del=true;return setTimeout(tick,2000);}
+    if(del&&ci===0){del=false;ri=(ri+1)%roles.length;return setTimeout(tick,500);}
+    setTimeout(tick,del?50:100);
+  }
+  tick();
+}());
+
+/* Close AI modal on backdrop click */
+document.getElementById('ai-modal').addEventListener('click',function(e){
+  if(e.target===this){this.classList.remove('open');var s=document.getElementById('modal-search');if(s){s.value='';filterModal('');}}
+});
+
+/* Modal search filter */
+function filterModal(q) {
+  q = q.toLowerCase().trim();
+  var cats = document.querySelectorAll('#modal-tools-wrap .ai-cat');
+  cats.forEach(function(cat) {
+    var cards = cat.querySelectorAll('.ai-card');
+    var any = false;
+    cards.forEach(function(card) {
+      var match = !q || card.textContent.toLowerCase().includes(q);
+      card.classList.toggle('hidden', !match);
+      if (match) any = true;
+    });
+    cat.classList.toggle('hidden', !any);
+  });
+}
+
+/* Toolkit data */
+var toolData=[
+  {cat:'Web Dev',color:'#a78bfa',icon:'fa-code',tools:[
+    ['ChatGPT','https://chat.openai.com','AI coding assistant & debugging helper'],
+    ['GitHub Copilot','https://github.com/features/copilot','AI pair programmer inside your editor'],
+    ['Cursor','https://cursor.sh','AI-first code editor with inline chat'],
+    ['V0 by Vercel','https://v0.dev','AI UI component & layout generator'],
+    ['Bolt.new','https://bolt.new','AI full-stack app builder in browser'],
+    ['Replit AI','https://replit.com','AI-powered cloud code editor & host'],
+    ['Codeium','https://codeium.com','Free AI autocomplete for any IDE'],
+    ['Tabnine','https://www.tabnine.com','AI code completion built for teams'],
+    ['Framer AI','https://www.framer.com','AI-powered site & animation builder'],
+    ['Galileo AI','https://www.usegalileo.ai','Generate UI designs from text prompts'],
+    ['Locofy','https://www.locofy.ai','Convert Figma designs to code with AI'],
+    ['Wix AI','https://www.wix.com','AI website builder & content designer'],
+    ['Lovable','https://lovable.dev','AI app builder from plain text prompts'],
+    ['Windsurf','https://codeium.com/windsurf','AI-first IDE with deep code understanding']
+  ]},
+  {cat:'Marketing',color:'#34d399',icon:'fa-bullhorn',tools:[
+    ['Copy.ai','https://www.copy.ai','AI marketing copy & blog writer'],
+    ['Jasper','https://www.jasper.ai','AI long-form marketing content writer'],
+    ['Writesonic','https://writesonic.com','AI blog posts & ad copy at scale'],
+    ['Anyword','https://anyword.com','AI copy with performance score prediction'],
+    ['AdCreative.ai','https://www.adcreative.ai','AI ad banner & creative generator'],
+    ['Canva AI','https://www.canva.com','AI-powered design & Magic Write tool'],
+    ['HubSpot AI','https://www.hubspot.com','AI-driven CRM & marketing automation'],
+    ['Pencil','https://www.trypencil.com','AI ad video & creative generator'],
+    ['Rytr','https://rytr.me','AI writing assistant for marketing'],
+    ['Hypotenuse AI','https://www.hypotenuse.ai','AI product descriptions & ecommerce copy'],
+    ['Wordtune','https://www.wordtune.com','AI writing rewriter & tone enhancer'],
+    ['Persado','https://www.persado.com','AI emotional language for marketing'],
+    ['Smartly.io','https://www.smartly.io','AI social ad automation & optimisation'],
+    ['Albert AI','https://albert.ai','Autonomous AI digital marketing platform']
+  ]},
+  {cat:'SEO',color:'#f472b6',icon:'fa-search',tools:[
+    ['Surfer SEO','https://surferseo.com','AI content optimisation & NLP scoring'],
+    ['SEMrush','https://www.semrush.com','All-in-one AI SEO & competitor suite'],
+    ['Ahrefs','https://ahrefs.com','Backlink analysis & keyword explorer'],
+    ['Frase.io','https://www.frase.io','AI content briefs & SERP-based outlines'],
+    ['NeuronWriter','https://neuronwriter.com','AI SEO editor with semantic NLP data'],
+    ['Clearscope','https://www.clearscope.io','AI keyword relevance & content grader'],
+    ['MarketMuse','https://www.marketmuse.com','AI content strategy & topic authority'],
+    ['RankIQ','https://www.rankiq.com','AI SEO toolset focused on bloggers'],
+    ['SEO.ai','https://seo.ai','AI-powered SEO writing platform'],
+    ['AlsoAsked','https://alsoasked.com','People Also Ask visual question maps'],
+    ['AnswerThePublic','https://answerthepublic.com','Keyword question & preposition research'],
+    ['Moz Pro','https://moz.com','AI-powered SEO & link building suite'],
+    ['Screaming Frog','https://www.screamingfrog.co.uk','Technical SEO crawler & site auditor'],
+    ['Diib','https://diib.com','AI growth analytics & SEO health checks']
+  ]},
+  {cat:'Social Media',color:'#fbbf24',icon:'fa-share-alt',tools:[
+    ['Buffer AI','https://buffer.com','AI post scheduler & content ideas'],
+    ['Hootsuite','https://www.hootsuite.com','AI-powered social media management'],
+    ['Predis.ai','https://predis.ai','AI social post & carousel generator'],
+    ['Flick AI','https://www.flick.social','AI hashtag & caption tool for Instagram'],
+    ['Ocoya','https://www.ocoya.com','AI content creation & auto-scheduling'],
+    ['ContentStudio','https://contentstudio.io','AI content discovery & multi-channel publish'],
+    ['Canva AI','https://www.canva.com','AI social media graphics & video creator'],
+    ['Vista Social','https://vistasocial.com','AI social management with deep analytics'],
+    ['Loomly','https://www.loomly.com','AI post ideas & brand content calendar'],
+    ['Sprout Social','https://sproutsocial.com','AI social analytics & publishing'],
+    ['ManyChat','https://manychat.com','AI chatbot for Instagram & Facebook DMs'],
+    ['Lately.ai','https://www.lately.ai','AI social content repurposer & publisher'],
+    ['Typefully','https://typefully.com','AI Twitter/X growth & thread writing'],
+    ['Emplifi','https://emplifi.io','AI social customer care & CX platform']
+  ]},
+  {cat:'Video AI',color:'#fb923c',icon:'fa-video',tools:[
+    ['Pictory AI','https://pictory.ai','Turn scripts & blogs into videos'],
+    ['Runway ML','https://runwayml.com','AI video generation & editing (Gen-3)'],
+    ['Pika Labs','https://pika.art','AI text-to-video & image-to-video'],
+    ['CapCut AI','https://www.capcut.com','Free AI video editor with auto-captions'],
+    ['Synthesia','https://www.synthesia.io','AI avatar video creator from text'],
+    ['InVideo AI','https://invideo.io','AI video maker from prompts & scripts'],
+    ['Lumen5','https://lumen5.com','Turn blog posts into social videos'],
+    ['Descript','https://www.descript.com','AI video & podcast editor with transcription'],
+    ['HeyGen','https://www.heygen.com','AI video with realistic talking avatars'],
+    ['Vidnoz AI','https://www.vidnoz.com','Free AI video generator & avatar maker'],
+    ['Sora','https://sora.com','OpenAI text-to-video generation model'],
+    ['Adobe Firefly','https://firefly.adobe.com','AI video & image generation by Adobe'],
+    ['Clipchamp','https://clipchamp.com','Free AI-powered browser video editor'],
+    ['Topaz Video AI','https://www.topazlabs.com','AI video upscaler & quality enhancer']
+  ]},
+  {cat:'Medical VA',color:'#f87171',icon:'fa-heartbeat',tools:[
+    ['Nuance DAX','https://www.nuance.com','AI ambient clinical documentation'],
+    ['Suki AI','https://www.suki.ai','AI voice assistant for clinical notes & EHR'],
+    ['Nabla Copilot','https://www.nabla.com','Free AI medical scribe for consultations'],
+    ['DeepScribe','https://www.deepscribe.ai','AI medical transcription & note automation'],
+    ['Abridge','https://www.abridge.com','AI summarises patient-doctor conversations'],
+    ['Doximity GPT','https://www.doximity.com','AI writing tool built for physicians'],
+    ['Glass Health','https://glass.health','AI clinical reasoning & care plan generator'],
+    ['Freed AI','https://www.freed.ai','Free AI medical scribe for any practice'],
+    ['ChatGPT (Med)','https://chat.openai.com','AI for medical summaries, FAQs & reports'],
+    ['Consensus','https://consensus.app','AI search engine for medical research'],
+    ['Mendel AI','https://www.mendel.ai','AI clinical data extraction & trial matching'],
+    ['Regard','https://www.regard.com','AI clinical decision support & diagnosis'],
+    ['Notable Health','https://www.notablehealth.com','AI patient intake & clinical workflow'],
+    ['Ambience','https://www.ambiencehealthcare.com','AI ambient scribe for specialty care']
+  ]},
+  {cat:'VA Tools',color:'#60a5fa',icon:'fa-clipboard-list',tools:[
+    ['ChatGPT','https://chat.openai.com','AI research, writing & task assistant'],
+    ['Notion AI','https://www.notion.so','AI workspace, notes & project manager'],
+    ['Motion','https://www.usemotion.com','AI calendar & project scheduling tool'],
+    ['Otter.ai','https://otter.ai','AI real-time meeting transcription'],
+    ['Fireflies.ai','https://fireflies.ai','AI meeting notes, search & action items'],
+    ['Reclaim.ai','https://reclaim.ai','AI smart time-blocking & calendar sync'],
+    ['Grammarly','https://www.grammarly.com','AI grammar, clarity & tone checker'],
+    ['Zapier AI','https://zapier.com','AI workflow & multi-app automation'],
+    ['Taskade AI','https://www.taskade.com','AI project collaboration & agents'],
+    ['Tome','https://tome.app','AI presentation & visual document builder'],
+    ['Beautiful.ai','https://www.beautiful.ai','AI slide design for polished decks'],
+    ['Mem.ai','https://mem.ai','AI-powered personal knowledge base'],
+    ['Tally','https://tally.so','AI-powered form builder & survey tool'],
+    ['Calendly AI','https://calendly.com','AI scheduling & meeting management']
+  ]},
+  {cat:'Digital Marketing',color:'#22d3ee',icon:'fa-envelope-open-text',tools:[
+    ['Mailchimp AI','https://mailchimp.com','AI email campaigns & audience insights'],
+    ['ActiveCampaign','https://www.activecampaign.com','AI-powered email & marketing automation'],
+    ['GetResponse AI','https://www.getresponse.com','AI email marketing & landing page builder'],
+    ['Google Ads AI','https://ads.google.com','AI smart bidding & performance max campaigns'],
+    ['Meta Ads AI','https://www.facebook.com/business/ads','AI-driven Facebook & Instagram targeting'],
+    ['Klaviyo AI','https://www.klaviyo.com','AI email & SMS marketing for e-commerce'],
+    ['Phrasee','https://phrasee.co','AI brand language & subject line optimiser'],
+    ['Drift AI','https://www.drift.com','AI conversational marketing & chatbot'],
+    ['Brevo','https://www.brevo.com','AI email, SMS & WhatsApp marketing'],
+    ['Omnisend','https://www.omnisend.com','AI omnichannel marketing for ecommerce'],
+    ['Optimove','https://www.optimove.com','AI customer-led marketing & retention'],
+    ['Seventh Sense','https://www.theseventhsense.com','AI send-time optimisation for email'],
+    ['SEMrush Trends','https://www.semrush.com/trends','AI market & competitor traffic intelligence'],
+    ['Marketo AI','https://business.adobe.com/products/marketo','AI-powered B2B marketing suite']
+  ]}
+];
+
+/* Render toolkit + AI Hub modal (both use same toolData = 112 tools) */
+(function(){
+  /* Category emoji map */
+  var emojis = { 'Web Dev':'💻', 'Marketing':'📣', 'SEO':'🔍', 'Social Media':'📱', 'Video AI':'🎬', 'Medical VA':'🏥', 'VA Tools':'🗂️', 'Digital Marketing':'📧' };
+
+  /* ── Per-tool icon map: [FA-icon, gradient-start, gradient-end] ── */
+  var toolIcons = {
+    /* Web Dev */
+    'ChatGPT':          ['fa-robot',        '#0ea5e9','#0284c7'],
+    'GitHub Copilot':   ['fa-github',       '#1e293b','#334155'],
+    'Cursor':           ['fa-terminal',     '#6366f1','#4f46e5'],
+    'V0 by Vercel':     ['fa-layer-group',  '#0f172a','#1e293b'],
+    'Bolt.new':         ['fa-bolt',         '#7c3aed','#5b21b6'],
+    'Replit AI':        ['fa-code',         '#f97316','#ea580c'],
+    'Codeium':          ['fa-keyboard',     '#10b981','#059669'],
+    'Tabnine':          ['fa-magic',        '#8b5cf6','#7c3aed'],
+    'Framer AI':        ['fa-vector-square','#ec4899','#db2777'],
+    'Galileo AI':       ['fa-drafting-compass','#f59e0b','#d97706'],
+    'Locofy':           ['fa-object-group', '#14b8a6','#0d9488'],
+    'Wix AI':           ['fa-globe',        '#3b82f6','#2563eb'],
+    'Lovable':          ['fa-heart',        '#f43f5e','#e11d48'],
+    'Windsurf':         ['fa-wind',         '#22d3ee','#06b6d4'],
+    /* Marketing */
+    'Copy.ai':          ['fa-pen-nib',      '#a855f7','#9333ea'],
+    'Jasper':           ['fa-feather-alt',  '#f97316','#ea580c'],
+    'Writesonic':       ['fa-pencil-alt',   '#10b981','#059669'],
+    'Anyword':          ['fa-chart-bar',    '#3b82f6','#2563eb'],
+    'AdCreative.ai':    ['fa-ad',           '#ef4444','#dc2626'],
+    'Canva AI':         ['fa-paint-brush',  '#00c4cc','#0098a6'],
+    'HubSpot AI':       ['fa-funnel-dollar','#f97316','#ea580c'],
+    'Pencil':           ['fa-film',         '#8b5cf6','#7c3aed'],
+    'Rytr':             ['fa-r',            '#6366f1','#4f46e5'],
+    'Hypotenuse AI':    ['fa-tag',          '#14b8a6','#0d9488'],
+    'Wordtune':         ['fa-sliders-h',    '#f59e0b','#d97706'],
+    'Persado':          ['fa-smile',        '#ec4899','#db2777'],
+    'Smartly.io':       ['fa-bullseye',     '#ef4444','#dc2626'],
+    'Albert AI':        ['fa-brain',        '#7c3aed','#6d28d9'],
+    /* SEO */
+    'Surfer SEO':       ['fa-water',        '#3b82f6','#1d4ed8'],
+    'SEMrush':          ['fa-search',       '#f97316','#ea580c'],
+    'Ahrefs':           ['fa-link',         '#f59e0b','#d97706'],
+    'Frase.io':         ['fa-file-alt',     '#10b981','#059669'],
+    'NeuronWriter':     ['fa-brain',        '#8b5cf6','#7c3aed'],
+    'Clearscope':       ['fa-crosshairs',   '#22d3ee','#06b6d4'],
+    'MarketMuse':       ['fa-chart-line',   '#a855f7','#9333ea'],
+    'RankIQ':           ['fa-trophy',       '#eab308','#ca8a04'],
+    'SEO.ai':           ['fa-robot',        '#6366f1','#4f46e5'],
+    'AlsoAsked':        ['fa-question-circle','#ec4899','#db2777'],
+    'AnswerThePublic':  ['fa-users',        '#14b8a6','#0d9488'],
+    'Moz Pro':          ['fa-shield-alt',   '#3b82f6','#2563eb'],
+    'Screaming Frog':   ['fa-frog',         '#22c55e','#16a34a'],
+    'Diib':             ['fa-heartbeat',    '#ef4444','#dc2626'],
+    /* Social Media */
+    'Buffer AI':        ['fa-calendar-check','#3b82f6','#2563eb'],
+    'Hootsuite':        ['fa-share-alt',    '#ef4444','#dc2626'],
+    'Predis.ai':        ['fa-images',       '#a855f7','#9333ea'],
+    'Flick AI':         ['fa-hashtag',      '#f97316','#ea580c'],
+    'Ocoya':            ['fa-clock',        '#10b981','#059669'],
+    'ContentStudio':    ['fa-th-large',     '#6366f1','#4f46e5'],
+    'Vista Social':     ['fa-eye',          '#22d3ee','#06b6d4'],
+    'Loomly':           ['fa-calendar-alt', '#f59e0b','#d97706'],
+    'Sprout Social':    ['fa-seedling',     '#22c55e','#16a34a'],
+    'ManyChat':         ['fa-comments',     '#3b82f6','#1d4ed8'],
+    'Lately.ai':        ['fa-recycle',      '#14b8a6','#0d9488'],
+    'Typefully':        ['fa-feather',      '#1e293b','#334155'],
+    'Emplifi':          ['fa-star',         '#f59e0b','#d97706'],
+    /* Video AI */
+    'Pictory AI':       ['fa-photo-video',  '#a855f7','#9333ea'],
+    'Runway ML':        ['fa-film',         '#0f172a','#1e293b'],
+    'Pika Labs':        ['fa-play-circle',  '#7c3aed','#6d28d9'],
+    'CapCut AI':        ['fa-cut',          '#ef4444','#dc2626'],
+    'Synthesia':        ['fa-user-circle',  '#3b82f6','#2563eb'],
+    'InVideo AI':       ['fa-video',        '#ef4444','#b91c1c'],
+    'Lumen5':           ['fa-sun',          '#f59e0b','#d97706'],
+    'Descript':         ['fa-microphone',   '#6366f1','#4f46e5'],
+    'HeyGen':           ['fa-user-tie',     '#7c3aed','#5b21b6'],
+    'Vidnoz AI':        ['fa-camera',       '#0369a1','#0284c7'],
+    'Sora':             ['fa-magic',        '#0f172a','#111827'],
+    'Adobe Firefly':    ['fa-fire',         '#ef4444','#dc2626'],
+    'Clipchamp':        ['fa-film',         '#0369a1','#0891b2'],
+    'Topaz Video AI':   ['fa-sliders-h',    '#14b8a6','#0d9488'],
+    /* Medical VA */
+    'Nuance DAX':       ['fa-stethoscope',  '#ef4444','#dc2626'],
+    'Suki AI':          ['fa-microphone-alt','#3b82f6','#2563eb'],
+    'Nabla Copilot':    ['fa-notes-medical','#10b981','#059669'],
+    'DeepScribe':       ['fa-file-medical', '#8b5cf6','#7c3aed'],
+    'Abridge':          ['fa-compress-alt', '#f59e0b','#d97706'],
+    'Doximity GPT':     ['fa-user-md',      '#3b82f6','#1d4ed8'],
+    'Glass Health':     ['fa-heartbeat',    '#22d3ee','#06b6d4'],
+    'Freed AI':         ['fa-unlock',       '#22c55e','#16a34a'],
+    'ChatGPT (Med)':    ['fa-robot',        '#0ea5e9','#0284c7'],
+    'Consensus':        ['fa-graduation-cap','#6366f1','#4f46e5'],
+    'Mendel AI':        ['fa-dna',          '#a855f7','#9333ea'],
+    'Regard':           ['fa-clipboard-check','#14b8a6','#0d9488'],
+    'Notable Health':   ['fa-hospital',     '#ef4444','#dc2626'],
+    'Ambience':         ['fa-wave-square',  '#f97316','#ea580c'],
+    /* VA Tools */
+    'Notion AI':        ['fa-book-open',    '#1e293b','#334155'],
+    'Motion':           ['fa-tachometer-alt','#3b82f6','#2563eb'],
+    'Otter.ai':         ['fa-microphone',   '#0ea5e9','#0369a1'],
+    'Fireflies.ai':     ['fa-headset',      '#f59e0b','#d97706'],
+    'Reclaim.ai':       ['fa-clock',        '#8b5cf6','#7c3aed'],
+    'Grammarly':        ['fa-spell-check',  '#22c55e','#16a34a'],
+    'Zapier AI':        ['fa-random',       '#f97316','#ea580c'],
+    'Taskade AI':       ['fa-tasks',        '#6366f1','#4f46e5'],
+    'Tome':             ['fa-file-powerpoint','#a855f7','#9333ea'],
+    'Beautiful.ai':     ['fa-magic',        '#ec4899','#db2777'],
+    'Mem.ai':           ['fa-memory',       '#14b8a6','#0d9488'],
+    'Tally':            ['fa-poll',         '#22d3ee','#06b6d4'],
+    'Calendly AI':      ['fa-calendar-check','#10b981','#059669'],
+    /* Digital Marketing */
+    'Mailchimp AI':     ['fa-envelope',     '#f59e0b','#ca8a04'],
+    'ActiveCampaign':   ['fa-paper-plane',  '#3b82f6','#2563eb'],
+    'GetResponse AI':   ['fa-reply',        '#10b981','#059669'],
+    'Google Ads AI':    ['fa-google',       '#ef4444','#dc2626'],
+    'Meta Ads AI':      ['fa-facebook',     '#3b82f6','#1d4ed8'],
+    'Klaviyo AI':       ['fa-envelope-open','#6366f1','#4f46e5'],
+    'Phrasee':          ['fa-comment-dots', '#a855f7','#9333ea'],
+    'Drift AI':         ['fa-comments',     '#22d3ee','#06b6d4'],
+    'Brevo':            ['fa-paper-plane',  '#10b981','#059669'],
+    'Omnisend':         ['fa-broadcast-tower','#f97316','#ea580c'],
+    'Optimove':         ['fa-chart-line',   '#14b8a6','#0d9488'],
+    'Seventh Sense':    ['fa-clock',        '#8b5cf6','#7c3aed'],
+    'SEMrush Trends':   ['fa-trending-up',  '#ef4444','#b91c1c'],
+    'Marketo AI':       ['fa-bullseye',     '#f97316','#ea580c']
+  };
+
+  /* helper: get monogram letters from tool name */
+  function mono(name) {
+    var clean = name.replace(/\s*(AI|\.ai|\.io|\.com|\.co)$/i,'').replace(/[^A-Za-z\s]/g,'').trim();
+    var words = clean.split(/\s+/);
+    if (words.length >= 2) return (words[0][0] + words[1][0]).toUpperCase();
+    return clean.substring(0,2).toUpperCase();
+  }
+
+  /* ── Arrow SVG ── */
+  var arrow = '<i class="fas fa-external-link-alt tc-arrow">';
+
+  /* ── Smart Toolkit (card layout) ── */
+  var tkHtml = '';
+  toolData.forEach(function(cat){
+    var cards = cat.tools.map(function(t){
+      var ic = toolIcons[t[0]] || ['fa-robot', cat.color, cat.color];
+      var icoHtml = '<div class="tc-ico" style="background:linear-gradient(135deg,'+ic\[1]+','+ic\[2]+')">'
+        + '<i class="fas '+ic\[0]+'">'
+        + '</div>';
+      return '<a href="'+t\[1]+'" target="\_blank" rel="noopener" class="tc-card" style="--tool-color:'+ic\[1]+'">'
+        + icoHtml
+        + '<div class="tc-body"><div class="tc-name">'+t[0]+'</div><div class="tc-desc">'+t[2]+'</div></div>'
+        + arrow + '</a>';
+    }).join('');
+
+    /* Category head */
+    var catGrad = 'linear-gradient(135deg,' + cat.color + 'dd,' + cat.color + '88)';
+    tkHtml += '<div class="cat-block"><div class="cat-head">'
+      + '<div class="cat-ico" style="background:'+catGrad+'">'
+      + '<i class="fas '+cat.icon+'" style="color:#fff;font-size:1.4rem;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))">'
+      + '</div>'
+      + '<div class="cat-info"><div class="cat-name">'+cat.cat+'</div><div class="cat-count">'+cat.tools.length+' AI tools</div></div>'
+      + '<div class="cat-pill" style="background:'+cat.color+'25;border:1.5px solid '+cat.color+'55;color:'+cat.color+'">'+cat.tools.length+' tools</div>'
+      + '</div><div class="tgrid">'+cards+'</div></div>';
+  });
+  var tw = document.getElementById('tools-wrap');
+  if (tw) tw.innerHTML = tkHtml;
+
+  /* ── AI Hub Modal ── */
+  var modalHtml = '';
+  toolData.forEach(function(cat){
+    var emoji = emojis[cat.cat] || '🤖';
+    var cards = cat.tools.map(function(t){
+      var ic = toolIcons[t[0]] || ['fa-robot', cat.color, cat.color];
+      return '<a href="'+t\[1]+'" target="\_blank" rel="noopener" class="ai-card" style="background:linear-gradient(135deg,'+ic\[1]+'dd,'+ic\[2]+'99)">'
+        + '<i class="fas '+ic\[0]+'">'+t[0]+'</a>';
+    }).join('');
+    modalHtml += '<div class="ai-cat">'
+      + '<div class="ai-cat-title"><span>'+emoji+'</span> '+cat.cat+' <span style="margin-left:auto;font-size:.7rem;opacity:.6">'+cat.tools.length+' tools</span></div>'
+      + '<div class="ai-tool-grid">'+cards+'</div>'
+      + '</div>';
+  });
+  var mw = document.getElementById('modal-tools-wrap');
+  if (mw) mw.innerHTML = modalHtml;
+
+  /* Populate the navbar mega dropdown too */
+  populateMegaDropdown();
+}());
+</script>
+
+<script>
+/* ── Music Player — পালা করে বাজে, loop করে ── */
+var _mpCtx=null,_mpGain=null,_mpRv=null;
+var _mpPlaying=false,_mpMuted=false,_mpStarted=false;
+var _mpPct=0,_mpTmr=null,_mpSeq=null,_mpIdx=0,_mpSched=null;
+window.mpGM='female';
+
+window.mpToggle=function(){
+  if(!_mpStarted){_mpBoot();return;}
+  if(_mpCtx.state==='suspended')_mpCtx.resume();
+  if(_mpPlaying){
+    _mpGain.gain.linearRampToValueAtTime(0,_mpCtx.currentTime+.4);
+    _mpPlaying=false;_mpOrb(false);_mpIco(false);_mpLbl('⏸ Paused');clearTimeout(_mpSeq);
+  } else {
+    _mpGain.gain.linearRampToValueAtTime(_mpMuted?0:.22,_mpCtx.currentTime+.3);
+    _mpPlaying=true;_mpOrb(true);_mpIco(true);_mpBar();_mpRun(_mpIdx);
+  }
+};
+window.mpMute=function(){
+  if(!_mpStarted)return;
+  _mpMuted=!_mpMuted;
+  _mpGain.gain.linearRampToValueAtTime(_mpMuted?0:.22,_mpCtx.currentTime+.3);
+  var e=document.getElementById('mp-vol');if(!e)return;
+  e.innerHTML=_mpMuted
+    ?'<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>'
+    :'<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
+};
+window.mpGender=function(){
+  window.mpGM=(window.mpGM==='female')?'male':'female';
+  var b=document.getElementById('mp-gender');if(b)b.textContent=window.mpGM==='female'?'♀':'♂';
+  if(window.speechSynthesis){window.speechSynthesis.cancel();setTimeout(_mpSpeak,400);}
+};
+window.mpClose=function(){
+  _mpPlaying=false;_mpStarted=false;clearTimeout(_mpSeq);clearInterval(_mpTmr);
+  try{if(_mpCtx)_mpCtx.close();}catch(e){}
+  var p=document.getElementById('mplayer');if(p)p.style.display='none';
+};
+
+function _mpLbl(t){var e=document.getElementById('mp-lbl');if(e)e.textContent=t;}
+function _mpOrb(on){var e=document.getElementById('mp-orb');if(e)e.classList.toggle('on',on);}
+function _mpIco(p){var e=document.getElementById('mp-ico');if(!e)return;e.innerHTML=p?'<rect x="5" y="4" width="4" height="16"/><rect x="15" y="4" width="4" height="16"/>':'<polygon points="5 3 19 12 5 21 5 3"/>';}
+function _mpBar(){clearInterval(_mpTmr);_mpTmr=setInterval(function(){if(!_mpPlaying)return;_mpPct=(_mpPct+.15)%100;var b=document.getElementById('mp-prog');if(b)b.style.width=_mpPct+'%';},200);}
+
+function _mpBoot(){
+  if(_mpStarted)return;
+  _mpStarted=true;
+  _mpLbl('🥁 Drum — Arabic Maqsum');
+  _mpCtx=new(window.AudioContext||window.webkitAudioContext)();
+  /* Reverb */
+  _mpRv=_mpCtx.createConvolver();
+  var rg=_mpCtx.createGain();rg.gain.value=.5;
+  var buf=_mpCtx.createBuffer(2,Math.round(_mpCtx.sampleRate*2),_mpCtx.sampleRate);
+  for(var ch=0;ch<2;ch++){var d=buf.getChannelData(ch);for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,2.5);}
+  _mpRv.buffer=buf;
+  /* Master */
+  _mpGain=_mpCtx.createGain();
+  _mpGain.gain.setValueAtTime(0,_mpCtx.currentTime);
+  _mpGain.gain.linearRampToValueAtTime(.22,_mpCtx.currentTime+.3);
+  _mpGain.connect(_mpCtx.destination);
+  _mpRv.connect(rg);rg.connect(_mpGain);
+  _mpCtx.resume().then(function(){
+    _mpSched=[
+      {lbl:'🥁 Drum — Arabic Maqsum', dur:60000, fn:_mpDrum},
+      {lbl:'🎸 Bass — Tanpura Drone',  dur:4000,  fn:_mpBassLayer},
+      {lbl:'🪘 Oud — Maqam Rast',      dur:4000,  fn:_mpOud},
+      {lbl:'🎹 Pad — Choir Chords',    dur:4000,  fn:_mpPad},
+      {lbl:'🎤 Vocal — Pentatonic Hum',dur:4000,  fn:_mpVocal},
+      {lbl:'🎸 Guitar — Bengali Baul', dur:4000,  fn:_mpGuitar},
+    ];
+    _mpPlaying=true;_mpOrb(true);_mpIco(true);_mpBar();
+    _mpRun(0);
+    setTimeout(_mpSpeak,1000);
+  });
+}
+
+function _mpRun(i){
+  if(!_mpPlaying)return;
+  _mpIdx=i;var e=_mpSched[i];_mpLbl(e.lbl);
+  try{e.fn();}catch(err){}
+  _mpSeq=setTimeout(function(){if(_mpPlaying)_mpRun((i+1)%_mpSched.length);},e.dur);
+}
+
+/* ── Noise buffer ── */
+function _mpNb(s){
+  var b=_mpCtx.createBuffer(1,Math.ceil(_mpCtx.sampleRate*s),_mpCtx.sampleRate),d=b.getChannelData(0);
+  for(var i=0;i<d.length;i++)d[i]=Math.random()*2-1;return b;
+}
+
+/* ── Karplus-Strong pluck ── */
+function _mpPluck(freq,vol,t,dur){
+  var sz=Math.round(_mpCtx.sampleRate/freq);if(sz<2)return;
+  var buf=_mpCtx.createBuffer(1,sz,_mpCtx.sampleRate),d=buf.getChannelData(0);
+  for(var i=0;i<sz;i++)d[i]=Math.random()*2-1;
+  var s=_mpCtx.createBufferSource(),g=_mpCtx.createGain(),lp=_mpCtx.createBiquadFilter();
+  s.buffer=buf;s.loop=true;lp.type='lowpass';lp.frequency.value=freq*6;lp.Q.value=.5;
+  g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+.012);
+  g.gain.setValueAtTime(vol*.9,t+dur*.5);g.gain.exponentialRampToValueAtTime(.001,t+dur+.08);
+  s.connect(lp);lp.connect(g);g.connect(_mpGain);g.connect(_mpRv);s.start(t);s.stop(t+dur+.12);
+}
+
+/* ══════════════════════════════
+   LAYER 1 — Arabic Maqsum Drum
+   Duff + Tabla + Riq @ 90 BPM
+   Self-loops 60 seconds
+══════════════════════════════ */
+function _mpDrum(){
+  if(!_mpPlaying)return;
+  var n=_mpCtx.currentTime,b=60/90,bar=b*4;
+  function duff(t,vol){
+    var o=_mpCtx.createOscillator(),og=_mpCtx.createGain();
+    o.type='sine';o.frequency.setValueAtTime(110,t);o.frequency.exponentialRampToValueAtTime(42,t+.22);
+    og.gain.setValueAtTime(vol*1.8,t);og.gain.exponentialRampToValueAtTime(.001,t+.28);
+    o.connect(og);og.connect(_mpGain);og.connect(_mpRv);o.start(t);o.stop(t+.30);
+    var s=_mpCtx.createBufferSource(),sg=_mpCtx.createGain(),sf=_mpCtx.createBiquadFilter();
+    s.buffer=_mpNb(.15);sf.type='lowpass';sf.frequency.value=220;
+    sg.gain.setValueAtTime(vol*1.4,t);sg.gain.exponentialRampToValueAtTime(.001,t+.15);
+    s.connect(sf);sf.connect(sg);sg.connect(_mpGain);s.start(t);s.stop(t+.16);
+  }
+  function tabla(t,vol){
+    var o=_mpCtx.createOscillator(),og=_mpCtx.createGain();
+    o.type='sine';o.frequency.setValueAtTime(280,t);o.frequency.exponentialRampToValueAtTime(200,t+.10);
+    og.gain.setValueAtTime(vol*1.4,t);og.gain.exponentialRampToValueAtTime(.001,t+.14);
+    o.connect(og);og.connect(_mpGain);og.connect(_mpRv);o.start(t);o.stop(t+.16);
+    var s=_mpCtx.createBufferSource(),sg=_mpCtx.createGain(),sf=_mpCtx.createBiquadFilter();
+    s.buffer=_mpNb(.10);sf.type='bandpass';sf.frequency.value=520;sf.Q.value=4;
+    sg.gain.setValueAtTime(vol*1.1,t);sg.gain.exponentialRampToValueAtTime(.001,t+.10);
+    s.connect(sf);sf.connect(sg);sg.connect(_mpGain);s.start(t);s.stop(t+.11);
+  }
+  function riq(t,vol){
+    var s=_mpCtx.createBufferSource(),sg=_mpCtx.createGain(),sf=_mpCtx.createBiquadFilter();
+    s.buffer=_mpNb(.06);sf.type='highpass';sf.frequency.value=4500;
+    sg.gain.setValueAtTime(vol*1.3,t);sg.gain.exponentialRampToValueAtTime(.001,t+.06);
+    s.connect(sf);sf.connect(sg);sg.connect(_mpGain);s.start(t);s.stop(t+.07);
+  }
+  /* Maqsum pattern */
+  duff(n,.95);tabla(n+b*.5,.55);tabla(n+b,.75);riq(n+b*1.5,.60);
+  duff(n+b*2,.85);duff(n+b*2.5,.70);tabla(n+b*3,.80);riq(n+b*3.5,.55);
+  duff(n+bar,.90);riq(n+bar+b*.25,.45);tabla(n+bar+b*.5,.50);tabla(n+bar+b,.78);
+  riq(n+bar+b*1.5,.55);duff(n+bar+b*2,.88);tabla(n+bar+b*2.5,.60);
+  tabla(n+bar+b*3,.82);riq(n+bar+b*3.25,.40);riq(n+bar+b*3.5,.60);riq(n+bar+b*3.75,.45);
+  for(var i=0;i<8;i++){riq(n+b*i*.5,.28);riq(n+bar+b*i*.5,.26);}
+  if(_mpIdx===0&&_mpPlaying)
+    setTimeout(function(){if(_mpIdx===0&&_mpPlaying)_mpDrum();},(bar*2-.04)*1000);
+}
+
+/* LAYER 2 — Bass */
+function _mpBassLayer(){
+  var now=_mpCtx.currentTime;
+  [[65.4,.14,0,3.8],[98.0,.09,.3,3.5],[130.8,.07,.6,3.2]].forEach(function(n){
+    _mpPluck(n[0],n[1],now+n[2],n[3]);
+  });
+}
+
+/* LAYER 3 — Oud */
+var _mpOudIdx=0;
+function _mpOud(){
+  var pats=[
+    [[146.83,.17,0,.55],[164.81,.15,.6,.50],[196.00,.17,1.15,.55],[220.00,.19,1.75,.65],[246.94,.17,2.45,.55],[220.00,.15,3.05,.55],[196.00,.16,3.65,.55],[146.83,.19,4.2,1.5]],
+    [[293.66,.18,0,.55],[261.63,.16,.6,.50],[246.94,.17,1.15,.55],[220.00,.19,1.75,.60],[196.00,.17,2.40,.55],[164.81,.16,3.0,.50],[146.83,.21,3.6,1.8]],
+  ];
+  var pat=pats[_mpOudIdx%2];_mpOudIdx++;
+  var now=_mpCtx.currentTime;
+  pat.forEach(function(n){_mpPluck(n[0],n[1],now+n[2],n[3]);});
+  _mpPluck(73.42,.18,now,1.0);
+}
+
+/* LAYER 4 — Pad */
+function _mpPad(){
+  var now=_mpCtx.currentTime;
+  [146.83,220.00,261.63,293.66].forEach(function(f,i){
+    var o=_mpCtx.createOscillator(),g=_mpCtx.createGain(),lp=_mpCtx.createBiquadFilter();
+    o.type='sawtooth';o.frequency.value=f;lp.type='lowpass';lp.frequency.value=f*3;lp.Q.value=.8;
+    g.gain.setValueAtTime(0,now);g.gain.linearRampToValueAtTime(.028-i*.004,now+1.2);
+    g.gain.setValueAtTime(.028-i*.004,now+2.5);g.gain.linearRampToValueAtTime(0,now+3.8);
+    o.connect(lp);lp.connect(g);g.connect(_mpGain);g.connect(_mpRv);o.start(now);o.stop(now+4.0);
+  });
+}
+
+/* LAYER 5 — Vocal */
+function _mpVocal(){
+  var pent=[146.83,196.00,220.00,261.63,293.66,220.00,196.00,146.83];
+  var timing=[0,0.5,1.0,1.5,2.0,2.5,3.0,3.5];
+  var durs=[0.45,0.45,0.45,0.45,0.45,0.45,0.45,0.45];
+  var now=_mpCtx.currentTime;
+  pent.forEach(function(freq,i){
+    [800,1200].forEach(function(ff,fi){
+      var o=_mpCtx.createOscillator(),fm=_mpCtx.createBiquadFilter(),g=_mpCtx.createGain();
+      o.type='triangle';o.frequency.value=freq;fm.type='bandpass';fm.frequency.value=ff;fm.Q.value=6;
+      var vol=[.13,.07][fi];
+      g.gain.setValueAtTime(0,now+timing[i]);g.gain.linearRampToValueAtTime(vol,now+timing[i]+.2);
+      g.gain.setValueAtTime(vol*.85,now+timing[i]+durs[i]*.7);g.gain.linearRampToValueAtTime(0,now+timing[i]+durs[i]);
+      o.connect(fm);fm.connect(g);g.connect(_mpGain);g.connect(_mpRv);o.start(now+timing[i]);o.stop(now+timing[i]+durs[i]+.1);
+    });
+  });
+}
+
+/* LAYER 6 — Guitar */
+var _mpGuitarIdx=0;
+function _mpGuitar(){
+  var pats=[
+    [[130.8,.14,0,.70],[146.83,.16,.75,.65],[164.81,.15,1.45,.60],[196.00,.17,2.1,.65],[220.00,.18,2.8,.70],[293.66,.20,3.5,1.8]],
+    [[293.66,.17,0,.65],[261.63,.15,.7,.60],[246.94,.16,1.35,.60],[220.00,.18,2.0,.70],[196.00,.16,2.75,.65],[146.83,.21,3.5,1.8]],
+  ];
+  var pat=pats[_mpGuitarIdx%2];_mpGuitarIdx++;
+  var now=_mpCtx.currentTime;
+  pat.forEach(function(n){_mpPluck(n[0],n[1],now+n[2],n[3]);});
+  _mpPluck(73.42,.16,now,1.0);
+}
+
+/* ── Voice welcome ── */
+function _mpSpeak(){
+  if(!window.speechSynthesis)return;
+  window.speechSynthesis.cancel();
+  var h=new Date().getHours(),gm=window.mpGM||'female';
+  var p=h<12?'Good Morning':h<17?'Good Afternoon':h<21?'Good Evening':'Good Night';
+  var lines=[p+'! Welcome to Monjurul Islam Polash portfolio.',
+    'I am a Digital Marketer, Web Developer, S E O Expert, and Virtual Assistant.',
+    'Available twenty four hours a day. Thank you for visiting!'];
+  var idx=0;
+  function next(){
+    if(idx>=lines.length)return;
+    var u=new SpeechSynthesisUtterance(lines[idx]);
+    var vv=window.speechSynthesis.getVoices(),best=null,top=-1;
+    vv.forEach(function(v){
+      if(!v.lang||!v.lang.startsWith('en'))return;
+      var sc=0,nm=v.name.toLowerCase();
+      if(gm==='female'){if(/female|zira|samantha/.test(nm))sc+=50;if(/david|mark/.test(nm))sc-=30;}
+      else{if(/david/.test(nm))sc+=58;if(/mark|james/.test(nm))sc+=50;}
+      if(v.localService)sc+=10;if(sc>top){top=sc;best=v;}
+    });
+    if(!best)vv.forEach(function(v){if(!best&&v.lang&&v.lang.startsWith('en'))best=v;});
+    if(best)u.voice=best;
+    u.lang='en-US';u.rate=gm==='female'?.82:1.20;u.pitch=gm==='female'?1.4:.85;
+    u.onend=function(){idx++;setTimeout(next,280);};u.onerror=function(){idx++;setTimeout(next,100);};
+    window.speechSynthesis.speak(u);
+  }
+  var vs=window.speechSynthesis.getVoices();
+  if(vs.length)next();else{window.speechSynthesis.onvoiceschanged=function(){window.speechSynthesis.onvoiceschanged=null;next();};}
+}
+
+/* ── Auto-start on first user interaction ── */
+(function(){
+  function onFirst(e){
+    /* Remove all listeners first */
+    ['click','touchstart','keydown','scroll','mousemove'].forEach(function(ev){
+      document.removeEventListener(ev,onFirst,true);
+    });
+    if(_mpStarted) return;
+    _mpBoot();
+    /* Voice gender cycle every 2 min */
+    var order=['female','male'],vi=0;
+    (function cycle(){
+      window.mpGM=order[vi%2];
+      var b=document.getElementById('mp-gender');
+      if(b)b.textContent=window.mpGM==='female'?'♀':'♂';
+      vi++; setTimeout(cycle,120000);
+    })();
+  }
+  /* Use capture:true so we catch the event before anything else */
+  ['click','touchstart','keydown','scroll','mousemove'].forEach(function(ev){
+    document.addEventListener(ev,onFirst,{capture:true,passive:true});
+  });
+})();
+</script>
+</body>
+</html>

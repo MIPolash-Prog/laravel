@@ -1,0 +1,2898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Monjurul Islam Polash — Digital Marketer, Web Developer, SEO Expert & Virtual Assistant. Available 24/7.">
+    <title>Monjurul Islam Polash | Digital Expert & Freelancer</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* ==========================================
+           ROOT VARIABLES & BASE STYLES
+        ========================================== */
+        :root {
+            --purple: #764ba2;
+            --violet: #667eea;
+            --pink: #f093fb;
+            --yellow: #facc15;
+            --green: #22c55e;
+            --dark: #111827;
+            --dark2: #1f2937;
+            --grad: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            --r: 9999px;
+            --cr: 24px;
+            --card-shadow: 0 25px 50px -12px rgba(102,126,234,.4);
+            --t: all .3s ease;
+        }
+
+        * {
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--dark);
+            color: #fff;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* ==========================================
+           UTILITY CLASSES
+        ========================================== */
+        .gradient-text {
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-bg {
+            background: var(--grad);
+        }
+
+        /* ==========================================
+           ANIMATIONS
+        ========================================== */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(102,126,234,.5); }
+            50% { box-shadow: 0 0 40px rgba(102,126,234,.8), 0 0 60px rgba(118,75,162,.6); }
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .blob {
+            border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+            animation: blob-morph 8s ease-in-out infinite;
+        }
+
+        @keyframes blob-morph {
+            0%, 100% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+            25% { border-radius: 70% 30% 50% 50% / 30% 70% 30% 70%; }
+            50% { border-radius: 30% 70% 30% 70% / 50% 50% 70% 30%; }
+            75% { border-radius: 50% 50% 30% 70% / 70% 30% 70% 30%; }
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,.3);
+            border-radius: 50%;
+            animation: particle-float 15s infinite;
+        }
+
+        @keyframes particle-float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* ==========================================
+           NAVBAR STYLES
+        ========================================== */
+        #main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 5, 30, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .nav-top {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0 16px;
+            height: 56px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .nav-top::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-logo-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            text-decoration: none;
+            color: #fff;
+            margin-right: 4px;
+        }
+
+        .nav-logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            flex-shrink: 0;
+            background: var(--grad);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            color: #fff;
+        }
+
+        .nav-logo-text {
+            line-height: 1.15;
+        }
+
+        .nav-logo-text strong {
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .nav-logo-text span {
+            font-size: 0.62rem;
+            color: #a78bfa;
+            font-weight: 400;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+
+        .nav-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: rgba(255,255,255,.7);
+            text-decoration: none;
+            transition: all .2s;
+            white-space: nowrap;
+            flex-shrink: 0;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+
+        .nav-pill:hover {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+
+        .nav-pill.active-pill {
+            background: rgba(102,126,234,0.25);
+            color: #fff;
+        }
+
+        .nav-pill i {
+            font-size: 0.75rem;
+        }
+
+        .nav-hire {
+            background: var(--yellow);
+            color: #1a1040 !important;
+            font-weight: 700;
+        }
+
+        .nav-hire:hover {
+            background: #d97706;
+        }
+
+        .nav-sep {
+            width: 1px;
+            height: 24px;
+            background: rgba(255,255,255,0.12);
+            flex-shrink: 0;
+        }
+
+        .nav-dropdown {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            background: rgba(10, 4, 32, 0.98);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 14px;
+            min-width: 220px;
+            padding: 8px;
+            box-shadow: 0 16px 40px rgba(0,0,0,.6);
+            z-index: 2000;
+        }
+
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,.75);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all .15s;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+
+        .dropdown-divider {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin: 6px 0;
+        }
+
+        .nav-dropdown:hover .dropdown-menu,
+        .dropdown-menu.open {
+            display: block;
+        }
+        
+        .nav-pill-bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            overflow-x: auto;
+            white-space: nowrap;
+            background: rgba(255,255,255,0.03);
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .nav-pill-bar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .ai-pill {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            white-space: nowrap;
+            background: rgba(255,255,255,0.08);
+            color: #e2e8f0;
+            border: 1px solid rgba(255,255,255,0.12);
+            text-decoration: none;
+            transition: all .2s;
+            flex-shrink: 0;
+        }
+
+        .ai-pill:hover {
+            background: rgba(102,126,234,0.3);
+            border-color: var(--violet);
+            color: #fff;
+        }
+
+        .nav-icon-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,.7);
+            background: rgba(255,255,255,0.08);
+            transition: all .2s;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .nav-icon-btn:hover {
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+        }
+
+        .nav-lang {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,.7);
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.05);
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .nav-lang:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .lang-menu {
+            padding: 0;
+            min-width: 180px;
+        }
+
+        .lang-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+        }
+
+        .lang-menu a.active {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .mobile-lang-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            padding: 8px 0 16px;
+        }
+
+        .mobile-lang-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 10px 8px;
+            background: rgba(255,255,255,0.07);
+            border-radius: 8px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .mobile-lang-btn:hover,
+        .mobile-lang-btn.active {
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+        }
+
+        /* Overflow menu panel */
+        #nav-overflow-menu {
+            display: none;
+            position: fixed;
+            top: 60px;
+            right: 16px;
+            background: rgba(15,15,30,0.98);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            min-width: 220px;
+            max-width: 280px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            z-index: 1001;
+            overflow: hidden;
+        }
+        
+        #nav-overflow-menu.open {
+            display: block;
+        }
+        
+        .overflow-section-label {
+            padding: 10px 14px 4px;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: rgba(255,255,255,0.4);
+        }
+        
+        .overflow-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 14px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.82rem;
+            transition: all 0.15s;
+        }
+        
+        .overflow-item:hover {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+        
+        .overflow-divider {
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+            margin: 6px 0;
+        }
+        
+        #nav-more-btn {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 20px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        
+        #nav-more-btn:hover,
+        #nav-more-btn.open {
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+        }
+
+        .nav-talk {
+            flex-shrink: 0;
+            margin-left: 4px;
+            background: var(--grad);
+            color: #fff !important;
+            font-weight: 600;
+            font-size: 0.8rem;
+            padding: 7px 16px;
+            border-radius: 20px;
+            white-space: nowrap;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all .2s;
+        }
+
+        .nav-talk:hover {
+            opacity: 0.88;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 4px;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            width: 22px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            display: block;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            flex-direction: column;
+            gap: 2px;
+            background: #1a1040;
+            padding: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            z-index: 10000;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(255,255,255,.07);
+            color: #fff;
+        }
+
+        .mobile-section-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--violet);
+            padding: 12px 12px 4px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-desktop-links {
+                display: none !important;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .nav-pill-bar {
+                display: none;
+            }
+        }
+
+        /* ==========================================
+           HERO SECTION
+        ========================================== */
+        .hero-section {
+            padding-top: 0;
+            min-height: 100vh;
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--card-shadow);
+        }
+
+        .contact-btn {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            transition: all .4s ease;
+            z-index: -1;
+        }
+
+        .contact-btn:hover::before {
+            width: 100%;
+        }
+
+        /* ==========================================
+           PLATFORM CARDS
+        ========================================== */
+        .platform-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--cr);
+            padding: 32px;
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .platform-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .platform-card:hover::before {
+            left: 100%;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        /* ==========================================
+           AI TOOLS SMART TOOLKIT
+        ========================================== */
+       
+
+        .cat-block:hover {
+            border-color: rgba(255,255,255,.2);
+        }
+
+        .cat-head {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1.5px solid rgba(255,255,255,.1);
+        }
+
+        .cat-ico {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 16px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.2);
+        }
+
+        .cat-info {
+            flex: 1;
+        }
+
+        .cat-name {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .cat-count {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,.6);
+        }
+
+        .cat-pill {
+            padding: 4px 14px;
+            border-radius: var(--r);
+            font-size: 0.72rem;
+            font-weight: 700;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        .tgrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
+        }
+
+        /* Tool Card */
+        .tc-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(255,255,255,.05);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 14px;
+            padding: 14px 16px;
+            text-decoration: none;
+            color: inherit;
+            transition: all .25s cubic-bezier(.175,.885,.32,1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tc-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,.03), transparent);
+            opacity: 0;
+            transition: opacity .25s;
+        }
+
+        .tc-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            border-color: rgba(255,255,255,.25);
+            box-shadow: 0 12px 32px rgba(0,0,0,.3);
+        }
+
+        .tc-card:hover::before {
+            opacity: 1;
+        }
+
+        .tc-ico {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .tc-ico::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(255,255,255,.2) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .tc-ico i {
+            font-size: 1.1rem;
+            filter: drop-shadow(0 1px 3px rgba(0,0,0,.4));
+        }
+
+        .tc-card:hover .tc-ico {
+            transform: scale(1.1) rotate(-3deg);
+        }
+
+        .tc-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .tc-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 3px;
+            line-height: 1.2;
+        }
+
+        .tc-desc {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,.55);
+            line-height: 1.4;
+        }
+
+        .tc-arrow {
+            flex-shrink: 0;
+            opacity: 0;
+            transition: all .2s;
+            color: rgba(255,255,255,.4);
+            font-size: 0.75rem;
+        }
+
+        .tc-card:hover .tc-arrow {
+            opacity: 1;
+            transform: translate(3px, -3px);
+        }
+
+        /* ==========================================
+           AI HUB MODAL
+        ========================================== */
+        #ai-fab {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9998;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            background: var(--grad);
+            color: #fff;
+            font-size: 24px;
+            box-shadow: 0 6px 24px rgba(102,126,234,.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .2s;
+        }
+
+        #ai-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 32px rgba(102,126,234,.5);
+        }
+
+        #ai-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0,0,0,.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            overflow-y: auto;
+            padding: 20px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        #ai-modal.open {
+            display: flex;
+        }
+
+        .modal-box {
+            background: #0f0a2e;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 28px 24px 32px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.5);
+            border: 1px solid rgba(255,255,255,.12);
+            position: relative;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            font-size: 24px;
+            font-weight: 700;
+            cursor: pointer;
+            background: rgba(255,255,255,.1);
+            border: none;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,.7);
+            transition: all .2s;
+        }
+
+        .modal-close:hover {
+            background: rgba(220,50,50,.5);
+            color: #fff;
+        }
+
+        .modal-box h2 {
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .modal-sub {
+            text-align: center;
+            color: rgba(255,255,255,.5);
+            font-size: 0.82rem;
+            margin-bottom: 20px;
+        }
+
+        .modal-search {
+            width: 100%;
+            padding: 12px 18px;
+            border-radius: var(--r);
+            border: 1.5px solid rgba(255,255,255,.15);
+            background: rgba(255,255,255,.08);
+            color: #fff;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 20px;
+            outline: none;
+            transition: border-color .2s;
+        }
+
+        .modal-search::placeholder {
+            color: rgba(255,255,255,.4);
+        }
+
+        .modal-search:focus {
+            border-color: rgba(255,255,255,.4);
+        }
+
+        .ai-cat {
+            margin-bottom: 20px;
+        }
+
+        .ai-cat.hidden {
+            display: none;
+        }
+
+        .ai-cat-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.4);
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ai-cat-title span {
+            font-size: 1rem;
+        }
+
+        .ai-tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 8px;
+        }
+
+        .ai-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 8px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.7rem;
+            text-align: center;
+            min-height: 70px;
+            border: 1px solid rgba(255,255,255,.08);
+            transition: all .2s;
+        }
+
+        .ai-card.hidden {
+            display: none;
+        }
+
+        .ai-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,.3);
+            border-color: rgba(255,255,255,.2);
+        }
+
+        .ai-card i {
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+        }
+
+        /* ==========================================
+           SERVICES & CONTACT SECTIONS
+        ========================================== */
+        .service-card {
+            background: rgba(31,41,55,.6);
+            border: 1px solid rgba(75,85,99,.3);
+            border-radius: var(--cr);
+            padding: 32px;
+            backdrop-filter: blur(8px);
+            transition: all .4s cubic-bezier(.175,.885,.32,1.275);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-shadow);
+            border-color: rgba(102,126,234,.3);
+        }
+
+        .contact-card {
+            background: rgba(31,41,55,.6);
+            border: 1px solid rgba(75,85,99,.3);
+            border-radius: var(--cr);
+            padding: 32px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            transition: all .4s cubic-bezier(.175,.885,.32,1.275);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-shadow);
+        }
+
+        /* ==========================================
+           FOOTER
+        ========================================== */
+        footer {
+            background: #030712;
+            padding: 48px 20px;
+            text-align: center;
+        }
+
+        footer h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        footer h4 span {
+            color: var(--yellow);
+        }
+
+        footer p {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .foot-socials {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .foot-social {
+            width: 44px;
+            height: 44px;
+            background: var(--dark2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #fff;
+            transition: all .2s;
+        }
+
+        .foot-social:hover {
+            background: var(--violet);
+            transform: translateY(-3px);
+        }
+
+        .foot-social.wa:hover {
+            background: var(--green);
+        }
+
+        .foot-copy {
+            border-top: 1px solid var(--dark2);
+            padding-top: 20px;
+            color: #4b5563;
+            font-size: 0.8rem;
+        }
+
+        /* ==========================================
+           WELCOME AUDIO PLAYER
+        ========================================== */
+        #audio-player {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(15, 10, 46, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50px;
+            padding: 8px 16px 8px 8px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+        }
+
+        #audio-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, var(--violet), var(--purple));
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .2s;
+            flex-shrink: 0;
+        }
+
+        #audio-btn:hover {
+            transform: scale(1.08);
+        }
+
+        #audio-btn.playing {
+            animation: audioPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes audioPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.6); }
+            50% { box-shadow: 0 0 0 12px rgba(102, 126, 234, 0); }
+        }
+
+        #audio-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        #audio-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+        }
+
+        #audio-track {
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        #audio-wave {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            height: 16px;
+        }
+
+        .wave-bar {
+            width: 3px;
+            height: 4px;
+            background: linear-gradient(to top, var(--violet), var(--pink));
+            border-radius: 2px;
+            transition: height .1s;
+        }
+
+        #audio-wave.playing .wave-bar {
+            animation: waveAnim 0.6s ease-in-out infinite;
+        }
+
+        #audio-wave.playing .wave-bar:nth-child(1) { animation-delay: 0s; }
+        #audio-wave.playing .wave-bar:nth-child(2) { animation-delay: 0.1s; }
+        #audio-wave.playing .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+        #audio-wave.playing .wave-bar:nth-child(4) { animation-delay: 0.15s; }
+        #audio-wave.playing .wave-bar:nth-child(5) { animation-delay: 0.05s; }
+
+        @keyframes waveAnim {
+            0%, 100% { height: 4px; }
+            50% { height: 14px; }
+        }
+
+        #volume-slider {
+            width: 60px;
+            height: 4px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        #volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white overflow-x-hidden">
+
+    <!-- ==========================================
+         NAVBAR
+    ========================================== -->
+    <nav id="main-nav">
+        <div class="nav-top">
+            <!-- Logo -->
+            <a href="#" class="nav-logo-box">
+                <div class="nav-logo-icon">MIP</div>
+                <div class="nav-logo-text">
+                    <strong>Monjurul Islam Polash</strong>
+                    <span>Digital Expert & Freelancer</span>
+                </div>
+            </a>
+
+            <div class="nav-sep"></div>
+
+            <!-- Desktop Links -->
+            <div class="nav-desktop-links" style="display:flex;align-items:center;gap:4px;flex-shrink:0;">
+                <a href="#about" class="nav-pill"><i class="fas fa-user"></i> About</a>
+                <a href="#services" class="nav-pill"><i class="fas fa-briefcase"></i> Services</a>
+                
+                <!-- Hire Me Dropdown -->
+                <div class="nav-dropdown">
+                    <button class="nav-pill nav-hire" id="hire-dropdown-btn" onclick="toggleDropdown('hire-dropdown'); event.stopPropagation();">
+                        <i class="fas fa-handshake"></i> Hire Me <i class="fas fa-chevron-down" style="font-size:0.55rem;margin-left:2px;"></i>
+                    </button>
+                    <div class="dropdown-menu hire-dropdown" id="hire-dropdown-menu">
+                        <div style="padding:8px 12px;font-size:0.7rem;color:rgba(255,255,255,0.5);border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:4px;">💼 Hire on Platform</div>
+                        <a href="https://www.fiverr.com" target="_blank"><i class="fas fa-star" style="color:#1dbf73"></i> Fiverr</a>
+                        <a href="https://www.upwork.com" target="_blank"><i class="fas fa-trophy" style="color:#14a800"></i> Upwork</a>
+                        <a href="https://www.peopleperhour.com" target="_blank"><i class="fas fa-chart-line" style="color:#27c4a0"></i> PeoplePerHour</a>
+                        <a href="https://www.freelancer.com" target="_blank"><i class="fas fa-briefcase" style="color:#0e76bc"></i> Freelancer.com</a>
+                        <a href="https://www.guru.com" target="_blank"><i class="fas fa-user-check" style="color:#8b5cf6"></i> Guru.com</a>
+                        <div class="dropdown-divider"></div>
+                        <div style="padding:8px 12px;font-size:0.7rem;color:rgba(255,255,255,0.5);border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:4px;">📱 Direct Order</div>
+                        <a href="https://wa.me/8801723328481" target="_blank" style="color:#25d366;"><i class="fab fa-whatsapp" style="color:#25d366"></i> WhatsApp Order</a>
+                        <a href="mailto:Polash@programmer.net" style="color:#facc15;"><i class="fas fa-envelope" style="color:#facc15"></i> Custom Order</a>
+                    </div>
+                </div>
+
+                <!-- AI Tools Dropdown -->
+                <div class="nav-dropdown">
+                    <button class="nav-pill" id="ai-dropdown-btn" onclick="toggleDropdown('ai-dropdown'); event.stopPropagation();">
+                        <i class="fas fa-robot"></i> AI Tools <i class="fas fa-chevron-down" style="font-size:0.55rem;margin-left:2px;"></i>
+                    </button>
+                    <div class="dropdown-menu" id="ai-dropdown-menu">
+                        <a href="#ai-tools" onclick="closeDropdowns()"><i class="fas fa-robot"></i> All AI Tools</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="https://mipolash-prog.github.io/Polash-Freelancer/AI.html" target="_blank"><i class="fas fa-info-circle"></i> About AI</a>
+                        <a href="https://mipolash-prog.github.io/Polash-Freelancer/polash-portfolio.html" target="_blank"><i class="fas fa-briefcase"></i> Tech Portfolio</a>
+                        <a href="https://smart-pro-toolkit.lovable.app" target="_blank"><i class="fas fa-toolbox"></i> Smart Pro Toolkit</a>
+                    </div>
+                </div>
+
+                <!-- Platforms Dropdown -->
+                <div class="nav-dropdown">
+                    <button class="nav-pill" id="plat-dropdown-btn" onclick="toggleDropdown('plat-dropdown'); event.stopPropagation();">
+                        <i class="fas fa-globe"></i> Platforms <i class="fas fa-chevron-down" style="font-size:0.55rem;margin-left:2px;"></i>
+                    </button>
+                    <div class="dropdown-menu" id="plat-dropdown-menu">
+                        <a href="https://www.fiverr.com" target="_blank"><i class="fas fa-star" style="color:#1dbf73"></i> Fiverr — Top Rated Seller</a>
+                        <a href="https://www.upwork.com" target="_blank"><i class="fas fa-trophy" style="color:#14a800"></i> Upwork — Top Freelancer</a>
+                        <a href="https://www.peopleperhour.com" target="_blank"><i class="fas fa-chart-line" style="color:#27c4a0"></i> PeoplePerHour</a>
+                        <a href="https://www.freelancer.com" target="_blank"><i class="fas fa-briefcase" style="color:#0e76bc"></i> Freelancer.com</a>
+                        <a href="https://www.guru.com" target="_blank"><i class="fas fa-user-check" style="color:#8b5cf6"></i> Guru.com</a>
+                        <a href="https://www.truelancer.com" target="_blank"><i class="fas fa-check-circle" style="color:#f47206"></i> Truelancer</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#hire" onclick="closeDropdowns()" style="color:#facc15;"><i class="fas fa-handshake" style="color:#facc15"></i> View All Platforms</a>
+                    </div>
+                </div>
+
+                <!-- More Dropdown -->
+                <div class="nav-dropdown">
+                    <button class="nav-pill" id="more-dropdown-btn" onclick="toggleDropdown('more-dropdown'); event.stopPropagation();">
+                        <i class="fas fa-ellipsis-h"></i> More <i class="fas fa-chevron-down" style="font-size:0.55rem;margin-left:2px;"></i>
+                    </button>
+                    <div class="dropdown-menu" id="more-dropdown-menu">
+                        <a href="https://019ce66b-ca0a-71b7-946c-6ca7bf46dcc8.arena.site" target="_blank"><i class="fas fa-gamepad"></i> AI Arena</a>
+                        <a href="https://019d1164-42eb-745b-a88d-a3d6a408cbf4.arena.site/" target="_blank"><i class="fas fa-robot"></i> Chat Arena</a>
+                        <a href="https://smart-pro-toolkit.lovable.app" target="_blank"><i class="fas fa-tools"></i> Smart Pro Toolkit</a>
+                        <a href="https://claude.ai/public/artifacts/31bdc28b-7d3e-4259-bbab-5822c941606d" target="_blank"><i class="fas fa-magic"></i> AI Artifact</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="https://mipolash-prog.github.io/Polash-Freelancer/polash-portfolio.html" target="_blank"><i class="fas fa-laptop-code"></i> Tech Portfolio</a>
+                        <a href="https://github.com/MIPolash-Prog" target="_blank"><i class="fab fa-github"></i> GitHub Profile</a>
+                    </div>
+                </div>
+
+                <a href="#contact" class="nav-pill"><i class="fas fa-envelope"></i> Contact</a>
+            
+            <!-- More Overflow Button (auto-shows when items overflow) -->
+            <button id="nav-more-btn" onclick="toggleOverflow()">
+                <i class="fas fa-ellipsis-h"></i> More <i class="fas fa-chevron-down" style="font-size:0.55rem;"></i>
+            </button>
+            </div>
+
+            <div style="flex:1;min-width:8px;"></div>
+
+            <!-- Icons -->
+            <a href="https://github.com/MIPolash-Prog" target="_blank" class="nav-icon-btn"><i class="fab fa-github"></i></a>
+            <a href="mailto:Polash@programmer.net" class="nav-icon-btn"><i class="fas fa-envelope"></i></a>
+
+            <div class="nav-sep"></div>
+
+            <!-- Language Switcher -->
+            <div class="nav-dropdown" id="lang-dropdown">
+                <button class="nav-pill nav-lang" id="lang-dropdown-btn" style="display:flex;align-items:center;gap:6px;" onclick="toggleDropdown('lang-dropdown'); event.stopPropagation();">
+                    <span id="current-lang-flag">🇺🇸</span> <span id="current-lang-label">EN</span> <i class="fas fa-chevron-down" style="font-size:0.55rem;"></i>
+                </button>
+                <div class="dropdown-menu lang-menu" id="lang-dropdown-menu" style="right:0;left:auto;min-width:180px;">
+                    <div style="padding:8px 12px;font-size:0.75rem;color:rgba(255,255,255,0.5);border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:4px;">🌐 Select Language</div>
+                    <a href="#" class="lang-option active" data-lang="en" data-flag="🇺🇸" data-label="EN" onclick="switchLang(this);return false;"><span>🇺🇸</span> English</a>
+                    <a href="#" class="lang-option" data-lang="bn" data-flag="🇧🇩" data-label="বাং" onclick="switchLang(this);return false;"><span>🇧🇩</span> বাংলা</a>
+                    <a href="#" class="lang-option" data-lang="ar" data-flag="🇸🇦" data-label="عر" onclick="switchLang(this);return false;"><span>🇸🇦</span> العربية</a>
+                    <a href="#" class="lang-option" data-lang="zh" data-flag="🇨🇳" data-label="中文" onclick="switchLang(this);return false;"><span>🇨🇳</span> 中文</a>
+                    <a href="#" class="lang-option" data-lang="hi" data-flag="🇮🇳" data-label="हिं" onclick="switchLang(this);return false;"><span>🇮🇳</span> हिंदी</a>
+                    <a href="#" class="lang-option" data-lang="fr" data-flag="🇫🇷" data-label="FR" onclick="switchLang(this);return false;"><span>🇫🇷</span> Français</a>
+                    <a href="#" class="lang-option" data-lang="es" data-flag="🇪🇸" data-label="ES" onclick="switchLang(this);return false;"><span>🇪🇸</span> Español</a>
+                    <a href="#" class="lang-option" data-lang="de" data-flag="🇩🇪" data-label="DE" onclick="switchLang(this);return false;"><span>🇩🇪</span> Deutsch</a>
+                    <a href="#" class="lang-option" data-lang="tr" data-flag="🇹🇷" data-label="TR" onclick="switchLang(this);return false;"><span>🇹🇷</span> Türkçe</a>
+                    <a href="#" class="lang-option" data-lang="ur" data-flag="🇵🇰" data-label="اردو" onclick="switchLang(this);return false;"><span>🇵🇰</span> اردو</a>
+                </div>
+            </div>
+
+            <!-- Let's Talk -->
+            <a href="#contact" class="nav-talk"><i class="fas fa-paper-plane"></i> Let's Talk</a>
+
+            <!-- Hamburger -->
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- AI Pill Bar -->
+        <div class="nav-pill-bar">
+            <a href="https://arena.ai/c/019c156b-35a6-7d4b-b1a2-e6ff82ab8079" target="_blank" class="ai-pill">LMArena</a>
+            <a href="https://yupp.ai" target="_blank" class="ai-pill">Yupp</a>
+            <a href="https://aistudio.google.com/prompts/new_chat" target="_blank" class="ai-pill">AI Studio</a>
+            <a href="https://claude.ai/chats" target="_blank" class="ai-pill">Claude</a>
+            <a href="https://gemini.google.com" target="_blank" class="ai-pill">Gemini</a>
+            <a href="https://chat.deepseek.com" target="_blank" class="ai-pill">DeepSeek</a>
+            <a href="https://chat.openai.com" target="_blank" class="ai-pill">ChatGPT</a>
+            <a href="https://lovable.dev/dashboard" target="_blank" class="ai-pill">Lovable</a>
+            <a href="https://www.bohrium.com/en" target="_blank" class="ai-pill">Bohrium</a>
+            <a href="https://www.perplexity.ai" target="_blank" class="ai-pill">Perplexity</a>
+            <a href="https://github.com/copilot" target="_blank" class="ai-pill">Copilot</a>
+            <a href="https://x.com/i/grok" target="_blank" class="ai-pill">Grok</a>
+            <a href="https://meta.ai/" target="_blank" class="ai-pill">Meta AI</a>
+            <a href="https://ai.invideo.io" target="_blank" class="ai-pill">InVideo</a>
+            <a href="https://aiapp.vidnoz.com" target="_blank" class="ai-pill">Vidnoz</a>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#about" onclick="closeMobile()"><i class="fas fa-user"></i> About</a>
+            <a href="#services" onclick="closeMobile()"><i class="fas fa-briefcase"></i> Services</a>
+            <a href="#hire" onclick="closeMobile()"><i class="fas fa-handshake"></i> Hire Me</a>
+            <a href="#ai-tools" onclick="closeMobile()"><i class="fas fa-robot"></i> AI Tools</a>
+            <a href="#contact" onclick="closeMobile()"><i class="fas fa-envelope"></i> Contact</a>
+            
+            <div class="mobile-section-label">🌐 Language</div>
+            <div class="mobile-lang-grid">
+                <a href="#" class="mobile-lang-btn active" data-lang="en" data-flag="🇺🇸" data-label="EN" onclick="switchLangMobile(this);closeMobile();return false;">🇺🇸 EN</a>
+                <a href="#" class="mobile-lang-btn" data-lang="bn" data-flag="🇧🇩" data-label="বাং" onclick="switchLangMobile(this);closeMobile();return false;">🇧🇩 বাং</a>
+                <a href="#" class="mobile-lang-btn" data-lang="ar" data-flag="🇸🇦" data-label="عر" onclick="switchLangMobile(this);closeMobile();return false;">🇸🇦 عر</a>
+                <a href="#" class="mobile-lang-btn" data-lang="zh" data-flag="🇨🇳" data-label="中文" onclick="switchLangMobile(this);closeMobile();return false;">🇨🇳 中文</a>
+                <a href="#" class="mobile-lang-btn" data-lang="hi" data-flag="🇮🇳" data-label="हिं" onclick="switchLangMobile(this);closeMobile();return false;">🇮🇳 हिं</a>
+                <a href="#" class="mobile-lang-btn" data-lang="fr" data-flag="🇫🇷" data-label="FR" onclick="switchLangMobile(this);closeMobile();return false;">🇫🇷 FR</a>
+                <a href="#" class="mobile-lang-btn" data-lang="es" data-flag="🇪🇸" data-label="ES" onclick="switchLangMobile(this);closeMobile();return false;">🇪🇸 ES</a>
+                <a href="#" class="mobile-lang-btn" data-lang="de" data-flag="🇩🇪" data-label="DE" onclick="switchLangMobile(this);closeMobile();return false;">🇩🇪 DE</a>
+                <a href="#" class="mobile-lang-btn" data-lang="tr" data-flag="🇹🇷" data-label="TR" onclick="switchLangMobile(this);closeMobile();return false;">🇹🇷 TR</a>
+            </div>
+            
+            <div class="mobile-section-label">💼 Freelance Platforms</div>
+            <a href="https://www.fiverr.com" target="_blank" onclick="closeMobile()"><i class="fas fa-star" style="color:#1dbf73"></i> Fiverr — Top Rated</a>
+            <a href="https://www.upwork.com" target="_blank" onclick="closeMobile()"><i class="fas fa-trophy" style="color:#14a800"></i> Upwork — Top Freelancer</a>
+            <a href="https://www.peopleperhour.com" target="_blank" onclick="closeMobile()"><i class="fas fa-chart-line" style="color:#27c4a0"></i> PeoplePerHour</a>
+            <a href="https://www.freelancer.com" target="_blank" onclick="closeMobile()"><i class="fas fa-briefcase" style="color:#0e76bc"></i> Freelancer.com</a>
+            <a href="https://www.guru.com" target="_blank" onclick="closeMobile()"><i class="fas fa-user-check" style="color:#8b5cf6"></i> Guru.com</a>
+            
+            <div class="mobile-section-label">📱 Direct Order</div>
+            <a href="https://wa.me/8801723328481" target="_blank" onclick="closeMobile()" style="color:#25d366;"><i class="fab fa-whatsapp" style="color:#25d366"></i> WhatsApp Order</a>
+            <a href="mailto:Polash@programmer.net" onclick="closeMobile()" style="color:#facc15;"><i class="fas fa-envelope" style="color:#facc15"></i> Custom Order</a>
+            
+            <div class="mobile-section-label">🤖 AI Tools</div>
+            <a href="https://chat.openai.com" target="_blank" onclick="closeMobile()">🤖 ChatGPT</a>
+            <a href="https://gemini.google.com" target="_blank" onclick="closeMobile()">✨ Gemini</a>
+            <a href="https://claude.ai" target="_blank" onclick="closeMobile()">🧠 Claude</a>
+            <a href="https://deepseek.com" target="_blank" onclick="closeMobile()">🔮 DeepSeek</a>
+            
+            <div class="mobile-section-label">🛠️ More Tools</div>
+            <a href="https://019ce66b-ca0a-71b7-946c-6ca7bf46dcc8.arena.site" target="_blank" onclick="closeMobile()"><i class="fas fa-gamepad"></i> AI Arena</a>
+            <a href="https://019d1164-42eb-745b-a88d-a3d6a408cbf4.arena.site/" target="_blank" onclick="closeMobile()"><i class="fas fa-robot"></i> Chat Arena</a>
+            <a href="https://smart-pro-toolkit.lovable.app" target="_blank" onclick="closeMobile()"><i class="fas fa-tools"></i> Smart Pro Toolkit</a>
+            <a href="https://mipolash-prog.github.io/Polash-Freelancer/polash-portfolio.html" target="_blank" onclick="closeMobile()"><i class="fas fa-laptop-code"></i> Tech Portfolio</a>
+            <a href="https://github.com/MIPolash-Prog" target="_blank" onclick="closeMobile()"><i class="fab fa-github"></i> GitHub Profile</a>
+        </div>
+    </nav>
+
+    <!-- Overflow Menu (for auto-overflow navbar items) -->
+    <div id="nav-overflow-menu" class="fixed inset-0 z-[10001] hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeOverflow()"></div>
+        <div class="absolute top-0 right-0 h-full w-72 bg-gray-900/95 backdrop-blur-xl border-l border-white/10 shadow-2xl transform transition-transform duration-300 overflow-y-auto">
+            <div class="p-6">
+                <button onclick="closeOverflow()" class="absolute top-4 right-4 text-white/70 hover:text-white text-2xl w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-full transition-all">
+                    <i class="fas fa-times"></i>
+                </button>
+                <h3 class="text-white font-bold text-lg mb-4 mt-2">More Options</h3>
+                <div id="overflow-menu-items" class="space-y-1"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         HERO SECTION
+    ========================================== -->
+    <section class="min-h-screen gradient-bg relative flex items-center justify-center hero-section">
+        <div class="particles" id="particles"></div>
+
+        <div class="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="text-center lg:text-left">
+                <p class="text-yellow-400 font-semibold mb-4 text-lg">👋 Hello, I'm</p>
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                    Monjurul Islam<br><span class="text-yellow-400">Polash</span>
+                </h1>
+                <div class="text-xl md:text-2xl text-white/90 mb-8 h-10">
+                    <span id="typed-text"></span><span class="animate-pulse">|</span>
+                </div>
+                <p class="text-white/70 text-lg mb-10 max-w-lg mx-auto lg:mx-0">
+                    Transforming ideas into digital success stories. Your trusted partner for digital marketing, web development, and online growth.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#hire" class="contact-btn px-8 py-4 rounded-full text-white font-semibold text-lg pulse-glow">
+                        <i class="fas fa-rocket mr-2"></i> Hire Me Now
+                    </a>
+                    <a href="#contact" class="border-2 border-white/50 px-8 py-4 rounded-full text-white font-semibold text-lg hover:bg-white hover:text-purple-700 transition">
+                        <i class="fas fa-envelope mr-2"></i> Get In Touch
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center lg:text-right">
+                <p style="color:orange" class="title font-semibold mb-2">BD Time & Date:</p>
+                <h1 style="color:orange" id="bdtDateTime" class="text-2xl font-bold mb-8"></h1>
+
+                <div class="relative flex justify-center">
+                    <div class="w-72 h-72 md:w-96 md:h-96 blob gradient-bg floating flex items-center justify-center shadow-2xl">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-8xl md:text-9xl font-bold text-white shadow-inner overflow-hidden">
+                            <img src="https://uploads.onecompiler.io/44a4h29nq/44a4gxy6p/round%20main%20without%20background.png" alt="Monjurul Islam Polash" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <!-- Floating Icons -->
+                    <div class="absolute top-5 right-10 w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center floating shadow-lg" style="animation-delay: 0.5s;">
+                        <a href="https://wa.me/8801723328481" target="_blank" class="w-full h-full flex items-center justify-center">
+                            <i class="fab fa-whatsapp text-3xl text-white"></i>
+                        </a>
+                    </div>
+
+                    <div class="absolute bottom-5 right-5 w-16 h-16 bg-gradient-to-br from-red-500 to-pink-500 rounded-full flex items-center justify-center floating shadow-lg" style="animation-delay: 1s;">
+                        <a href="mailto:Polash@programmer.net" target="_blank" class="w-full h-full flex items-center justify-center">
+                            <i class="fas fa-envelope text-2xl text-white"></i>
+                        </a>
+                    </div>
+
+                    <div class="absolute bottom-10 left-5 w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center floating shadow-lg" style="animation-delay: 1.5s;">
+                        <a href="https://github.com/MIPolash-Prog" target="_blank" class="w-full h-full flex items-center justify-center">
+                            <i class="fas fa-code text-2xl text-white"></i>
+                        </a>
+                    </div>
+
+                    <div class="absolute top-5 left-10 w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center floating shadow-lg" style="animation-delay: 2s;">
+                        <a href="tel:+8801730746563" target="_blank" class="w-full h-full flex items-center justify-center">
+                            <i class="fas fa-phone text-3xl text-white"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-white text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         ABOUT SECTION
+    ========================================== -->
+    <section id="about" class="py-24 bg-gradient-to-b from-gray-900 to-gray-800 relative overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-16 scroll-reveal">
+                <p class="inline-block px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold mb-4">💼 DUAL-CAREER PROFESSIONAL</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">About <span class="text-yellow-400">Monjurul Islam Polash</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Dynamic professional balancing two vibrant career paths in Bangladesh: <span class="text-purple-400">technology</span> and <span class="text-blue-400">pharmaceuticals</span></p>
+            </div>
+            
+            <!-- Main About Content -->
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <!-- Left Column - Profile Card -->
+                <div class="scroll-reveal">
+                    <div class="bg-gradient-to-br from-purple-900/50 to-blue-900/50 rounded-2xl p-8 border border-purple-500/20 backdrop-blur-sm">
+                        <!-- Profile Header -->
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-20 h-20 bg-gradient-to-br from-purple-500 via-pink-500 to-blue-500 rounded-full flex items-center justify-center text-2xl font-bold text-white shadow-lg shadow-purple-500/30">
+                                MIP
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Monjurul Islam Polash</h3>
+                                <p class="text-purple-400">Territory Manager | Web Developer</p>
+                                <p class="text-gray-400 text-sm">📍 Chattogram, Bangladesh 🇧🇩</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Customer Branding Quotes -->
+                        <div class="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl p-4 mb-6 border border-yellow-500/20">
+                            <div class="flex items-start gap-3">
+                                <span class="text-3xl text-yellow-400">"</span>
+                                <p class="text-gray-300 italic text-sm">"He is very professional and has excellent web development skills. She created a responsive landing page with a clear overview..."</p>
+                            </div>
+                            <p class="text-yellow-400 text-xs mt-2 text-right">— Fiverr Client Review</p>
+                        </div>
+                        
+                        <!-- Professional Summary -->
+                        <div class="space-y-4 text-gray-300">
+                            <p class="flex items-start gap-3">
+                                <i class="fas fa-laptop-code text-purple-400 mt-1"></i>
+                                <span>Freelance Web Developer, Digital Marketer & SEO Specialist with expertise in HTML, CSS, Bootstrap & JavaScript.</span>
+                            </p>
+                            <p class="flex items-start gap-3">
+                                <i class="fas fa-briefcase text-blue-400 mt-1"></i>
+                                <span>Territory Manager at <strong class="text-blue-400">Novartis Bangladesh Ltd.</strong>, managing sales & distribution in Chattogram region.</span>
+                            </p>
+                            <p class="flex items-start gap-3">
+                                <i class="fab fa-github text-gray-400 mt-1"></i>
+                                <span>Active on GitHub with handles <a href="https://github.com/MIPolash-Prog" target="_blank" class="text-purple-400 hover:underline">MIPolash-Prog</a> & <a href="https://github.com/MIPolash123" target="_blank" class="text-purple-400 hover:underline">MIPolash123</a>, showcasing 21+ front-end projects.</span>
+                            </p>
+                            <p class="flex items-start gap-3">
+                                <i class="fas fa-graduation-cap text-green-400 mt-1"></i>
+                                <span>Professional training through <strong class="text-green-400">Programming Hero</strong> bootcamp, specializing in React fundamentals.</span>
+                            </p>
+                        </div>
+                        
+                        <!-- Expertise Tags -->
+                        <div class="mt-6 flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">Digital Marketing</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">Web Development</span>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">SEO Specialist</span>
+                            <span class="px-3 py-1 bg-yellow-500/20 text-yellow-300 rounded-full text-sm">Facebook/Google Ads</span>
+                            <span class="px-3 py-1 bg-pink-500/20 text-pink-300 rounded-full text-sm">AI Tools</span>
+                            <span class="px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-sm">WordPress/Wix</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Freelancing Platforms Quick Links -->
+                    <div class="mt-6 grid grid-cols-2 gap-4">
+                        <a href="https://www.fiverr.com" target="_blank" class="bg-green-600/20 border border-green-500/30 rounded-xl p-4 text-center hover:bg-green-600/30 transition group">
+                            <i class="fab fa-font-awesome-flag text-2xl text-green-400 mb-2"></i>
+                            <p class="text-white font-semibold text-sm">Fiverr</p>
+                            <p class="text-gray-400 text-xs">AnchorTech</p>
+                        </a>
+                        <a href="https://www.freelancer.com" target="_blank" class="bg-blue-600/20 border border-blue-500/30 rounded-xl p-4 text-center hover:bg-blue-600/30 transition group">
+                            <i class="fas fa-rocket text-2xl text-blue-400 mb-2"></i>
+                            <p class="text-white font-semibold text-sm">Freelancer</p>
+                            <p class="text-gray-400 text-xs">Marketing & SEO</p>
+                        </a>
+                        <a href="https://www.peopleperhour.com" target="_blank" class="bg-orange-600/20 border border-orange-500/30 rounded-xl p-4 text-center hover:bg-orange-600/30 transition group">
+                            <i class="fas fa-clock text-2xl text-orange-400 mb-2"></i>
+                            <p class="text-white font-semibold text-sm">PeoplePerHour</p>
+                            <p class="text-gray-400 text-xs">Top Rated SEO</p>
+                        </a>
+                        <a href="https://www.upwork.com" target="_blank" class="bg-green-700/20 border border-green-600/30 rounded-xl p-4 text-center hover:bg-green-700/30 transition group">
+                            <i class="fas fa-briefcase text-2xl text-green-500 mb-2"></i>
+                            <p class="text-white font-semibold text-sm">Upwork</p>
+                            <p class="text-gray-400 text-xs">Pro Freelancer</p>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Right Column - Stats & Skills -->
+                <div class="scroll-reveal space-y-6">
+                    <!-- Achievement Stats -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gradient-to-br from-purple-900/50 to-purple-800/30 rounded-xl p-6 text-center border border-purple-500/20 hover:scale-105 transition-transform">
+                            <div class="text-4xl font-bold text-yellow-400 mb-2">5+</div>
+                            <div class="text-gray-400">Years Experience</div>
+                        </div>
+                        <div class="bg-gradient-to-br from-blue-900/50 to-blue-800/30 rounded-xl p-6 text-center border border-blue-500/20 hover:scale-105 transition-transform">
+                            <div class="text-4xl font-bold text-purple-400 mb-2">100+</div>
+                            <div class="text-gray-400">Happy Clients</div>
+                        </div>
+                        <div class="bg-gradient-to-br from-green-900/50 to-green-800/30 rounded-xl p-6 text-center border border-green-500/20 hover:scale-105 transition-transform">
+                            <div class="text-4xl font-bold text-green-400 mb-2">126+</div>
+                            <div class="text-gray-400">AI Tools Mastered</div>
+                        </div>
+                        <div class="bg-gradient-to-br from-pink-900/50 to-pink-800/30 rounded-xl p-6 text-center border border-pink-500/20 hover:scale-105 transition-transform">
+                            <div class="text-4xl font-bold text-pink-400 mb-2">21+</div>
+                            <div class="text-gray-400">GitHub Projects</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tech Stack & Skills -->
+                    <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
+                        <h4 class="text-white font-semibold mb-4 flex items-center gap-2">
+                            <i class="fas fa-code text-purple-400"></i> Tech Stack
+                        </h4>
+                        <div class="grid grid-cols-4 gap-3">
+                            <div class="bg-gray-700/50 rounded-lg p-3 text-center hover:bg-gray-700 transition">
+                                <i class="fab fa-html5 text-2xl text-orange-500 mb-1"></i>
+                                <p class="text-xs text-gray-400">HTML5</p>
+                            </div>
+                            <div class="bg-gray-700/50 rounded-lg p-3 text-center hover:bg-gray-700 transition">
+                                <i class="fab fa-css3-alt text-2xl text-blue-500 mb-1"></i>
+                                <p class="text-xs text-gray-400">CSS3</p>
+                            </div>
+                            <div class="bg-gray-700/50 rounded-lg p-3 text-center hover:bg-gray-700 transition">
+                                <i class="fab fa-js text-2xl text-yellow-500 mb-1"></i>
+                                <p class="text-xs text-gray-400">JavaScript</p>
+                            </div>
+                            <div class="bg-gray-700/50 rounded-lg p-3 text-center hover:bg-gray-700 transition">
+                                <i class="fab fa-bootstrap text-2xl text-purple-500 mb-1"></i>
+                                <p class="text-xs text-gray-400">Bootstrap</p>
+                            </div>
+                            <div class="bg-gray-700/50 rounded-lg p-3 text-center hover:bg-gray-700 transition">
+                                <i class="fab fa-react text-2xl text-cyan-500 mb-1"></i>
+                                <p class="text-xs text-gray-400">React</p>
+                            </div>
+                            <div class="bg-gray-700/50 rounded-lg p-3 text-center hover:bg-gray-700 transition">
+                                <i class="fab fa-wordpress text-2xl text-blue-400 mb-1"></i>
+                                <p class="text-xs text-gray-400">WordPress</p>
+                            </div>
+                            <div class="bg-gray-700/50 rounded-lg p-3 text-center hover:bg-gray-700 transition">
+                                <i class="fab fa-node-js text-2xl text-green-500 mb-1"></i>
+                                <p class="text-xs text-gray-400">Node.js</p>
+                            </div>
+                            <div class="bg-gray-700/50 rounded-lg p-3 text-center hover:bg-gray-700 transition">
+                                <i class="fab fa-git-alt text-2xl text-orange-600 mb-1"></i>
+                                <p class="text-xs text-gray-400">Git</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Core Skills Progress -->
+                    <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
+                        <h4 class="text-white font-semibold mb-4 flex items-center gap-2">
+                            <i class="fas fa-chart-line text-yellow-400"></i> Core Expertise
+                        </h4>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-sm text-gray-400 mb-1">
+                                    <span class="flex items-center gap-2"><i class="fas fa-bullhorn text-pink-400"></i> Digital Marketing</span>
+                                    <span class="text-pink-400">95%</span>
+                                </div>
+                                <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-pink-500 to-rose-500 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm text-gray-400 mb-1">
+                                    <span class="flex items-center gap-2"><i class="fas fa-search text-green-400"></i> SEO & Content</span>
+                                    <span class="text-green-400">92%</span>
+                                </div>
+                                <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-green-500 to-emerald-500 rounded-full" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm text-gray-400 mb-1">
+                                    <span class="flex items-center gap-2"><i class="fas fa-code text-blue-400"></i> Web Development</span>
+                                    <span class="text-blue-400">88%</span>
+                                </div>
+                                <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full" style="width: 88%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm text-gray-400 mb-1">
+                                    <span class="flex items-center gap-2"><i class="fas fa-robot text-purple-400"></i> AI Tools</span>
+                                    <span class="text-purple-400">96%</span>
+                                </div>
+                                <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-purple-500 to-violet-500 rounded-full" style="width: 96%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Customer Testimonial -->
+                    <div class="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl p-5 border border-yellow-500/20">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="flex -space-x-2">
+                                <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-xs font-bold text-gray-900">A</div>
+                                <div class="w-8 h-8 bg-green-400 rounded-full flex items-center justify-center text-xs font-bold text-gray-900">T</div>
+                            </div>
+                            <div>
+                                <p class="text-white font-semibold text-sm">AnchorTech (Fiverr)</p>
+                                <p class="text-yellow-400 text-xs">Top Rated Seller</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm italic">"Exceptional work quality and professionalism. Delivered premium UI/UX for our applications with outstanding attention to detail."</p>
+                        <div class="flex items-center gap-1 mt-2">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-gray-400 text-xs ml-1">5.0 Rating</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Looking Ahead -->
+            <div class="mt-12 text-center scroll-reveal">
+                <div class="inline-block bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full px-6 py-3 border border-purple-500/20">
+                    <p class="text-gray-300 text-sm">
+                        <i class="fas fa-rocket text-purple-400 mr-2"></i>
+                        In 2026 and beyond, continues to excel as a full-time marketing & sales professional while offering specialized web development and digital marketing services to clients worldwide.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SERVICES SECTION
+    ========================================== -->
+    <section id="services" class="py-24 bg-gray-900 relative">
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-20 left-20 w-72 h-72 bg-purple-500 rounded-full filter blur-3xl"></div>
+            <div class="absolute bottom-20 right-20 w-72 h-72 bg-pink-500 rounded-full filter blur-3xl"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 scroll-reveal">
+                <p class="text-purple-400 font-semibold mb-4">WHAT I DO</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">My <span class="gradient-text">Services</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg">Delivering exceptional digital solutions tailored to your business needs</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card scroll-reveal">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-bullhorn text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Digital Marketing</h3>
+                    <p class="text-gray-400">Strategic digital marketing campaigns that drive traffic, engagement, and conversions for your business.</p>
+                </div>
+                <div class="service-card scroll-reveal" style="transition-delay:.1s;">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-code text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Web Development</h3>
+                    <p class="text-gray-400">Custom, responsive websites and web applications built with modern technologies and best practices.</p>
+                </div>
+                <div class="service-card scroll-reveal" style="transition-delay:.2s;">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-search text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">SEO Expert</h3>
+                    <p class="text-gray-400">Boost your search rankings and organic traffic with proven SEO strategies and techniques.</p>
+                </div>
+                <div class="service-card scroll-reveal" style="transition-delay:.3s;">
+                    <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-share-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Social Media Marketing</h3>
+                    <p class="text-gray-400">Build your brand presence and engage your audience across all major social platforms.</p>
+                </div>
+                <div class="service-card scroll-reveal" style="transition-delay:.4s;">
+                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-headset text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Virtual Assistance</h3>
+                    <p class="text-gray-400">Professional virtual assistance services to help manage your daily business operations efficiently.</p>
+                </div>
+                <div class="service-card scroll-reveal" style="transition-delay:.5s;">
+                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-robot text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">AI Tools Integration</h3>
+                    <p class="text-gray-400">Leverage cutting-edge AI tools to automate workflows, enhance productivity, and unlock new possibilities for your business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         HIRE ME SECTION
+    ========================================== -->
+    <section id="hire" class="py-24 bg-gray-900 relative">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 scroll-reveal">
+                <p class="text-purple-400 font-semibold mb-4">WORK WITH ME</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Hire Me on <span class="gradient-text">Top Platforms</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg">Find me on the world's leading freelancing platforms where I've helped 100s of clients succeed.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <a href="https://www.fiverr.com" target="_blank" class="platform-card" style="background: linear-gradient(135deg, #1DBF73 0%, #14A06A 100%);">
+                    <div class="text-5xl mb-4">⭐</div>
+                    <h3 class="text-2xl font-bold mb-2">Fiverr</h3>
+                    <p class="text-white/80">Top Rated Seller</p>
+                    <div class="mt-4 flex items-center justify-center gap-1">
+                        <i class="fas fa-star text-yellow-300"></i>
+                        <i class="fas fa-star text-yellow-300"></i>
+                        <i class="fas fa-star text-yellow-300"></i>
+                        <i class="fas fa-star text-yellow-300"></i>
+                        <i class="fas fa-star text-yellow-300"></i>
+                    </div>
+                </a>
+                <a href="https://www.upwork.com" target="_blank" class="platform-card" style="background: linear-gradient(135deg, #14A8AF 0%, #0E8A90 100%);">
+                    <div class="text-5xl mb-4">🏆</div>
+                    <h3 class="text-2xl font-bold mb-2">Upwork</h3>
+                    <p class="text-white/80">Top Freelancer</p>
+                    <div class="mt-4 flex items-center justify-center gap-1">
+                        <i class="fas fa-star text-yellow-300"></i>
+                        <i class="fas fa-star text-yellow-300"></i>
+                        <i class="fas fa-star text-yellow-300"></i>
+                        <i class="fas fa-star text-yellow-300"></i>
+                        <i class="fas fa-star text-yellow-300"></i>
+                    </div>
+                </a>
+                <a href="https://www.peopleperhour.com" target="_blank" class="platform-card" style="background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);">
+                    <div class="text-5xl mb-4">📊</div>
+                    <h3 class="text-2xl font-bold mb-2">PeoplePerHour</h3>
+                    <p class="text-white/80">Verified Expert</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         AI TOOLS SMART TOOLKIT SECTION
+    ========================================== -->
+    <section id="ai-tools" class="tk-section">
+        <div class="tk-wrap">
+            <div class="text-center mb-16 scroll-reveal">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-bold mb-6">
+                    <span>🤖</span> SMART TOOLKIT
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">AI Tools I <span class="gradient-text">Use Daily</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg">110+ curated AI tools across Web Dev, Marketing, SEO, Social Media, Video and more — every tool I personally use for client work.</p>
+            </div>
+
+            <!-- Tools Container - Populated by JavaScript -->
+            <div id="tools-wrap" class="tk-content"></div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CONTACT SECTION
+    ========================================== -->
+    <section id="contact" class="py-24 bg-gray-900 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full filter blur-3xl"></div>
+            <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-500/20 rounded-full filter blur-3xl"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 scroll-reveal">
+                <p class="text-purple-400 font-semibold mb-4">GET IN TOUCH</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's <span class="gradient-text">Connect</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg">Ready to start your project? Reach out through any of these channels!</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <a href="tel:+8801730746563" class="contact-card scroll-reveal">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition">
+                        <i class="fas fa-phone text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Call Me</h3>
+                    <p class="text-purple-400 font-medium">+880 1730-746563</p>
+                </a>
+                <a href="https://wa.me/8801723328481" target="_blank" class="contact-card scroll-reveal" style="transition-delay:.1s;">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i class="fab fa-whatsapp text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">WhatsApp</h3>
+                    <p class="text-green-400 font-medium">+880 1723-328481</p>
+                </a>
+                <a href="mailto:Polash@programmer.net" class="contact-card scroll-reveal" style="transition-delay:.2s;">
+                    <div class="w-20 h-20 bg-gradient-to-br from-red-500 to-pink-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-envelope text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Email Me</h3>
+                    <p class="text-red-400 font-medium">Polash@programmer.net</p>
+                </a>
+                <a href="https://github.com/MIPolash-Prog" target="_blank" class="contact-card scroll-reveal" style="transition-delay:.3s;">
+                    <div class="w-20 h-20 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i class="fab fa-github text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">GitHub</h3>
+                    <p class="text-gray-400 font-medium">MIPolash-Prog</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         AUDIO PLAYER
+    ========================================== -->
+    <div id="audio-player">
+        <button id="audio-btn" onclick="toggleAudio()" title="Toggle Music">
+            <i class="fas fa-play" id="audio-icon"></i>
+        </button>
+        <div id="audio-info">
+            <span id="audio-label">Welcome Tune</span>
+            <span id="audio-track">Click to play</span>
+        </div>
+        <div id="audio-wave">
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+        </div>
+        <input type="range" id="volume-slider" min="0" max="100" value="50" onchange="setVolume(this.value)">
+    </div>
+
+    <!-- ==========================================
+         FOOTER
+    ========================================== -->
+    <footer>
+        <h4>Monjurul Islam <span>Polash</span></h4>
+        <p>Digital Marketing Expert | Web Developer | SEO Specialist | AI Tools Expert</p>
+        <div class="foot-socials">
+            <a href="https://github.com/MIPolash-Prog" target="_blank" class="foot-social"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com" target="_blank" class="foot-social"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com" target="_blank" class="foot-social"><i class="fab fa-twitter"></i></a>
+            <a href="https://wa.me/8801723328481" target="_blank" class="foot-social wa"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p class="foot-copy">© 2024 Monjurul Islam Polash. All rights reserved.</p>
+    </footer>
+
+    <!-- ==========================================
+         AI HUB MODAL
+    ========================================== -->
+    <button id="ai-fab" onclick="document.getElementById('ai-modal').classList.add('open')" title="AI Tools Hub">🤖</button>
+
+    <div id="ai-modal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="document.getElementById('ai-modal').classList.remove('open')">&times;</button>
+            <h2>🤖 AI Tools Hub</h2>
+            <p class="modal-sub">All 110+ AI tools by category — same as the Smart Toolkit below. Click any to open.</p>
+            <input type="text" class="modal-search" id="modal-search" placeholder="🔍 Search any AI tool..." oninput="filterModal(this.value)">
+            <div id="modal-tools-wrap"></div>
+            <p style="text-align:center;margin-top:12px;font-size:0.7rem;color:rgba(255,255,255,.3)">🌐 Click any tool to open in a new tab</p>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         JAVASCRIPT
+    ========================================== -->
+    <script>
+        // ==========================================
+        // AI TOOLS DATA (140+ FREE & FREEMIUM AI Tools)
+        // ==========================================
+        var toolData = [
+            {
+                cat: 'Web Dev',
+                color: '#a78bfa',
+                icon: 'fa-code',
+                tools: [
+                    ['ChatGPT', 'https://chat.openai.com', 'FREE - Unlimited messages'],
+                    ['Claude', 'https://claude.ai', 'FREE - Large context window'],
+                    ['Gemini', 'https://gemini.google.com', 'FREE - Google AI'],
+                    ['Perplexity', 'https://www.perplexity.ai', 'FREE - AI search'],
+                    ['DeepSeek', 'https://chat.deepseek.com', 'FREE - Advanced reasoning AI'],
+                    ['Groq', 'https://console.groq.com', 'FREE - Fastest AI inference'],
+                    ['Cursor', 'https://cursor.sh', 'FREE - 50 requests/mo'],
+                    ['Codeium', 'https://codeium.com', 'FREE 100% - Unlimited'],
+                    ['V0 by Vercel', 'https://v0.dev', 'FREE - AI UI generator'],
+                    ['Bolt.new', 'https://bolt.new', 'FREE - AI app builder'],
+                    ['Replit AI', 'https://replit.com', 'FREE - Cloud IDE + AI'],
+                    ['Tabnine', 'https://www.tabnine.com', 'FREE - AI completion'],
+                    ['Framer AI', 'https://www.framer.com', 'FREE - Site builder'],
+                    ['Lovable', 'https://lovable.dev', 'FREE - AI app builder'],
+                    ['Windsurf', 'https://codeium.com/windsurf', 'FREE - AI IDE'],
+                    ['Galileo AI', 'https://www.usegalileo.ai', 'FREE - UI generator'],
+                    ['GitHub Copilot', 'https://github.com/features/copilot', 'FREE for students'],
+                    ['Amazon CodeWhisperer', 'https://aws.amazon.com/codewhisperer', 'FREE - AWS AI coding'],
+                    ['Meta AI', 'https://meta.ai', 'FREE - Meta AI assistant']
+                ]
+            },
+            {
+                cat: 'Marketing',
+                color: '#34d399',
+                icon: 'fa-bullhorn',
+                tools: [
+                    ['Canva AI', 'https://www.canva.com', 'FREE - AI design tools'],
+                    ['Rytr', 'https://rytr.me', 'FREE 100% - AI writer'],
+                    ['Wordtune', 'https://www.wordtune.com', 'FREE - Rewriter'],
+                    ['HubSpot AI', 'https://www.hubspot.com', 'FREE - CRM + AI'],
+                    ['AdCreative.ai', 'https://www.adcreative.ai', 'FREE - Ad generator'],
+                    ['ProWritingAid', 'https://prowritingaid.com', 'FREE - Writing aid'],
+                    ['Frase.io', 'https://www.frase.io', 'FREE - Content briefs'],
+                    ['Pencil', 'https://www.trypencil.com', 'FREE - Ad videos'],
+                    ['Writesonic', 'https://writesonic.com', 'FREE trial - AI writer'],
+                    ['Copy.ai', 'https://www.copy.ai', 'FREE - AI copy'],
+                    ['Hypotenuse AI', 'https://www.hypotenuse.ai', 'FREE tier - AI writer'],
+                    ['Kafkai', 'https://kafkai.com', 'FREE - Niche content'],
+                    ['Jasper', 'https://www.jasper.ai', 'FREE trial - AI content'],
+                    ['Anyword', 'https://anyword.com', 'FREE tier - AI copy'],
+                    ['Scalenut', 'https://scalenut.com', 'FREE tier - AI SEO content'],
+                    ['Text Cortex', 'https://textcortex.com', 'FREE - AI writing']
+                ]
+            },
+            {
+                cat: 'SEO',
+                color: '#f472b6',
+                icon: 'fa-search',
+                tools: [
+                    ['Surfer SEO', 'https://surferseo.com', 'FREE - AI optimization'],
+                    ['SEMrush', 'https://www.semrush.com', 'FREE - SEO toolkit'],
+                    ['Ahrefs', 'https://ahrefs.com', 'FREE - Backlink checker'],
+                    ['AlsoAsked', 'https://alsoasked.com', 'FREE - Question research'],
+                    ['AnswerThePublic', 'https://answerthepublic.com', 'FREE - Keyword tool'],
+                    ['RankIQ', 'https://www.rankiq.com', 'FREE - For bloggers'],
+                    ['Diib', 'https://diib.com', 'FREE - Growth analytics'],
+                    ['Screaming Frog', 'https://www.screamingfrog.co.uk', 'FREE - Auditor'],
+                    ['NeuronWriter', 'https://neuronwriter.com', 'FREE tier - SEO editor'],
+                    ['SEO.ai', 'https://seo.ai', 'FREE - AI SEO writing'],
+                    ['SEO GPT', 'https://seogpt.ai', 'FREE - AI SEO content'],
+                    ['Keywordinsight', 'https://www.keywordinsight.ai', 'FREE tier - Keyword research'],
+                    ['Dash0', 'https://www.dash0.com', 'FREE - SEO platform'],
+                    ['GrowthBar', 'https://growthbarseo.com', 'FREE tier - AI SEO']
+                ]
+            },
+            {
+                cat: 'Social Media',
+                color: '#fbbf24',
+                icon: 'fa-share-alt',
+                tools: [
+                    ['Buffer AI', 'https://buffer.com', 'FREE - AI scheduler'],
+                    ['Predis.ai', 'https://predis.ai', 'FREE - Post generator'],
+                    ['Flick AI', 'https://www.flick.social', 'FREE - Hashtag tool'],
+                    ['ContentStudio', 'https://contentstudio.io', 'FREE - Multi-channel'],
+                    ['Vista Social', 'https://vistasocial.com', 'FREE - Analytics'],
+                    ['ManyChat', 'https://manychat.com', 'FREE - Chatbot'],
+                    ['Typefully', 'https://typefully.com', 'FREE - Twitter AI'],
+                    ['Canva AI', 'https://www.canva.com', 'FREE - Social graphics'],
+                    ['Loomly', 'https://www.loomly.com', 'FREE tier - Post ideas'],
+                    ['Lately.ai', 'https://www.lately.ai', 'FREE - Content repurposer'],
+                    ['Publer AI', 'https://publer.io', 'FREE - Social scheduler'],
+                    ['Tailwind', 'https://tailwind.social', 'FREE - Social analytics'],
+                    ['Sprout Social', 'https://sproutsocial.com', 'FREE trial - Publishing']
+                ]
+            },
+            {
+                cat: 'Video AI',
+                color: '#fb923c',
+                icon: 'fa-video',
+                tools: [
+                    ['CapCut AI', 'https://www.capcut.com', 'FREE 100% - Video editor'],
+                    ['Lumen5', 'https://lumen5.com', 'FREE - Blog to video'],
+                    ['Vidnoz AI', 'https://www.vidnoz.com', 'FREE 100% - AI video'],
+                    ['Runway ML', 'https://runwayml.com', 'FREE tier - Video AI'],
+                    ['Pika Labs', 'https://pika.art', 'FREE - Text-to-video'],
+                    ['Fliki AI', 'https://fliki.ai', 'FREE - AI video creator'],
+                    ['Veed.io', 'https://www.veed.io', 'FREE - Video editor'],
+                    ['Clipchamp', 'https://clipchamp.com', 'FREE - Browser editor'],
+                    ['InVideo AI', 'https://invideo.io', 'FREE trial - Video maker'],
+                    ['Pictory AI', 'https://pictory.ai', 'FREE - Scripts to video'],
+                    ['Synthesia', 'https://www.synthesia.io', 'FREE tier - Avatar video'],
+                    ['HeyGen', 'https://www.heygen.com', 'FREE tier - AI avatars'],
+                    ['Opus Clip', 'https://opus.pro', 'FREE tier - Long to short videos'],
+                    ['Eightify', 'https://eightify.app', 'FREE - YouTube AI']
+                ]
+            },
+            {
+                cat: 'Image AI',
+                color: '#f87171',
+                icon: 'fa-image',
+                tools: [
+                    ['DALL-E 3', 'https://openai.com/dall-e-3', 'FREE - AI images'],
+                    ['Stable Diffusion', 'https://stability.ai', 'FREE 100% - Open source'],
+                    ['Ideogram AI', 'https://ideogram.ai', 'FREE - Image generator'],
+                    ['Leonardo AI', 'https://leonardo.ai', 'FREE - Art platform'],
+                    ['Playground AI', 'https://playgroundai.com', 'FREE 100% - AI art'],
+                    ['Craiyon', 'https://www.craiyon.com', 'FREE - AI image maker'],
+                    ['Canva AI', 'https://www.canva.com', 'FREE - Image creation'],
+                    ['Microsoft Designer', 'https://designer.microsoft.com', 'FREE - AI design'],
+                    ['Adobe Firefly', 'https://firefly.adobe.com', 'FREE - 25 credits/mo'],
+                    ['Ideogram', 'https://ideogram.ai', 'FREE - Generation'],
+                    ['Krea AI', 'https://www.krea.ai', 'FREE tier - Visual AI'],
+                    ['Recraft AI', 'https://www.recraft.ai', 'FREE - Vector AI'],
+                    ['Stockimg AI', 'https://stockimg.ai', 'FREE - AI stock images'],
+                    ['Looka', 'https://looka.com', 'FREE tier - AI logo maker']
+                ]
+            },
+            {
+                cat: 'Medical VA',
+                color: '#34d399',
+                icon: 'fa-heartbeat',
+                tools: [
+                    ['Nabla Copilot', 'https://www.nabla.com', 'FREE 100% - Medical scribe'],
+                    ['Freed AI', 'https://www.freed.ai', 'FREE 100% - AI scribe'],
+                    ['Consensus', 'https://consensus.app', 'FREE - AI research'],
+                    ['ChatGPT', 'https://chat.openai.com', 'FREE - Medical AI'],
+                    ['Claude', 'https://claude.ai', 'FREE - Medical research'],
+                    ['DeepScribe', 'https://www.deepscribe.ai', 'FREE - Transcription'],
+                    ['Abridge', 'https://www.abridge.com', 'FREE - Patient summaries'],
+                    ['Glass Health', 'https://glass.health', 'FREE - Care plans'],
+                    ['Mendel AI', 'https://www.mendel.ai', 'FREE tier - Clinical AI'],
+                    ['Regard', 'https://www.regard.com', 'FREE tier - AI diagnosis']
+                ]
+            },
+            {
+                cat: 'VA Tools',
+                color: '#60a5fa',
+                icon: 'fa-clipboard-list',
+                tools: [
+                    ['Notion AI', 'https://www.notion.so', 'FREE - AI workspace'],
+                    ['Otter.ai', 'https://otter.ai', 'FREE - Meeting notes'],
+                    ['Fireflies.ai', 'https://fireflies.ai', 'FREE - AI meeting notes'],
+                    ['Grammarly', 'https://www.grammarly.com', 'FREE 100% - Grammar'],
+                    ['Zapier AI', 'https://zapier.com', 'FREE - Automation'],
+                    ['Taskade AI', 'https://www.taskade.com', 'FREE - AI collaboration'],
+                    ['Tome', 'https://tome.app', 'FREE - AI presentations'],
+                    ['Tally', 'https://tally.so', 'FREE 100% - Forms'],
+                    ['Gamma AI', 'https://gamma.app', 'FREE - AI presentation'],
+                    ['Reclaim.ai', 'https://reclaim.ai', 'FREE tier - Time-blocking'],
+                    ['Beautiful.ai', 'https://www.beautiful.ai', 'FREE tier - AI slides'],
+                    ['Mem.ai', 'https://mem.ai', 'FREE tier - AI knowledge'],
+                    ['Motion', 'https://www.usemotion.com', 'FREE tier - AI calendar'],
+                    ['Todoist AI', 'https://todoist.com', 'FREE - AI task manager']
+                ]
+            },
+            {
+                cat: 'Digital Marketing',
+                color: '#22d3ee',
+                icon: 'fa-envelope-open-text',
+                tools: [
+                    ['Mailchimp AI', 'https://mailchimp.com', 'FREE - Email AI'],
+                    ['Brevo', 'https://www.brevo.com', 'FREE 100% - Email & WhatsApp'],
+                    ['ConvertKit', 'https://convertkit.com', 'FREE - For creators'],
+                    ['Canva AI', 'https://www.canva.com', 'FREE - Marketing design'],
+                    ['ChatGPT', 'https://chat.openai.com', 'FREE - Email copy AI'],
+                    ['GetResponse', 'https://www.getresponse.com', 'FREE - Email marketing'],
+                    ['Klaviyo AI', 'https://www.klaviyo.com', 'FREE - Email & SMS'],
+                    ['Omnisend', 'https://www.omnisend.com', 'FREE - Omnichannel'],
+                    ['ActiveCampaign', 'https://www.activecampaign.com', 'FREE tier - Automation'],
+                    ['AutoGPT', 'https://agentgpt.reworkd.ai', 'FREE - AI agent'],
+                    ['Salesforce Einstein', 'https://www.salesforce.com/einstein', 'FREE trial - CRM AI']
+                ]
+            }
+        ];
+
+        // Tool icons mapping
+        var toolIcons = {
+            'ChatGPT': ['fa-robot', '#0ea5e9', '#0284c7'],
+            'GitHub Copilot': ['fa-github', '#1e293b', '#334155'],
+            'Cursor': ['fa-terminal', '#6366f1', '#4f46e5'],
+            'Claude': ['fa-brain', '#b04a14', '#d4622a'],
+            'Gemini': ['fa-gem', '#4285f4', '#1a56db'],
+            'Midjourney': ['fa-image', '#111', '#222'],
+            'DALL·E': ['fa-palette', '#111', '#2a2a2a'],
+            'Copy.ai': ['fa-pen-nib', '#a855f7', '#9333ea'],
+            'Jasper': ['fa-feather-alt', '#f97316', '#ea580c'],
+            'Surfer SEO': ['fa-water', '#3b82f6', '#1d4ed8'],
+            'SEMrush': ['fa-search', '#f97316', '#ea580c'],
+            'Ahrefs': ['fa-link', '#f59e0b', '#d97706'],
+            'Buffer AI': ['fa-calendar-check', '#3b82f6', '#2563eb'],
+            'Hootsuite': ['fa-share-alt', '#ef4444', '#dc2626'],
+            'Predis.ai': ['fa-images', '#a855f7', '#9333ea'],
+            'Pictory AI': ['fa-photo-video', '#a855f7', '#9333ea'],
+            'Runway ML': ['fa-film', '#0f172a', '#1e293b'],
+            'Synthesia': ['fa-user-circle', '#3b82f6', '#2563eb'],
+            'InVideo AI': ['fa-video', '#ef4444', '#b91c1c'],
+            'HeyGen': ['fa-user-tie', '#7c3aed', '#5b21b6'],
+            'Lumen5': ['fa-sun', '#f59e0b', '#d97706'],
+            'Notion AI': ['fa-book-open', '#1e293b', '#334155'],
+            'Grammarly': ['fa-spell-check', '#22c55e', '#16a34a'],
+            'Zapier AI': ['fa-random', '#f97316', '#ea580c'],
+            'Mailchimp AI': ['fa-envelope', '#f59e0b', '#ca8a04'],
+            'HubSpot AI': ['fa-funnel-dollar', '#f97316', '#ea580c'],
+            'Canva AI': ['fa-paint-brush', '#00c4cc', '#0098a6'],
+            'Framer AI': ['fa-vector-square', '#ec4899', '#db2777'],
+            'Lovable': ['fa-heart', '#f43f5e', '#e11d48'],
+            'Bolt.new': ['fa-bolt', '#7c3aed', '#5b21b6'],
+            'V0 by Vercel': ['fa-layer-group', '#0f172a', '#1e293b'],
+            'Sora': ['fa-magic', '#0f172a', '#111827'],
+            'Adobe Firefly': ['fa-fire', '#ef4444', '#dc2626'],
+            'Otter.ai': ['fa-microphone', '#0ea5e9', '#0369a1'],
+            'Fireflies.ai': ['fa-headset', '#f59e0b', '#d97706'],
+            'Motion': ['fa-tachometer-alt', '#3b82f6', '#2563eb'],
+            'Reclaim.ai': ['fa-clock', '#8b5cf6', '#7c3aed'],
+            'DeepScribe': ['fa-file-medical', '#8b5cf6', '#7c3aed'],
+            'Nuance DAX': ['fa-stethoscope', '#ef4444', '#dc2626'],
+            'Tome': ['fa-file-powerpoint', '#a855f7', '#9333ea'],
+            'Beautiful.ai': ['fa-magic', '#ec4899', '#db2777'],
+            'Clipchamp': ['fa-film', '#0369a1', '#0891b2'],
+            'Pika Labs': ['fa-play-circle', '#7c3aed', '#6d28d9'],
+            'CapCut AI': ['fa-cut', '#ef4444', '#dc2626'],
+            'Vidnoz AI': ['fa-camera', '#0369a1', '#0284c7'],
+            'Descript': ['fa-microphone', '#6366f1', '#4f46e5'],
+            'Writesonic': ['fa-pencil-alt', '#10b981', '#059669'],
+            'Anyword': ['fa-chart-bar', '#3b82f6', '#2563eb'],
+            'AdCreative.ai': ['fa-ad', '#ef4444', '#dc2626'],
+            'Pencil': ['fa-film', '#8b5cf6', '#7c3aed'],
+            'Rytr': ['fa-r', '#6366f1', '#4f46e5'],
+            'Hypotenuse AI': ['fa-tag', '#14b8a6', '#0d9488'],
+            'Wordtune': ['fa-sliders-h', '#f59e0b', '#d97706'],
+            'Persado': ['fa-smile', '#ec4899', '#db2777'],
+            'Smartly.io': ['fa-bullseye', '#ef4444', '#dc2626'],
+            'Albert AI': ['fa-brain', '#7c3aed', '#6d28d9'],
+            'Frase.io': ['fa-file-alt', '#10b981', '#059669'],
+            'NeuronWriter': ['fa-brain', '#8b5cf6', '#7c3aed'],
+            'Clearscope': ['fa-crosshairs', '#22d3ee', '#06b6d4'],
+            'MarketMuse': ['fa-chart-line', '#a855f7', '#9333ea'],
+            'RankIQ': ['fa-trophy', '#eab308', '#ca8a04'],
+            'SEO.ai': ['fa-robot', '#6366f1', '#4f46e5'],
+            'AlsoAsked': ['fa-question-circle', '#ec4899', '#db2777'],
+            'AnswerThePublic': ['fa-users', '#14b8a6', '#0d9488'],
+            'Moz Pro': ['fa-shield-alt', '#3b82f6', '#2563eb'],
+            'Screaming Frog': ['fa-frog', '#22c55e', '#16a34a'],
+            'Diib': ['fa-heartbeat', '#ef4444', '#dc2626'],
+            'Flick AI': ['fa-hashtag', '#f97316', '#ea580c'],
+            'Ocoya': ['fa-clock', '#10b981', '#059669'],
+            'ContentStudio': ['fa-th-large', '#6366f1', '#4f46e5'],
+            'Vista Social': ['fa-eye', '#22d3ee', '#06b6d4'],
+            'Loomly': ['fa-calendar-alt', '#f59e0b', '#d97706'],
+            'Sprout Social': ['fa-seedling', '#22c55e', '#16a34a'],
+            'ManyChat': ['fa-comments', '#3b82f6', '#1d4ed8'],
+            'Lately.ai': ['fa-recycle', '#14b8a6', '#0d9488'],
+            'Typefully': ['fa-feather', '#1e293b', '#334155'],
+            'Emplifi': ['fa-star', '#f59e0b', '#d97706'],
+            'Topaz Video AI': ['fa-sliders-h', '#14b8a6', '#0d9488'],
+            'Suki AI': ['fa-microphone-alt', '#3b82f6', '#2563eb'],
+            'Nabla Copilot': ['fa-notes-medical', '#10b981', '#059669'],
+            'Abridge': ['fa-compress-alt', '#f59e0b', '#d97706'],
+            'Doximity GPT': ['fa-user-md', '#3b82f6', '#1d4ed8'],
+            'Glass Health': ['fa-heartbeat', '#22d3ee', '#06b6d4'],
+            'Freed AI': ['fa-unlock', '#22c55e', '#16a34a'],
+            'Consensus': ['fa-graduation-cap', '#6366f1', '#4f46e5'],
+            'Mendel AI': ['fa-dna', '#a855f7', '#9333ea'],
+            'Regard': ['fa-clipboard-check', '#14b8a6', '#0d9488'],
+            'Notable Health': ['fa-hospital', '#ef4444', '#dc2626'],
+            'Ambience': ['fa-wave-square', '#f97316', '#ea580c'],
+            'Taskade AI': ['fa-tasks', '#6366f1', '#4f46e5'],
+            'Mem.ai': ['fa-memory', '#14b8a6', '#0d9488'],
+            'Tally': ['fa-poll', '#22d3ee', '#06b6d4'],
+            'Calendly AI': ['fa-calendar-check', '#10b981', '#059669'],
+            'ActiveCampaign': ['fa-paper-plane', '#3b82f6', '#2563eb'],
+            'GetResponse AI': ['fa-reply', '#10b981', '#059669'],
+            'Google Ads AI': ['fa-google', '#ef4444', '#dc2626'],
+            'Meta Ads AI': ['fa-facebook', '#3b82f6', '#1d4ed8'],
+            'Klaviyo AI': ['fa-envelope-open', '#6366f1', '#4f46e5'],
+            'Phrasee': ['fa-comment-dots', '#a855f7', '#9333ea'],
+            'Drift AI': ['fa-comments', '#22d3ee', '#06b6d4'],
+            'Brevo': ['fa-paper-plane', '#10b981', '#059669'],
+            'Omnisend': ['fa-broadcast-tower', '#f97316', '#ea580c'],
+            'Optimove': ['fa-chart-line', '#14b8a6', '#0d9488'],
+            'Seventh Sense': ['fa-clock', '#8b5cf6', '#7c3aed'],
+            'SEMrush Trends': ['fa-trending-up', '#ef4444', '#b91c1c'],
+            'Marketo AI': ['fa-bullseye', '#f97316', '#ea580c'],
+            'Galileo AI': ['fa-drafting-compass', '#f59e0b', '#d97706'],
+            'Locofy': ['fa-object-group', '#14b8a6', '#0d9488'],
+            'Wix AI': ['fa-globe', '#3b82f6', '#2563eb'],
+            'Windsurf': ['fa-wind', '#22d3ee', '#06b6d4'],
+            'Codeium': ['fa-keyboard', '#10b981', '#059669'],
+            'Tabnine': ['fa-magic', '#8b5cf6', '#7c3aed'],
+            'Replit AI': ['fa-code', '#f97316', '#ea580c'],
+            'ChatGPT (Med)': ['fa-robot', '#0ea5e9', '#0284c7']
+        };
+
+        // Category emoji map
+        var emojis = {
+            'Web Dev': '💻',
+            'Marketing': '📣',
+            'SEO': '🔍',
+            'Social Media': '📱',
+            'Video AI': '🎬',
+            'Image AI': '🖼️',
+            'Medical VA': '🏥',
+            'VA Tools': '🗂️',
+            'Digital Marketing': '📧'
+        };
+
+        // ==========================================
+        // RENDER TOOLKIT & MODAL
+        // ==========================================
+        (function() {
+            // Render Smart Toolkit
+            var tkHtml = '';
+            toolData.forEach(function(cat) {
+                var cards = cat.tools.map(function(t) {
+                    var ic = toolIcons[t[0]] || ['fa-robot', cat.color, cat.color];
+                    var icoHtml = '<div class="tc-ico" style="background:linear-gradient(135deg,' + ic[1] + ',' + ic[2] + ')">'
+                        + '<i class="fas ' + ic[0] + '"></i>'
+                        + '</div>';
+                    return '<a href="' + t[1] + '" target="_blank" rel="noopener" class="tc-card">'
+                        + icoHtml
+                        + '<div class="tc-body"><div class="tc-name">' + t[0] + '</div><div class="tc-desc">' + t[2] + '</div></div>'
+                        + '<i class="fas fa-external-link-alt tc-arrow"></i></a>';
+                }).join('');
+
+                var catGrad = 'linear-gradient(135deg,' + cat.color + 'dd,' + cat.color + '88)';
+                tkHtml += '<div class="cat-block"><div class="cat-head">'
+                    + '<div class="cat-ico" style="background:' + catGrad + '">'
+                    + '<i class="fas ' + cat.icon + '" style="color:#fff;font-size:1.4rem;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))"></i>'
+                    + '</div>'
+                    + '<div class="cat-info"><div class="cat-name">' + cat.cat + '</div><div class="cat-count">' + cat.tools.length + ' AI tools</div></div>'
+                    + '<div class="cat-pill" style="background:' + cat.color + '25;border:1.5px solid ' + cat.color + '55;color:' + cat.color + '">' + cat.tools.length + ' tools</div>'
+                    + '</div><div class="tgrid">' + cards + '</div></div>';
+            });
+            var tw = document.getElementById('tools-wrap');
+            if (tw) tw.innerHTML = tkHtml;
+
+            // Render AI Hub Modal
+            var modalHtml = '';
+            toolData.forEach(function(cat) {
+                var emoji = emojis[cat.cat] || '🤖';
+                var cards = cat.tools.map(function(t) {
+                    var ic = toolIcons[t[0]] || ['fa-robot', cat.color, cat.color];
+                    return '<a href="' + t[1] + '" target="_blank" rel="noopener" class="ai-card" style="background:linear-gradient(135deg,' + ic[1] + 'dd,' + ic[2] + '99)">'
+                        + '<i class="fas ' + ic[0] + '"></i>'
+                        + t[0] + '</a>';
+                }).join('');
+                modalHtml += '<div class="ai-cat">'
+                    + '<div class="ai-cat-title"><span>' + emoji + '</span> ' + cat.cat + ' <span style="margin-left:auto;font-size:0.7rem;opacity:0.6">' + cat.tools.length + ' tools</span></div>'
+                    + '<div class="ai-tool-grid">' + cards + '</div>'
+                    + '</div>';
+            });
+            var mw = document.getElementById('modal-tools-wrap');
+            if (mw) mw.innerHTML = modalHtml;
+        })();
+
+        // ==========================================
+        // MODAL SEARCH FILTER
+        // ==========================================
+        function filterModal(q) {
+            q = q.toLowerCase().trim();
+            var cats = document.querySelectorAll('#modal-tools-wrap .ai-cat');
+            cats.forEach(function(cat) {
+                var cards = cat.querySelectorAll('.ai-card');
+                var any = false;
+                cards.forEach(function(card) {
+                    var match = !q || card.textContent.toLowerCase().includes(q);
+                    card.classList.toggle('hidden', !match);
+                    if (match) any = true;
+                });
+                cat.classList.toggle('hidden', !any);
+            });
+        }
+
+        // Close modal on backdrop click
+        document.getElementById('ai-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('open');
+                var s = document.getElementById('modal-search');
+                if (s) {
+                    s.value = '';
+                    filterModal('');
+                }
+            }
+        });
+
+        // ==========================================
+        // MOBILE MENU
+        // ==========================================
+        var hamburger = document.getElementById('hamburger');
+        var mobileMenu = document.getElementById('mobile-menu');
+
+        hamburger.addEventListener('click', function() {
+            mobileMenu.classList.toggle('open');
+        });
+
+        function closeMobile() {
+            mobileMenu.classList.remove('open');
+        }
+
+        // ==========================================
+        // NAV DROPDOWN FUNCTIONALITY
+        // ==========================================
+        var dropdowns = ['ai-dropdown', 'plat-dropdown', 'more-dropdown', 'lang-dropdown', 'hire-dropdown'];
+        
+        function toggleDropdown(id) {
+            var target = document.getElementById(id);
+            var btn = document.getElementById(id + '-btn');
+            var isOpen = target.classList.contains('open');
+            
+            // Close all dropdowns first
+            closeDropdowns();
+            
+            if (!isOpen) {
+                target.classList.add('open');
+                if (btn) btn.classList.add('active');
+            }
+        }
+        
+        function closeDropdowns() {
+            dropdowns.forEach(function(id) {
+                var menu = document.getElementById(id + '-menu');
+                var btn = document.getElementById(id + '-btn');
+                if (menu) menu.classList.remove('open');
+                if (btn) btn.classList.remove('active');
+            });
+        }
+        
+        // Dropdown button click handlers
+        document.getElementById('ai-dropdown-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleDropdown('ai-dropdown');
+        });
+        
+        document.getElementById('plat-dropdown-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleDropdown('plat-dropdown');
+        });
+        
+        document.getElementById('more-dropdown-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleDropdown('more-dropdown');
+        });
+        
+        document.getElementById('hire-dropdown-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleDropdown('hire-dropdown');
+        });
+
+        document.getElementById('lang-dropdown-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleDropdown('lang-dropdown');
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-dropdown')) {
+                closeDropdowns();
+            }
+        });
+
+        // ==========================================
+        // LANGUAGE SWITCHER
+        // ==========================================
+        var currentLang = 'en';
+        
+        function switchLang(el) {
+            var lang = el.getAttribute('data-lang');
+            var flag = el.getAttribute('data-flag');
+            var label = el.getAttribute('data-label');
+            
+            // Update current language
+            currentLang = lang;
+            
+            // Update navbar display
+            document.getElementById('current-lang-flag').textContent = flag;
+            document.getElementById('current-lang-label').textContent = label;
+            
+            // Update active state in dropdown
+            document.querySelectorAll('#lang-dropdown-menu .lang-option').forEach(function(opt) {
+                opt.classList.remove('active');
+            });
+            el.classList.add('active');
+            
+            // Update mobile menu language buttons
+            document.querySelectorAll('.mobile-lang-btn').forEach(function(btn) {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Close dropdown
+            closeDropdowns();
+            
+            // Show toast notification
+            showToast(flag + ' ' + label);
+        }
+        
+        function switchLangMobile(el) {
+            var lang = el.getAttribute('data-lang');
+            var flag = el.getAttribute('data-flag');
+            var label = el.getAttribute('data-label');
+            
+            // Update current language
+            currentLang = lang;
+            
+            // Update navbar display
+            document.getElementById('current-lang-flag').textContent = flag;
+            document.getElementById('current-lang-label').textContent = label;
+            
+            // Update active state in desktop dropdown
+            document.querySelectorAll('#lang-dropdown-menu .lang-option').forEach(function(opt) {
+                opt.classList.remove('active');
+                if (opt.getAttribute('data-lang') === lang) {
+                    opt.classList.add('active');
+                }
+            });
+            
+            // Update active state in mobile
+            document.querySelectorAll('.mobile-lang-btn').forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            el.classList.add('active');
+            
+            // Show toast notification
+            showToast(flag + ' ' + label);
+        }
+        
+        function showToast(message) {
+            // Create toast if doesn't exist
+            var toast = document.getElementById('lang-toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'lang-toast';
+                toast.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(100px);background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:12px 24px;border-radius:12px;font-size:0.9rem;z-index:10000;transition:transform 0.3s ease;box-shadow:0 4px 20px rgba(0,0,0,0.3);';
+                document.body.appendChild(toast);
+            }
+            toast.textContent = '🌐 ' + message;
+            toast.style.transform = 'translateX(-50%) translateY(0)';
+            
+            setTimeout(function() {
+                toast.style.transform = 'translateX(-50%) translateY(100px)';
+            }, 2500);
+        }
+
+        // ==========================================
+        // SCROLL REVEAL
+        // ==========================================
+        function revealOnScroll() {
+            var reveals = document.querySelectorAll('.scroll-reveal');
+            reveals.forEach(function(el) {
+                var windowHeight = window.innerHeight;
+                var elementTop = el.getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // ==========================================
+        // TYPED TEXT ANIMATION
+        // ==========================================
+        var roles = [
+            'Digital Marketing Expert',
+            'Web Developer',
+            'SEO Specialist',
+            'Social Media Marketer',
+            'Virtual Assistant',
+            'AI Tools Expert'
+        ];
+        var roleIndex = 0;
+        var charIndex = 0;
+        var isDeleting = false;
+        var typedText = document.getElementById('typed-text');
+
+        function typeRole() {
+            var currentRole = roles[roleIndex];
+
+            if (isDeleting) {
+                typedText.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedText.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            var typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeRole, typeSpeed);
+        }
+
+        typeRole();
+
+        // ==========================================
+        // BD TIME & DATE
+        // ==========================================
+        function updateDateTime() {
+            var now = new Date();
+            var options = {
+                timeZone: 'Asia/Dhaka',
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            };
+            var bdt = now.toLocaleString('en-US', options);
+            document.getElementById('bdtDateTime').textContent = bdt;
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+
+        // ==========================================
+        // PARTICLES
+        // ==========================================
+        var particlesContainer = document.getElementById('particles');
+        for (var i = 0; i < 20; i++) {
+            var particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // ==========================================
+        // WELCOME AUDIO PLAYER
+        // ==========================================
+        var audioContext = null;
+        var isPlaying = false;
+        var masterGain = null;
+        var currentOscillators = [];
+        var currentNotes = [];
+        var noteIndex = 0;
+        var audioScheduler = null;
+
+        // Welcome melody notes (pleasant, welcoming tune)
+        var melodyNotes = [
+            { freq: 523.25, dur: 0.15 },  // C5
+            { freq: 587.33, dur: 0.15 },  // D5
+            { freq: 659.25, dur: 0.15 },  // E5
+            { freq: 783.99, dur: 0.3 },   // G5
+            { freq: 659.25, dur: 0.15 },  // E5
+            { freq: 523.25, dur: 0.4 },   // C5
+            { freq: 0, dur: 0.1 },        // rest
+            { freq: 659.25, dur: 0.15 },  // E5
+            { freq: 783.99, dur: 0.15 },  // G5
+            { freq: 880.00, dur: 0.3 },   // A5
+            { freq: 783.99, dur: 0.15 },  // G5
+            { freq: 659.25, dur: 0.4 },   // E5
+        ];
+
+        function initAudio() {
+            if (audioContext) return;
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            masterGain = audioContext.createGain();
+            masterGain.gain.value = 0.3;
+            masterGain.connect(audioContext.destination);
+        }
+
+        function playNote(freq, duration) {
+            if (!freq || freq === 0) return;
+
+            var osc = audioContext.createOscillator();
+            var gain = audioContext.createGain();
+
+            // Warm, pleasant tone
+            osc.type = 'sine';
+            osc.frequency.value = freq;
+
+            // Add slight detune for richness
+            var osc2 = audioContext.createOscillator();
+            osc2.type = 'triangle';
+            osc2.frequency.value = freq * 1.002;
+            var gain2 = audioContext.createGain();
+            gain2.gain.value = 0.15;
+
+            osc.connect(gain);
+            gain.connect(masterGain);
+            osc2.connect(gain2);
+            gain2.connect(masterGain);
+
+            var now = audioContext.currentTime;
+            var attackTime = 0.02;
+            var decayTime = 0.05;
+            var sustainLevel = 0.7;
+            var releaseTime = 0.15;
+
+            // Envelope
+            gain.gain.setValueAtTime(0, now);
+            gain.gain.linearRampToValueAtTime(0.8, now + attackTime);
+            gain.gain.linearRampToValueAtTime(sustainLevel, now + attackTime + decayTime);
+            gain.gain.setValueAtTime(sustainLevel, now + duration - releaseTime);
+            gain.gain.linearRampToValueAtTime(0, now + duration);
+
+            gain2.gain.setValueAtTime(0, now);
+            gain2.gain.linearRampToValueAtTime(1, now + attackTime);
+            gain2.gain.linearRampToValueAtTime(sustainLevel, now + attackTime + decayTime);
+            gain2.gain.setValueAtTime(sustainLevel, now + duration - releaseTime);
+            gain2.gain.linearRampToValueAtTime(0, now + duration);
+
+            osc.start(now);
+            osc.stop(now + duration);
+            osc2.start(now);
+            osc2.stop(now + duration);
+
+            currentOscillators.push(osc, osc2);
+        }
+
+        function playMelody() {
+            if (!isPlaying) return;
+
+            var totalDuration = 0;
+            melodyNotes.forEach(function(note) {
+                totalDuration += note.dur;
+            });
+
+            var delay = 0;
+            melodyNotes.forEach(function(note) {
+                setTimeout(function() {
+                    if (isPlaying) {
+                        playNote(note.freq, note.dur * 0.9);
+                    }
+                }, delay * 1000);
+                delay += note.dur;
+            });
+
+            // Loop the melody
+            audioScheduler = setTimeout(playMelody, totalDuration * 1000);
+        }
+
+        function toggleAudio() {
+            var btn = document.getElementById('audio-btn');
+            var icon = document.getElementById('audio-icon');
+            var wave = document.getElementById('audio-wave');
+            var track = document.getElementById('audio-track');
+
+            initAudio();
+
+            if (isPlaying) {
+                // Stop
+                isPlaying = false;
+                clearTimeout(audioScheduler);
+                currentOscillators.forEach(function(osc) {
+                    try { osc.stop(); } catch(e) {}
+                });
+                currentOscillators = [];
+                btn.classList.remove('playing');
+                wave.classList.remove('playing');
+                icon.className = 'fas fa-play';
+                track.textContent = 'Click to play';
+            } else {
+                // Play
+                isPlaying = true;
+                if (audioContext.state === 'suspended') {
+                    audioContext.resume();
+                }
+                btn.classList.add('playing');
+                wave.classList.add('playing');
+                icon.className = 'fas fa-pause';
+                track.textContent = 'Welcome Melody';
+                playMelody();
+            }
+        }
+
+        function setVolume(value) {
+            if (masterGain) {
+                masterGain.gain.value = value / 100;
+            }
+        }
+
+        // ==========================================
+        // OVERFLOW MENU (Auto-overflow navbar items)
+        // ==========================================
+        var overflowOpen = false;
+        
+        function toggleOverflow() {
+            var menu = document.getElementById('nav-overflow-menu');
+            var btn = document.getElementById('nav-more-btn');
+            overflowOpen = !overflowOpen;
+            if (overflowOpen) {
+                menu.classList.remove('hidden');
+                btn.classList.add('open');
+                closeDropdowns();
+                closeMobile();
+            } else {
+                closeOverflow();
+            }
+        }
+        
+        function closeOverflow() {
+            var menu = document.getElementById('nav-overflow-menu');
+            var btn = document.getElementById('nav-more-btn');
+            menu.classList.add('hidden');
+            btn.classList.remove('open');
+            overflowOpen = false;
+        }
+        
+        function checkNavOverflow() {
+            var navItems = document.getElementById('nav-desktop-links');
+            var moreBtn = document.getElementById('nav-more-btn');
+            var overflowItems = document.getElementById('overflow-menu-items');
+            if (!navItems || !moreBtn) return;
+            
+            // Reset items
+            overflowItems.innerHTML = '';
+            moreBtn.style.display = 'none';
+            
+            // Get all nav links and dropdown triggers
+            var items = navItems.querySelectorAll(':scope > a, :scope > .nav-dropdown');
+            var containerWidth = navItems.offsetWidth;
+            var currentWidth = 0;
+            var overflowedItems = [];
+            
+            items.forEach(function(item) {
+                item.style.visibility = 'hidden';
+                item.style.whiteSpace = 'nowrap';
+            });
+            
+            var lastFittingIndex = -1;
+            for (var i = 0; i < items.length; i++) {
+                var itemWidth = items[i].offsetWidth;
+                if (currentWidth + itemWidth + 60 < containerWidth) { // 60px buffer for safety
+                    currentWidth += itemWidth;
+                    lastFittingIndex = i;
+                } else {
+                    break;
+                }
+            }
+            
+            // Mark items that overflow
+            for (var j = lastFittingIndex + 1; j < items.length; j++) {
+                items[j].style.visibility = '';
+                var label = items[j].querySelector('span, i') || items[j];
+                var text = label.textContent.trim() || label.innerHTML;
+                overflowedItems.push({html: items[j].outerHTML, text: text});
+            }
+            
+            // Show all items normally again
+            items.forEach(function(item) {
+                item.style.visibility = '';
+                item.style.whiteSpace = '';
+            });
+            
+            // If there are overflowed items, show the More button
+            if (overflowedItems.length > 0) {
+                moreBtn.style.display = 'flex';
+                
+                // Copy overflow items to menu
+                overflowItems.innerHTML = overflowedItems.map(function(item) {
+                    // Add onclick to close overflow menu
+                    return '<div class="nav-mobile-link">' + item.html.replace(/onclick="[^"]*"/g, 'onclick="closeOverflow(); closeMobile();"') + '</div>';
+                }).join('');
+            }
+        }
+        
+        function annotateNavItems() {
+            // Add data-overflow-label to each nav item for readability
+            var navItems = document.getElementById('nav-desktop-links');
+            if (!navItems) return;
+            var items = navItems.querySelectorAll(':scope > a');
+            items.forEach(function(item) {
+                if (!item.getAttribute('data-overflow-label')) {
+                    var text = item.textContent.trim();
+                    item.setAttribute('data-overflow-label', text);
+                }
+            });
+        }
+
+        // Check overflow on load and resize
+        window.addEventListener('load', function() {
+            annotateNavItems();
+            checkNavOverflow();
+        });
+        window.addEventListener('resize', checkNavOverflow);
+
+        // Welcome message on first load
+        var hasVisited = localStorage.getItem('visited');
+        if (!hasVisited) {
+            localStorage.setItem('visited', 'true');
+            // Auto-play welcome tune for first-time visitors
+            setTimeout(function() {
+                toggleAudio();
+                // Stop after one loop
+                setTimeout(function() {
+                    if (isPlaying) toggleAudio();
+                }, 5000);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
